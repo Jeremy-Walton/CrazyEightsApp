@@ -26,6 +26,7 @@
     [game makeDiscardPileForTest];
     [game shuffleDeck];
     [game dealCards];
+    self.nameLabel.text = [NSString stringWithFormat:@"%@'s hand.", [player1 name]];
     
     
     
@@ -62,7 +63,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *myIdentifier = @"card1";
+    static NSString *myIdentifier = @"cell";
     
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:myIdentifier];
     

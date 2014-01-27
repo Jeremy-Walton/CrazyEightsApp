@@ -15,4 +15,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) id <HandDelegate> handDelegate;
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @end
