@@ -113,7 +113,7 @@
 }
 
 - (void)shuffleDeck {
-    
+    [self.deck shuffle];
 }
 
 @end

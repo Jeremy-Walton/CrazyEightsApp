@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HandDelegate.h"
 
 @interface TableViewController : UITableViewController
 
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) id <HandDelegate> handDelegate;
 
 @end

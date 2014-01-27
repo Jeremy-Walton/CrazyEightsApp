@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HandDelegate.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <HandDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *lastEventLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @end

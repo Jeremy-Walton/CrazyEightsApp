@@ -88,6 +88,7 @@
 		3F505ABF1896B8A600B985DE /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3F505AC01896B8A600B985DE /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		3F505AC41896E24E00B985DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3F505AC61896F29400B985DE /* HandDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandDelegate.h; sourceTree = "<group>"; };
 		67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrazyEightsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrazyEightsAppTests.xcconfig"; path = "Pods/Pods-CrazyEightsAppTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +175,7 @@
 				3F505A6B1896AE4500B985DE /* Supporting Files */,
 				3F505ABF1896B8A600B985DE /* TableViewController.h */,
 				3F505AC01896B8A600B985DE /* TableViewController.m */,
+				3F505AC61896F29400B985DE /* HandDelegate.h */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";

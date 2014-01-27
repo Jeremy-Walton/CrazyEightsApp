@@ -22,7 +22,11 @@
     JPWGame *game = [JPWGame new];
     player1 = [JPWPlayer newWithName:@"Jeremy"];
     [game addPlayer:player1];
-    [game setup];
+    [game makeDeckForTest];
+    [game makeDiscardPileForTest];
+    [game shuffleDeck];
+    [game dealCards];
+    
     
     
     NSArray *playerCards = player1.cards;
@@ -49,7 +53,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog([labelList objectAtIndex:indexPath.row]);
+    [self.handDelegate didSelectCard:[labelList objectAtIndex:indexPath.row]];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
