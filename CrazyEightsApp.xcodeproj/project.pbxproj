@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		35B194BA75C34D7F8CE8A481 /* libPods-CrazyEightsAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */; };
 		3F505A651896AE4500B985DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A641896AE4500B985DE /* Foundation.framework */; };
 		3F505A671896AE4500B985DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A661896AE4500B985DE /* CoreGraphics.framework */; };
 		3F505A691896AE4500B985DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A681896AE4500B985DE /* UIKit.framework */; };
@@ -15,12 +16,25 @@
 		3F505A751896AE4600B985DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505A741896AE4600B985DE /* AppDelegate.m */; };
 		3F505A781896AE4600B985DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F505A761896AE4600B985DE /* Main.storyboard */; };
 		3F505A7B1896AE4600B985DE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505A7A1896AE4600B985DE /* ViewController.m */; };
-		3F505A7D1896AE4600B985DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F505A7C1896AE4600B985DE /* Images.xcassets */; };
 		3F505A841896AE4600B985DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A831896AE4600B985DE /* XCTest.framework */; };
 		3F505A851896AE4600B985DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A641896AE4500B985DE /* Foundation.framework */; };
 		3F505A861896AE4600B985DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A681896AE4500B985DE /* UIKit.framework */; };
 		3F505A8E1896AE4600B985DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F505A8C1896AE4600B985DE /* InfoPlist.strings */; };
-		3F505A901896AE4600B985DE /* CrazyEightsAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505A8F1896AE4600B985DE /* CrazyEightsAppTests.m */; };
+		3F505AA61896AEF200B985DE /* CrazyEightsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505A9B1896AEF200B985DE /* CrazyEightsModel.m */; };
+		3F505AA71896AEF200B985DE /* JPWDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505A9D1896AEF200B985DE /* JPWDeck.m */; };
+		3F505AA81896AEF200B985DE /* JPWDiscardPile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505A9F1896AEF200B985DE /* JPWDiscardPile.m */; };
+		3F505AA91896AEF200B985DE /* JPWGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AA11896AEF200B985DE /* JPWGame.m */; };
+		3F505AAA1896AEF200B985DE /* JPWPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AA31896AEF200B985DE /* JPWPlayer.m */; };
+		3F505AAB1896AEF200B985DE /* JPWPlayingCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AA51896AEF200B985DE /* JPWPlayingCard.m */; };
+		3F505AB51896B05100B985DE /* CrazyEightsModelTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3F505AAC1896B05100B985DE /* CrazyEightsModelTests-Info.plist */; };
+		3F505AB61896B05100B985DE /* DeckTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AAD1896B05100B985DE /* DeckTests.m */; };
+		3F505AB71896B05100B985DE /* DiscardPileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AAE1896B05100B985DE /* DiscardPileTests.m */; };
+		3F505AB81896B05100B985DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F505AB01896B05100B985DE /* InfoPlist.strings */; };
+		3F505AB91896B05100B985DE /* GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB21896B05100B985DE /* GameTests.m */; };
+		3F505ABA1896B05100B985DE /* PlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB31896B05100B985DE /* PlayerTests.m */; };
+		3F505ABB1896B05100B985DE /* PlayingCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB41896B05100B985DE /* PlayingCardTests.m */; };
+		3F505AC11896B8A600B985DE /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AC01896B8A600B985DE /* TableViewController.m */; };
+		3F505AC51896E24E00B985DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F505AC41896E24E00B985DE /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,12 +61,35 @@
 		3F505A771896AE4600B985DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F505A791896AE4600B985DE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		3F505A7A1896AE4600B985DE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3F505A7C1896AE4600B985DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3F505A821896AE4600B985DE /* CrazyEightsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrazyEightsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F505A831896AE4600B985DE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3F505A8B1896AE4600B985DE /* CrazyEightsAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrazyEightsAppTests-Info.plist"; sourceTree = "<group>"; };
 		3F505A8D1896AE4600B985DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3F505A8F1896AE4600B985DE /* CrazyEightsAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrazyEightsAppTests.m; sourceTree = "<group>"; };
+		3F505A991896AEF200B985DE /* CrazyEightsModel-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CrazyEightsModel-Prefix.pch"; sourceTree = "<group>"; };
+		3F505A9A1896AEF200B985DE /* CrazyEightsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrazyEightsModel.h; sourceTree = "<group>"; };
+		3F505A9B1896AEF200B985DE /* CrazyEightsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrazyEightsModel.m; sourceTree = "<group>"; };
+		3F505A9C1896AEF200B985DE /* JPWDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWDeck.h; sourceTree = "<group>"; };
+		3F505A9D1896AEF200B985DE /* JPWDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWDeck.m; sourceTree = "<group>"; };
+		3F505A9E1896AEF200B985DE /* JPWDiscardPile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWDiscardPile.h; sourceTree = "<group>"; };
+		3F505A9F1896AEF200B985DE /* JPWDiscardPile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWDiscardPile.m; sourceTree = "<group>"; };
+		3F505AA01896AEF200B985DE /* JPWGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWGame.h; sourceTree = "<group>"; };
+		3F505AA11896AEF200B985DE /* JPWGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWGame.m; sourceTree = "<group>"; };
+		3F505AA21896AEF200B985DE /* JPWPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWPlayer.h; sourceTree = "<group>"; };
+		3F505AA31896AEF200B985DE /* JPWPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWPlayer.m; sourceTree = "<group>"; };
+		3F505AA41896AEF200B985DE /* JPWPlayingCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWPlayingCard.h; sourceTree = "<group>"; };
+		3F505AA51896AEF200B985DE /* JPWPlayingCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWPlayingCard.m; sourceTree = "<group>"; };
+		3F505AAC1896B05100B985DE /* CrazyEightsModelTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "CrazyEightsModelTests-Info.plist"; sourceTree = "<group>"; };
+		3F505AAD1896B05100B985DE /* DeckTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeckTests.m; sourceTree = "<group>"; };
+		3F505AAE1896B05100B985DE /* DiscardPileTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscardPileTests.m; sourceTree = "<group>"; };
+		3F505AB11896B05100B985DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		3F505AB21896B05100B985DE /* GameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTests.m; sourceTree = "<group>"; };
+		3F505AB31896B05100B985DE /* PlayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTests.m; sourceTree = "<group>"; };
+		3F505AB41896B05100B985DE /* PlayingCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardTests.m; sourceTree = "<group>"; };
+		3F505ABF1896B8A600B985DE /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		3F505AC01896B8A600B985DE /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		3F505AC41896E24E00B985DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrazyEightsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrazyEightsAppTests.xcconfig"; path = "Pods/Pods-CrazyEightsAppTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +110,7 @@
 				3F505A841896AE4600B985DE /* XCTest.framework in Frameworks */,
 				3F505A861896AE4600B985DE /* UIKit.framework in Frameworks */,
 				3F505A851896AE4600B985DE /* Foundation.framework in Frameworks */,
+				35B194BA75C34D7F8CE8A481 /* libPods-CrazyEightsAppTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +124,7 @@
 				3F505A891896AE4600B985DE /* CrazyEightsAppTests */,
 				3F505A631896AE4500B985DE /* Frameworks */,
 				3F505A621896AE4500B985DE /* Products */,
+				CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +144,7 @@
 				3F505A661896AE4500B985DE /* CoreGraphics.framework */,
 				3F505A681896AE4500B985DE /* UIKit.framework */,
 				3F505A831896AE4600B985DE /* XCTest.framework */,
+				67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,13 +152,28 @@
 		3F505A6A1896AE4500B985DE /* CrazyEightsApp */ = {
 			isa = PBXGroup;
 			children = (
+				3F505A991896AEF200B985DE /* CrazyEightsModel-Prefix.pch */,
+				3F505A9A1896AEF200B985DE /* CrazyEightsModel.h */,
+				3F505A9B1896AEF200B985DE /* CrazyEightsModel.m */,
+				3F505A9C1896AEF200B985DE /* JPWDeck.h */,
+				3F505A9D1896AEF200B985DE /* JPWDeck.m */,
+				3F505A9E1896AEF200B985DE /* JPWDiscardPile.h */,
+				3F505A9F1896AEF200B985DE /* JPWDiscardPile.m */,
+				3F505AA01896AEF200B985DE /* JPWGame.h */,
+				3F505AA11896AEF200B985DE /* JPWGame.m */,
+				3F505AA21896AEF200B985DE /* JPWPlayer.h */,
+				3F505AA31896AEF200B985DE /* JPWPlayer.m */,
+				3F505AA41896AEF200B985DE /* JPWPlayingCard.h */,
+				3F505AA51896AEF200B985DE /* JPWPlayingCard.m */,
 				3F505A731896AE4600B985DE /* AppDelegate.h */,
 				3F505A741896AE4600B985DE /* AppDelegate.m */,
+				3F505AC41896E24E00B985DE /* Images.xcassets */,
 				3F505A761896AE4600B985DE /* Main.storyboard */,
 				3F505A791896AE4600B985DE /* ViewController.h */,
 				3F505A7A1896AE4600B985DE /* ViewController.m */,
-				3F505A7C1896AE4600B985DE /* Images.xcassets */,
 				3F505A6B1896AE4500B985DE /* Supporting Files */,
+				3F505ABF1896B8A600B985DE /* TableViewController.h */,
+				3F505AC01896B8A600B985DE /* TableViewController.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -137,7 +192,13 @@
 		3F505A891896AE4600B985DE /* CrazyEightsAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F505A8F1896AE4600B985DE /* CrazyEightsAppTests.m */,
+				3F505AAC1896B05100B985DE /* CrazyEightsModelTests-Info.plist */,
+				3F505AAD1896B05100B985DE /* DeckTests.m */,
+				3F505AAE1896B05100B985DE /* DiscardPileTests.m */,
+				3F505AAF1896B05100B985DE /* en.lproj */,
+				3F505AB21896B05100B985DE /* GameTests.m */,
+				3F505AB31896B05100B985DE /* PlayerTests.m */,
+				3F505AB41896B05100B985DE /* PlayingCardTests.m */,
 				3F505A8A1896AE4600B985DE /* Supporting Files */,
 			);
 			path = CrazyEightsAppTests;
@@ -150,6 +211,14 @@
 				3F505A8C1896AE4600B985DE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F505AAF1896B05100B985DE /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				3F505AB01896B05100B985DE /* InfoPlist.strings */,
+			);
+			path = en.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F505A961896AE4600B985DE /* Build configuration list for PBXNativeTarget "CrazyEightsAppTests" */;
 			buildPhases = (
+				39DF0045D1104F7C88E5CBC3 /* Check Pods Manifest.lock */,
 				3F505A7E1896AE4600B985DE /* Sources */,
 				3F505A7F1896AE4600B985DE /* Frameworks */,
 				3F505A801896AE4600B985DE /* Resources */,
+				2B9AEA07910841EEB08251A4 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -228,7 +299,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F505A7D1896AE4600B985DE /* Images.xcassets in Resources */,
+				3F505AC51896E24E00B985DE /* Images.xcassets in Resources */,
 				3F505A6F1896AE4500B985DE /* InfoPlist.strings in Resources */,
 				3F505A781896AE4600B985DE /* Main.storyboard in Resources */,
 			);
@@ -238,20 +309,62 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F505AB51896B05100B985DE /* CrazyEightsModelTests-Info.plist in Resources */,
+				3F505AB81896B05100B985DE /* InfoPlist.strings in Resources */,
 				3F505A8E1896AE4600B985DE /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2B9AEA07910841EEB08251A4 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-CrazyEightsAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		39DF0045D1104F7C88E5CBC3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3F505A5D1896AE4500B985DE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F505AA91896AEF200B985DE /* JPWGame.m in Sources */,
+				3F505AA71896AEF200B985DE /* JPWDeck.m in Sources */,
 				3F505A7B1896AE4600B985DE /* ViewController.m in Sources */,
+				3F505AA81896AEF200B985DE /* JPWDiscardPile.m in Sources */,
+				3F505AAA1896AEF200B985DE /* JPWPlayer.m in Sources */,
 				3F505A751896AE4600B985DE /* AppDelegate.m in Sources */,
 				3F505A711896AE4600B985DE /* main.m in Sources */,
+				3F505AA61896AEF200B985DE /* CrazyEightsModel.m in Sources */,
+				3F505AC11896B8A600B985DE /* TableViewController.m in Sources */,
+				3F505AAB1896AEF200B985DE /* JPWPlayingCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +372,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F505A901896AE4600B985DE /* CrazyEightsAppTests.m in Sources */,
+				3F505ABB1896B05100B985DE /* PlayingCardTests.m in Sources */,
+				3F505ABA1896B05100B985DE /* PlayerTests.m in Sources */,
+				3F505AB71896B05100B985DE /* DiscardPileTests.m in Sources */,
+				3F505AB91896B05100B985DE /* GameTests.m in Sources */,
+				3F505AB61896B05100B985DE /* DeckTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +411,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				3F505A8D1896AE4600B985DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3F505AB01896B05100B985DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F505AB11896B05100B985DE /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -401,6 +526,7 @@
 		};
 		3F505A971896AE4600B985DE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CrazyEightsApp.app/CrazyEightsApp";
@@ -424,6 +550,7 @@
 		};
 		3F505A981896AE4600B985DE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CrazyEightsApp.app/CrazyEightsApp";
@@ -460,6 +587,7 @@
 				3F505A951896AE4600B985DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F505A961896AE4600B985DE /* Build configuration list for PBXNativeTarget "CrazyEightsAppTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +596,7 @@
 				3F505A981896AE4600B985DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
