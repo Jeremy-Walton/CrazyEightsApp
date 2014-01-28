@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "TableViewController.h"
 #import "JPWGame.h"
+#import "CollectionViewController.h"
+#import "JPWGame.h"
 
 @interface ViewController ()
 
@@ -27,15 +29,14 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-// 
-//    NSString *lastEventLabel;
-//    lastEventLabel = [NSString stringWithFormat:@"Car Number: %@", [self.delegate text]];
-//    self.lastEventLabel.text = lastEventLabel;
+
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue
                  sender:(id)sender {
-    TableViewController *handController = segue.destinationViewController;
+//    TableViewController *handController = segue.destinationViewController;
+//    handController.handDelegate = self;
+    CollectionViewController *handController = segue.destinationViewController;
     handController.handDelegate = self;
 }
 

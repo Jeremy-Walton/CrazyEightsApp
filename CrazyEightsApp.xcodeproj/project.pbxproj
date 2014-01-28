@@ -37,6 +37,10 @@
 		3F505AC51896E24E00B985DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F505AC41896E24E00B985DE /* Images.xcassets */; };
 		3F541CC91897F53600039DA6 /* JPWHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CC81897F53600039DA6 /* JPWHand.m */; };
 		3F541CCB1897FDDD00039DA6 /* PlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CCA1897FDDD00039DA6 /* PlayerTests.m */; };
+		3F541CCD18980D3000039DA6 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F541CCC18980D3000039DA6 /* Storyboard.storyboard */; };
+		3F541CD018980FF300039DA6 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CCF18980FF300039DA6 /* CollectionViewController.m */; };
+		3F541CD318981B4300039DA6 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CD218981B4300039DA6 /* CardCell.m */; };
+		3F541CD618983BD600039DA6 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CD518983BD600039DA6 /* CardViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +98,13 @@
 		3F541CC71897F53600039DA6 /* JPWHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWHand.h; sourceTree = "<group>"; };
 		3F541CC81897F53600039DA6 /* JPWHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWHand.m; sourceTree = "<group>"; };
 		3F541CCA1897FDDD00039DA6 /* PlayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTests.m; sourceTree = "<group>"; };
+		3F541CCC18980D3000039DA6 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		3F541CCE18980FF300039DA6 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		3F541CCF18980FF300039DA6 /* CollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		3F541CD118981B4300039DA6 /* CardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardCell.h; sourceTree = "<group>"; };
+		3F541CD218981B4300039DA6 /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
+		3F541CD418983BD600039DA6 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
+		3F541CD518983BD600039DA6 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrazyEightsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrazyEightsAppTests.xcconfig"; path = "Pods/Pods-CrazyEightsAppTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +186,7 @@
 				3F505A741896AE4600B985DE /* AppDelegate.m */,
 				3F505AC41896E24E00B985DE /* Images.xcassets */,
 				3F505A761896AE4600B985DE /* Main.storyboard */,
+				3F541CCC18980D3000039DA6 /* Storyboard.storyboard */,
 				3F505A791896AE4600B985DE /* ViewController.h */,
 				3F505A7A1896AE4600B985DE /* ViewController.m */,
 				3F505A6B1896AE4500B985DE /* Supporting Files */,
@@ -183,6 +195,12 @@
 				3F505AC61896F29400B985DE /* HandDelegate.h */,
 				3F541CC71897F53600039DA6 /* JPWHand.h */,
 				3F541CC81897F53600039DA6 /* JPWHand.m */,
+				3F541CCE18980FF300039DA6 /* CollectionViewController.h */,
+				3F541CCF18980FF300039DA6 /* CollectionViewController.m */,
+				3F541CD118981B4300039DA6 /* CardCell.h */,
+				3F541CD218981B4300039DA6 /* CardCell.m */,
+				3F541CD418983BD600039DA6 /* CardViewController.h */,
+				3F541CD518983BD600039DA6 /* CardViewController.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -310,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F505AC51896E24E00B985DE /* Images.xcassets in Resources */,
+				3F541CCD18980D3000039DA6 /* Storyboard.storyboard in Resources */,
 				3F505A6F1896AE4500B985DE /* InfoPlist.strings in Resources */,
 				3F505A781896AE4600B985DE /* Main.storyboard in Resources */,
 			);
@@ -365,7 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F541CD318981B4300039DA6 /* CardCell.m in Sources */,
 				3F505AA91896AEF200B985DE /* JPWGame.m in Sources */,
+				3F541CD618983BD600039DA6 /* CardViewController.m in Sources */,
 				3F505AA71896AEF200B985DE /* JPWDeck.m in Sources */,
 				3F505A7B1896AE4600B985DE /* ViewController.m in Sources */,
 				3F505AA81896AEF200B985DE /* JPWDiscardPile.m in Sources */,
@@ -373,6 +394,7 @@
 				3F505A751896AE4600B985DE /* AppDelegate.m in Sources */,
 				3F505A711896AE4600B985DE /* main.m in Sources */,
 				3F541CC91897F53600039DA6 /* JPWHand.m in Sources */,
+				3F541CD018980FF300039DA6 /* CollectionViewController.m in Sources */,
 				3F505AA61896AEF200B985DE /* CrazyEightsModel.m in Sources */,
 				3F505AC11896B8A600B985DE /* TableViewController.m in Sources */,
 				3F505AAB1896AEF200B985DE /* JPWPlayingCard.m in Sources */,
@@ -519,6 +541,7 @@
 				GCC_PREFIX_HEADER = "CrazyEightsApp/CrazyEightsApp-Prefix.pch";
 				INFOPLIST_FILE = "CrazyEightsApp/CrazyEightsApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -532,6 +555,7 @@
 				GCC_PREFIX_HEADER = "CrazyEightsApp/CrazyEightsApp-Prefix.pch";
 				INFOPLIST_FILE = "CrazyEightsApp/CrazyEightsApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

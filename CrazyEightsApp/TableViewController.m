@@ -67,7 +67,6 @@
     
     UITableViewCell *cell =[tableView dequeueReusableCellWithIdentifier:myIdentifier];
     
-//    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png", [labelList objectAtIndex:indexPath.row]]];
     cell.imageView.image = [UIImage imageNamed:[labelList objectAtIndex:indexPath.row]];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = [labelList objectAtIndex:indexPath.row];
