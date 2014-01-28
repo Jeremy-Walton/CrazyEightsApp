@@ -30,7 +30,7 @@
     
     
     
-    NSArray *playerCards = player1.cards;
+    NSArray *playerCards = player1.hand.cards;
     for (JPWPlayingCard *card in playerCards) {
         [labelList addObject:[card description]];
     }

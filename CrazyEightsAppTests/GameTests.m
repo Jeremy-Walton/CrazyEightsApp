@@ -35,7 +35,7 @@ describe(@"Game", ^{
         [[[game testDeckSize] should] equal:@52];
         [game addPlayer:player];
         
-        [player addCard:[game draw]];
+        [player addCardToHand:[game draw]];
         
         [[[player numberOfCards] should] equal:@1];
         [[[game testDeckSize] should] equal:@51];
@@ -95,12 +95,12 @@ describe(@"Game", ^{
         [game addPlayer:player];
         
         JPWPlayingCard *card = [game draw];
-        [player addCard:card];
+        [player.hand addCard:card];
         
         [[[player numberOfCards] should] equal:@1];
         [[[game testDeckSize] should] equal:@51];
         
-        [game discard:[player removeCard:card]];
+        [game discard:[player.hand removeCard:card]];
         [[[player numberOfCards] should] equal:@0];
         [[[game testDiscardPileSize] should] equal:@1];
 

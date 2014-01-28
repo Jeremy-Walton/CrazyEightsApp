@@ -10,6 +10,7 @@
 
 #import "JPWPlayer.h"
 #import "JPWPlayingCard.h"
+#import "JPWHand.h"
 
 @interface JPWPlayer()
 @property (nonatomic, strong) NSString *name;
@@ -27,29 +28,22 @@
     self = [super init];
     if (self) {
         self.name = name;
-        self.cards = [NSMutableArray new];
+        self.hand = [JPWHand new];
     }
     return self;
 }
 
 
-- (void)addCard:(JPWPlayingCard *)card {
-    [self.cards addObject:card];
+- (void)addCardToHand:(JPWPlayingCard *)card {
+    [self.hand addCard:card];
 }
 
 - (NSNumber *)numberOfCards {
-    return @([self.cards count]);
+    return [self.hand numberOfCards];
 }
 
-- (JPWPlayingCard *)removeCard:(JPWPlayingCard *)card {
-    JPWPlayingCard *correctCard;
-    for (int i = 0; i < [[self numberOfCards] integerValue]; i++) {
-        if ([[self.cards objectAtIndex:i] rank] == card.rank && [[self.cards objectAtIndex:i] suit] == card.suit) {
-            correctCard = [self.cards objectAtIndex:i];
-            [self.cards removeObjectAtIndex:i];
-        }
-    }
-    return correctCard;
+- (void)discard:(JPWPlayingCard *)card {
+    
 }
 
 - (NSString *)playCard:(NSNumber *)index {

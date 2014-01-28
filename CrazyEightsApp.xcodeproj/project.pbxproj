@@ -31,10 +31,12 @@
 		3F505AB71896B05100B985DE /* DiscardPileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AAE1896B05100B985DE /* DiscardPileTests.m */; };
 		3F505AB81896B05100B985DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F505AB01896B05100B985DE /* InfoPlist.strings */; };
 		3F505AB91896B05100B985DE /* GameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB21896B05100B985DE /* GameTests.m */; };
-		3F505ABA1896B05100B985DE /* PlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB31896B05100B985DE /* PlayerTests.m */; };
+		3F505ABA1896B05100B985DE /* HandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB31896B05100B985DE /* HandTests.m */; };
 		3F505ABB1896B05100B985DE /* PlayingCardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AB41896B05100B985DE /* PlayingCardTests.m */; };
 		3F505AC11896B8A600B985DE /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F505AC01896B8A600B985DE /* TableViewController.m */; };
 		3F505AC51896E24E00B985DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F505AC41896E24E00B985DE /* Images.xcassets */; };
+		3F541CC91897F53600039DA6 /* JPWHand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CC81897F53600039DA6 /* JPWHand.m */; };
+		3F541CCB1897FDDD00039DA6 /* PlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CCA1897FDDD00039DA6 /* PlayerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,12 +85,15 @@
 		3F505AAE1896B05100B985DE /* DiscardPileTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscardPileTests.m; sourceTree = "<group>"; };
 		3F505AB11896B05100B985DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
 		3F505AB21896B05100B985DE /* GameTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameTests.m; sourceTree = "<group>"; };
-		3F505AB31896B05100B985DE /* PlayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTests.m; sourceTree = "<group>"; };
+		3F505AB31896B05100B985DE /* HandTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HandTests.m; sourceTree = "<group>"; };
 		3F505AB41896B05100B985DE /* PlayingCardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayingCardTests.m; sourceTree = "<group>"; };
 		3F505ABF1896B8A600B985DE /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
 		3F505AC01896B8A600B985DE /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		3F505AC41896E24E00B985DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3F505AC61896F29400B985DE /* HandDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandDelegate.h; sourceTree = "<group>"; };
+		3F541CC71897F53600039DA6 /* JPWHand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWHand.h; sourceTree = "<group>"; };
+		3F541CC81897F53600039DA6 /* JPWHand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWHand.m; sourceTree = "<group>"; };
+		3F541CCA1897FDDD00039DA6 /* PlayerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerTests.m; sourceTree = "<group>"; };
 		67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrazyEightsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrazyEightsAppTests.xcconfig"; path = "Pods/Pods-CrazyEightsAppTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,6 +181,8 @@
 				3F505ABF1896B8A600B985DE /* TableViewController.h */,
 				3F505AC01896B8A600B985DE /* TableViewController.m */,
 				3F505AC61896F29400B985DE /* HandDelegate.h */,
+				3F541CC71897F53600039DA6 /* JPWHand.h */,
+				3F541CC81897F53600039DA6 /* JPWHand.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -199,8 +206,9 @@
 				3F505AAE1896B05100B985DE /* DiscardPileTests.m */,
 				3F505AAF1896B05100B985DE /* en.lproj */,
 				3F505AB21896B05100B985DE /* GameTests.m */,
-				3F505AB31896B05100B985DE /* PlayerTests.m */,
+				3F505AB31896B05100B985DE /* HandTests.m */,
 				3F505AB41896B05100B985DE /* PlayingCardTests.m */,
+				3F541CCA1897FDDD00039DA6 /* PlayerTests.m */,
 				3F505A8A1896AE4600B985DE /* Supporting Files */,
 			);
 			path = CrazyEightsAppTests;
@@ -364,6 +372,7 @@
 				3F505AAA1896AEF200B985DE /* JPWPlayer.m in Sources */,
 				3F505A751896AE4600B985DE /* AppDelegate.m in Sources */,
 				3F505A711896AE4600B985DE /* main.m in Sources */,
+				3F541CC91897F53600039DA6 /* JPWHand.m in Sources */,
 				3F505AA61896AEF200B985DE /* CrazyEightsModel.m in Sources */,
 				3F505AC11896B8A600B985DE /* TableViewController.m in Sources */,
 				3F505AAB1896AEF200B985DE /* JPWPlayingCard.m in Sources */,
@@ -374,8 +383,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F541CCB1897FDDD00039DA6 /* PlayerTests.m in Sources */,
 				3F505ABB1896B05100B985DE /* PlayingCardTests.m in Sources */,
-				3F505ABA1896B05100B985DE /* PlayerTests.m in Sources */,
+				3F505ABA1896B05100B985DE /* HandTests.m in Sources */,
 				3F505AB71896B05100B985DE /* DiscardPileTests.m in Sources */,
 				3F505AB91896B05100B985DE /* GameTests.m in Sources */,
 				3F505AB61896B05100B985DE /* DeckTests.m in Sources */,

@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
+#import "JPWHand.h"
 
 @interface JPWPlayer : NSObject
 
 @property (nonatomic, strong, readonly) NSString *name;
-@property (nonatomic, strong) NSMutableArray *cards;
+@property (nonatomic, strong) JPWHand *hand;
 
 + (instancetype)newWithName:(NSString *)name;
 - (instancetype)initWithName:(NSString *)name;
 
-- (void)addCard:(JPWPlayingCard *)card;
-- (JPWPlayingCard *)removeCard:(JPWPlayingCard *)card;
+- (void)addCardToHand:(JPWPlayingCard *)card;
+- (void)discard:(JPWPlayingCard *)card;
 - (NSNumber *)numberOfCards;
 - (NSString *)playCard:(NSNumber *)index;
 

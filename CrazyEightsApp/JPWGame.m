@@ -47,13 +47,13 @@
         // deal 7
         for (int i = 0; i < [self.numberOfPlayers integerValue]; i++) {
             for (int j = 0; j < 7; j++) {
-                [[self.players objectAtIndex:i] addCard:[self draw]];
+                [[self.players objectAtIndex:i] addCardToHand:[self draw]];
             }
         }
     } else {
         for (int i = 0; i < [self.numberOfPlayers integerValue]; i++) {
             for (int j = 0; j < 5; j++) {
-                [[self.players objectAtIndex:i] addCard:[self draw]];
+                [[self.players objectAtIndex:i] addCardToHand:[self draw]];
             }
         }
 
