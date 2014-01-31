@@ -8,13 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CollectionViewLayout : UICollectionViewLayout
-
-@property (nonatomic) UIEdgeInsets itemInsets;
-@property (nonatomic) CGSize itemSize;
-@property (nonatomic) CGFloat interItemSpacingY;
-@property (nonatomic) NSInteger numberOfColumns;
-@property (nonatomic) CGPoint stackCenter;
-@property (nonatomic) CGFloat stackFactor;
+@interface CollectionViewLayout : UICollectionViewLayout <UICollectionViewDataSource>
 
 @end

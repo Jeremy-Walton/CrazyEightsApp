@@ -10,6 +10,7 @@
 #import "JPWPlayer.h"
 #import "JPWGame.h"
 #import "CardCell.h"
+#import "CoverFlowLayout.h"
 
 @interface CollectionViewController ()
 
@@ -56,18 +57,9 @@
     for (JPWPlayingCard *card in playerCards) {
         [labelList addObject:[card description]];
     }
-    
-    // Configure layout
-//    self.collectionViewLayout = [[CollectionViewLayout alloc] init];
-    self.collectionView.backgroundColor = [UIColor greenColor];
-//    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
-//    [self.flowLayout setItemSize:CGSizeMake(191, 160)];
-//    [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
-//    self.flowLayout.minimumInteritemSpacing = 0.0f;
-//      [self.collectionView setCollectionViewLayout:self.flowLayout];
-//    self.collectionView.bounces = YES;
-//    [self.collectionView setShowsHorizontalScrollIndicator:NO];
-//    [self.collectionView setShowsVerticalScrollIndicator:NO];
+    self.view.backgroundColor = [UIColor blackColor];
+    self.collectionView.backgroundColor = [UIColor colorWithRed:0.1 green:1 blue:0 alpha:0.5];
+
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
@@ -85,25 +77,20 @@
     
     // Update the custom layout parameter and invalidate.
 
-//    self.flowLayout.minimumInteritemSpacing = distance;
     if (distance > 200) {
-//        [self.collectionViewLayout setStackFactor:100];
-        [self.collectionView setCollectionViewLayout:[UICollectionViewFlowLayout new]];
-//        [self.collectionView setCollectionViewLayout:self.flowLayout];
+//        UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
+//        [self.collectionView setCollectionViewLayout:flowLayout];
+//        flowLayout.minimumInteritemSpacing = 0.0;
+//        flowLayout.sectionInset = UIEdgeInsetsMake(52.0, 100.0, 0.0, 0.0);
+        CoverFlowLayout *flowLayout = [CoverFlowLayout new];
+//         flowLayout.sectionInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+        [self.collectionView setCollectionViewLayout:flowLayout];
     } else {
-//        [self.collectionViewLayout setStackFactor:0];
-        [self.collectionView setCollectionViewLayout:[CollectionViewLayout new]];
-//        [self.collectionView setCollectionViewLayout:self.collectionViewLayout];
+        CollectionViewLayout *fanLayout = [CollectionViewLayout new];
+        [self.collectionView setCollectionViewLayout:fanLayout];
     }
     
-//    [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-//    [self.flowLayout invalidateLayout];
 }
-
-//- (UIEdgeInsets)collectionView:
-//(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
-//    return UIEdgeInsetsMake(0, 0, 0, 0);
-//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -126,12 +113,14 @@
 //    cardCell *newCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     CardCell *newCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     newCell.imageView.image = [UIImage imageNamed:[labelList objectAtIndex:indexPath.row]];
-    newCell.label.text = [NSString stringWithFormat:@"%@", [labelList objectAtIndex:indexPath.row]];
+//    newCell.label.text = [NSString stringWithFormat:@"%@", [labelList objectAtIndex:indexPath.row]];
+    newCell.imageView.layer.shadowColor = (__bridge CGColorRef)([UIColor blackColor]);
+    newCell.imageView.layer.shadowRadius = 10;
     return newCell;
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(142, 192);
+    return CGSizeMake(71, 96);
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -146,9 +135,13 @@ options:(UIViewAnimationOptionAllowUserInteraction)
 animations:^
     {
         NSLog(@"starting animation");
-        CGRect frame = cell.frame;
-        frame.origin.y += 100;
-        cell.frame = frame;
+//        CGRect frame = cell.frame;
+//        frame.origin.y += 100;
+//        cell.frame = frame;
+//        cell.transform = CGAffineTransformMakeRotation(180 * 3.14/180);
+//        [cell.superview bringSubviewToFront:cell];
+//        cell.transform = CGAffineTransformMakeRotation(180 * 3.14/180);
+//        cell.transform = CGAffineTransformMakeScale(2, 2);
 //        [UIView transitionFromView:cell.contentView
 //                            toView:cell.contentView
 //                          duration:.5
@@ -157,13 +150,18 @@ animations:^
     }
 completion:^(BOOL finished)
     {
+//        [UIView animateWithDuration:1.0 animations:^{
+//            cell.transform = CGAffineTransformMakeScale(1, 1);
+//            cell.transform = CGAffineTransformMakeRotation(0);
+//        }];
         NSLog(@"animation end");
-//        NSArray *indexPaths = @[indexPath];
-//        [labelList removeObjectAtIndex:indexPath.row];
-//        [collectionView deleteItemsAtIndexPaths:indexPaths];
+        NSArray *indexPaths = @[indexPath];
+        [labelList removeObjectAtIndex:indexPath.row];
+        [collectionView deleteItemsAtIndexPaths:indexPaths];
     }
     ];
 //    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 @end

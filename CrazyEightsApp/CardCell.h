@@ -10,5 +10,5 @@
 
 @interface CardCell : UICollectionViewCell
 @property (nonatomic, strong) IBOutlet UIImageView *imageView;
-@property (nonatomic, strong) IBOutlet UILabel *label;
+//@property (nonatomic, strong) IBOutlet UILabel *label;
 @end

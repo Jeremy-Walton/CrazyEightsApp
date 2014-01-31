@@ -42,6 +42,7 @@
 		3F541CD318981B4300039DA6 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CD218981B4300039DA6 /* CardCell.m */; };
 		3F541CD618983BD600039DA6 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CD518983BD600039DA6 /* CardViewController.m */; };
 		3FD46174189AA6F30005D11E /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD46173189AA6F30005D11E /* CollectionViewLayout.m */; };
+		3FD461D3189C48750005D11E /* CoverFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD461D2189C48750005D11E /* CoverFlowLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,8 @@
 		3F541CD518983BD600039DA6 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
 		3FD46172189AA6F30005D11E /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
 		3FD46173189AA6F30005D11E /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
+		3FD461D1189C48750005D11E /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
+		3FD461D2189C48750005D11E /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
 		67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrazyEightsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrazyEightsAppTests.xcconfig"; path = "Pods/Pods-CrazyEightsAppTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,6 +209,8 @@
 				3F541CD518983BD600039DA6 /* CardViewController.m */,
 				3FD46172189AA6F30005D11E /* CollectionViewLayout.h */,
 				3FD46173189AA6F30005D11E /* CollectionViewLayout.m */,
+				3FD461D1189C48750005D11E /* CoverFlowLayout.h */,
+				3FD461D2189C48750005D11E /* CoverFlowLayout.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -390,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F541CD318981B4300039DA6 /* CardCell.m in Sources */,
+				3FD461D3189C48750005D11E /* CoverFlowLayout.m in Sources */,
 				3F505AA91896AEF200B985DE /* JPWGame.m in Sources */,
 				3F541CD618983BD600039DA6 /* CardViewController.m in Sources */,
 				3F505AA71896AEF200B985DE /* JPWDeck.m in Sources */,
@@ -546,6 +552,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrazyEightsApp/CrazyEightsApp-Prefix.pch";
 				INFOPLIST_FILE = "CrazyEightsApp/CrazyEightsApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -560,6 +567,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CrazyEightsApp/CrazyEightsApp-Prefix.pch";
 				INFOPLIST_FILE = "CrazyEightsApp/CrazyEightsApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

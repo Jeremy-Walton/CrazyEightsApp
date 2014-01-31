@@ -52,7 +52,7 @@
         }
     } else {
         for (int i = 0; i < [self.numberOfPlayers integerValue]; i++) {
-            for (int j = 0; j < 5; j++) {
+            for (int j = 0; j < 20; j++) {
                 [[self.players objectAtIndex:i] addCardToHand:[self draw]];
             }
         }

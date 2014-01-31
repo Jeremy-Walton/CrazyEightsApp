@@ -15,30 +15,22 @@
                         <collectionViewLayout key="collectionViewLayout" id="20K-jL-a32" customClass="CollectionViewLayout"/>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="fxT-i3-bqy" customClass="CardCell">
-                                <rect key="frame" x="0.0" y="64" width="71" height="133"/>
+                                <rect key="frame" x="0.0" y="64" width="71" height="96"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="71" height="133"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7p6-35-g71">
                                             <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alQ-xK-Krk">
-                                            <rect key="frame" x="0.0" y="104" width="71" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <size key="customSize" width="71" height="133"/>
+                                <size key="customSize" width="71" height="96"/>
                                 <connections>
                                     <outlet property="imageView" destination="7p6-35-g71" id="O2d-4q-ygk"/>
-                                    <outlet property="label" destination="alQ-xK-Krk" id="KnP-u0-3Qv"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
