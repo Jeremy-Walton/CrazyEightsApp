@@ -33,6 +33,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc]
+                                             initWithTarget:self action:@selector(handlePinchGesture:)];
+    
+    // Specify that the gesture must be a single tap
+//    pinchRecognizer.numberOfTouches = 2;
+    
+    // Add the tap gesture recognizer to the view
+    [self.collectionView addGestureRecognizer:pinchRecognizer];
+    
     labelList = [NSMutableArray new];
     JPWGame *game = [JPWGame new];
     player1 = [JPWPlayer newWithName:@"Jeremy"];
@@ -46,7 +56,54 @@
     for (JPWPlayingCard *card in playerCards) {
         [labelList addObject:[card description]];
     }
+    
+    // Configure layout
+//    self.collectionViewLayout = [[CollectionViewLayout alloc] init];
+    self.collectionView.backgroundColor = [UIColor greenColor];
+//    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
+//    [self.flowLayout setItemSize:CGSizeMake(191, 160)];
+//    [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
+//    self.flowLayout.minimumInteritemSpacing = 0.0f;
+//      [self.collectionView setCollectionViewLayout:self.flowLayout];
+//    self.collectionView.bounces = YES;
+//    [self.collectionView setShowsHorizontalScrollIndicator:NO];
+//    [self.collectionView setShowsVerticalScrollIndicator:NO];
 }
+
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
+    if ([sender numberOfTouches] != 2)
+        return;
+    
+    // Get the pinch points.
+    CGPoint p1 = [sender locationOfTouch:0 inView:[self collectionView]];
+    CGPoint p2 = [sender locationOfTouch:1 inView:[self collectionView]];
+    
+    // Compute the new spread distance.
+    CGFloat xd = p1.x - p2.x;
+    CGFloat yd = p1.y - p2.y;
+    CGFloat distance = sqrt(xd*xd + yd*yd);
+    
+    // Update the custom layout parameter and invalidate.
+
+//    self.flowLayout.minimumInteritemSpacing = distance;
+    if (distance > 200) {
+//        [self.collectionViewLayout setStackFactor:100];
+        [self.collectionView setCollectionViewLayout:[UICollectionViewFlowLayout new]];
+//        [self.collectionView setCollectionViewLayout:self.flowLayout];
+    } else {
+//        [self.collectionViewLayout setStackFactor:0];
+        [self.collectionView setCollectionViewLayout:[CollectionViewLayout new]];
+//        [self.collectionView setCollectionViewLayout:self.collectionViewLayout];
+    }
+    
+//    [self.flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+//    [self.flowLayout invalidateLayout];
+}
+
+//- (UIEdgeInsets)collectionView:
+//(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+//    return UIEdgeInsetsMake(0, 0, 0, 0);
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -89,11 +146,14 @@ options:(UIViewAnimationOptionAllowUserInteraction)
 animations:^
     {
         NSLog(@"starting animation");
-        [UIView transitionFromView:cell.contentView
-                            toView:cell.contentView
-                          duration:.5
-                           options:UIViewAnimationOptionTransitionFlipFromRight
-                        completion:nil];
+        CGRect frame = cell.frame;
+        frame.origin.y += 100;
+        cell.frame = frame;
+//        [UIView transitionFromView:cell.contentView
+//                            toView:cell.contentView
+//                          duration:.5
+//                           options:UIViewAnimationOptionTransitionFlipFromRight
+//                        completion:nil];
     }
 completion:^(BOOL finished)
     {

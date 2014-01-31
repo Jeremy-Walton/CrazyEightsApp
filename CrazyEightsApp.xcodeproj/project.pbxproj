@@ -41,6 +41,7 @@
 		3F541CD018980FF300039DA6 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CCF18980FF300039DA6 /* CollectionViewController.m */; };
 		3F541CD318981B4300039DA6 /* CardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CD218981B4300039DA6 /* CardCell.m */; };
 		3F541CD618983BD600039DA6 /* CardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F541CD518983BD600039DA6 /* CardViewController.m */; };
+		3FD46174189AA6F30005D11E /* CollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD46173189AA6F30005D11E /* CollectionViewLayout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,8 @@
 		3F541CD218981B4300039DA6 /* CardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardCell.m; sourceTree = "<group>"; };
 		3F541CD418983BD600039DA6 /* CardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardViewController.h; sourceTree = "<group>"; };
 		3F541CD518983BD600039DA6 /* CardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardViewController.m; sourceTree = "<group>"; };
+		3FD46172189AA6F30005D11E /* CollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewLayout.h; sourceTree = "<group>"; };
+		3FD46173189AA6F30005D11E /* CollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewLayout.m; sourceTree = "<group>"; };
 		67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CrazyEightsAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB3284962FB41E08B4B47B0 /* Pods-CrazyEightsAppTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CrazyEightsAppTests.xcconfig"; path = "Pods/Pods-CrazyEightsAppTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +204,8 @@
 				3F541CD218981B4300039DA6 /* CardCell.m */,
 				3F541CD418983BD600039DA6 /* CardViewController.h */,
 				3F541CD518983BD600039DA6 /* CardViewController.m */,
+				3FD46172189AA6F30005D11E /* CollectionViewLayout.h */,
+				3FD46173189AA6F30005D11E /* CollectionViewLayout.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				3F505A751896AE4600B985DE /* AppDelegate.m in Sources */,
 				3F505A711896AE4600B985DE /* main.m in Sources */,
 				3F541CC91897F53600039DA6 /* JPWHand.m in Sources */,
+				3FD46174189AA6F30005D11E /* CollectionViewLayout.m in Sources */,
 				3F541CD018980FF300039DA6 /* CollectionViewController.m in Sources */,
 				3F505AA61896AEF200B985DE /* CrazyEightsModel.m in Sources */,
 				3F505AC11896B8A600B985DE /* TableViewController.m in Sources */,

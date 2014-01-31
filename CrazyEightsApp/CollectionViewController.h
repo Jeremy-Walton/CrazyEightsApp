@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "HandDelegate.h"
+#import "CollectionViewLayout.h"
 
 @interface CollectionViewController : UICollectionViewController
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) IBOutlet CollectionViewLayout *collectionViewLayout;
 @property (weak, nonatomic) id <HandDelegate> handDelegate;
 @end

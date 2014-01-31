@@ -36,6 +36,7 @@
                  sender:(id)sender {
 //    TableViewController *handController = segue.destinationViewController;
 //    handController.handDelegate = self;
+    
     CollectionViewController *handController = segue.destinationViewController;
     handController.handDelegate = self;
 }
