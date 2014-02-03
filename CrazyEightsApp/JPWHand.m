@@ -37,4 +37,8 @@
     return correctCard;
 }
 
+- (JPWPlayingCard *)cardAt:(NSNumber *)index {
+    return [self.cards objectAtIndex:[index integerValue]];
+}
+
 @end

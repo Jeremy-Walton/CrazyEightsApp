@@ -33,6 +33,10 @@
     return self;
 }
 
+-(JPWPlayingCard *)giveCard:(JPWPlayingCard *)card {
+    return [self.hand removeCard:card];
+}
+
 
 - (void)addCardToHand:(JPWPlayingCard *)card {
     [self.hand addCard:card];
@@ -42,12 +46,9 @@
     return [self.hand numberOfCards];
 }
 
-- (void)discard:(JPWPlayingCard *)card {
-    
-}
-
-- (NSString *)playCard:(NSNumber *)index {
-    return @"Able to play.";
+- (JPWPlayingCard *)chooseCard {
+    //need to get user input, not first card.
+    return [self.hand.cards objectAtIndex:0];
 }
 
 @end

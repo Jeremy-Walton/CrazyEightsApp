@@ -19,8 +19,8 @@
 - (instancetype)initWithName:(NSString *)name;
 
 - (void)addCardToHand:(JPWPlayingCard *)card;
-- (void)discard:(JPWPlayingCard *)card;
 - (NSNumber *)numberOfCards;
-- (NSString *)playCard:(NSNumber *)index;
+- (JPWPlayingCard *)chooseCard;
+- (JPWPlayingCard *)giveCard:(JPWPlayingCard *)card;
 
 @end

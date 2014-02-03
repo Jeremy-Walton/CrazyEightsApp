@@ -94,6 +94,34 @@
     [self.discardPile addCard:[self.deck takeTopCard]];
 }
 
+//logic methods
+
+-(BOOL)isCardValid:(JPWPlayingCard *)card {
+    JPWPlayingCard *discard = [self.discardPile showTopCard];
+    if ([card.rank isEqual:discard.rank]  || [card.suit isEqual:discard.suit] || [card.rank isEqual:@"8"]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+-(NSString *)playRound:(JPWPlayingCard *)card from:(JPWPlayer *)player {
+    BOOL valid = [self isCardValid:card];
+    
+    if (valid) {
+        if ([card.rank isEqual:@"8"]) {
+            [self.discardPile addCard:[player giveCard:card]];
+            // ask for suit change
+            return @"Able to play, suit change";
+        } else {
+            [self.discardPile addCard:[player giveCard:card]];
+            return @"Able to play";
+        }
+    } else {
+        return @"Not able to play";
+    }
+}
+
 //These four methods are for testing purposes only.
 
 - (void)makeDeckForTest {

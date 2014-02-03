@@ -148,6 +148,28 @@ describe(@"Game", ^{
         
     });
     
+    it(@"can play a single round.", ^{
+        NSLog(@"Jeremy");
+        JPWPlayer *p = [JPWPlayer newWithName:@"Jeremy"];
+        [game addPlayer:p];
+        [game setup];
+        NSString *playerTurn = [game whosTurn];
+        NSUInteger number = [game.turnOrder indexOfObject:playerTurn];
+        JPWPlayer   *player = [game.players objectAtIndex:number];
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"8" suit:@"Spades"];
+        NSString *result = [game playRound:card from:player];
+        if ([result isEqual:@"Able to play"]) {
+            [[[player numberOfCards] should] equal:@4];
+            NSLog(@"Did it");
+        } else if ([result isEqual:@"Able to play, suit change"]) {
+            [[[player numberOfCards] should] equal:@4];
+            NSLog(@"Did it 2");
+        } else {
+            [[[player numberOfCards] should] equal:@5];
+        }
+        
+    });
+    
 });
 
 SPEC_END

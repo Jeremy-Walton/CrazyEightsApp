@@ -30,16 +30,19 @@ describe(@"Player", ^{
         [[[[player hand] class] should] equal:[JPWHand class]];
     });
     
-    it(@"can check how many cards its hand has and add cards to its hand.", ^{
-        [[[player numberOfCards] should] equal:@0];
+    it(@"have cards added to it.", ^{
+        JPWGame *game = [JPWGame new];
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        [game makeDeckForTest];
+        [game addPlayer:player];
+        [game dealCards];
+        [[[player numberOfCards] should] equal:@5];
         [player addCardToHand:card];
-        [[[player numberOfCards] should] equal:@1];
+        [[[[player hand] numberOfCards] should] equal:@6];
     });
     
-    it(@"can discard to the discard pile.", ^{
-        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
-        [player addCardToHand:card];
+    it(@"can play a card.", ^{
+       
     });
     
 });

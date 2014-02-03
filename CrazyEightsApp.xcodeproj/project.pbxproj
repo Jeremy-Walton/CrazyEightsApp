@@ -56,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F01A75418A01FED009DD97A /* DiscardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscardDelegate.h; sourceTree = "<group>"; };
 		3F505A611896AE4500B985DE /* CrazyEightsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrazyEightsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F505A641896AE4500B985DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F505A661896AE4500B985DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -190,14 +191,14 @@
 				3F505AA51896AEF200B985DE /* JPWPlayingCard.m */,
 				3F541CC71897F53600039DA6 /* JPWHand.h */,
 				3F541CC81897F53600039DA6 /* JPWHand.m */,
+				3F01A75418A01FED009DD97A /* DiscardDelegate.h */,
+				3F505AC41896E24E00B985DE /* Images.xcassets */,
 				3F505A731896AE4600B985DE /* AppDelegate.h */,
 				3F505A741896AE4600B985DE /* AppDelegate.m */,
-				3F505AC41896E24E00B985DE /* Images.xcassets */,
 				3F505A761896AE4600B985DE /* Main.storyboard */,
 				3F541CCC18980D3000039DA6 /* Storyboard.storyboard */,
 				3F505A791896AE4600B985DE /* ViewController.h */,
 				3F505A7A1896AE4600B985DE /* ViewController.m */,
-				3F505A6B1896AE4500B985DE /* Supporting Files */,
 				3F505ABF1896B8A600B985DE /* TableViewController.h */,
 				3F505AC01896B8A600B985DE /* TableViewController.m */,
 				3F505AC61896F29400B985DE /* HandDelegate.h */,
@@ -211,6 +212,7 @@
 				3FD46173189AA6F30005D11E /* CollectionViewLayout.m */,
 				3FD461D1189C48750005D11E /* CoverFlowLayout.h */,
 				3FD461D2189C48750005D11E /* CoverFlowLayout.m */,
+				3F505A6B1896AE4500B985DE /* Supporting Files */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";

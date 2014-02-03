@@ -13,11 +13,11 @@
 @interface JPWGame : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray *turnOrder;
+@property (nonatomic, strong, readonly) NSMutableArray *players;
 
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;
 - (JPWPlayingCard *)draw;
-// need to change this ^ method so it doesn't need to be passed a deck. first need to implement setup method.
 - (void)dealCards;
 - (void)setup;
 - (void)setTurnOrder;
@@ -26,6 +26,10 @@
 - (void)discard:(JPWPlayingCard *)card;
 - (void)discardTopCard;
 
+//logic methods
+-(NSString *)playRound:(JPWPlayingCard *)card from:(JPWPlayer *)player;
+
+//testing methods
 - (void)makeDeckForTest;
 - (void)makeDiscardPileForTest;
 - (NSNumber *)testDeckSize;

@@ -16,5 +16,6 @@
 - (void)addCard:(JPWPlayingCard *)card;
 - (JPWPlayingCard *)removeCard:(JPWPlayingCard *)card;
 - (NSNumber *)numberOfCards;
+- (JPWPlayingCard *)cardAt:(NSNumber *)index;
 
 @end
