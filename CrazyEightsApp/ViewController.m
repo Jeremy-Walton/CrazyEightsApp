@@ -37,8 +37,8 @@
 //    TableViewController *handController = segue.destinationViewController;
 //    handController.handDelegate = self;
     
-    CollectionViewController *handController = segue.destinationViewController;
-    handController.handDelegate = self;
+//    CollectionViewController *handController = segue.destinationViewController;
+//    handController.handDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,5 +46,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end
