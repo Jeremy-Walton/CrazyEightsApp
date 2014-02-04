@@ -63,6 +63,7 @@
 - (void)setup {
     _deck = [JPWDeck new];
     _discardPile = [JPWDiscardPile new];
+    [self.deck shuffle];
     [self dealCards];
     [self setTurnOrder];
     [self discardTopCard];
@@ -98,28 +99,11 @@
 
 -(BOOL)isCardValid:(JPWPlayingCard *)card {
     JPWPlayingCard *discard = [self.discardPile showTopCard];
-    if ([card.rank isEqual:discard.rank]  || [card.suit isEqual:discard.suit] || [card.rank isEqual:@"8"]) {
-        return YES;
-    } else {
-        return NO;
-    }
+        return ([card.rank isEqual:discard.rank]  || [card.suit isEqual:discard.suit] || [card.rank isEqual:@"8"]);
 }
 
--(NSString *)playRound:(JPWPlayingCard *)card from:(JPWPlayer *)player {
-    BOOL valid = [self isCardValid:card];
-    
-    if (valid) {
-        if ([card.rank isEqual:@"8"]) {
-            [self.discardPile addCard:[player giveCard:card]];
-            // ask for suit change
-            return @"Able to play, suit change";
-        } else {
-            [self.discardPile addCard:[player giveCard:card]];
-            return @"Able to play";
-        }
-    } else {
-        return @"Not able to play";
-    }
+-(void)playCard:(JPWPlayingCard *)card from:(JPWPlayer *)player {
+    [self.discardPile addCard:[player takeCardFromPlayer:card]];
 }
 
 //These four methods are for testing purposes only.

@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "JPWPlayer.h"
 #import "JPWDeck.h"
+#import "JPWDiscardPile.h"
 
 @interface JPWGame : NSObject
 
 @property (nonatomic, strong, readonly) NSMutableArray *turnOrder;
 @property (nonatomic, strong, readonly) NSMutableArray *players;
+@property (nonatomic, strong, readonly) JPWDiscardPile *discardPile;
 
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;
@@ -27,7 +29,8 @@
 - (void)discardTopCard;
 
 //logic methods
--(NSString *)playRound:(JPWPlayingCard *)card from:(JPWPlayer *)player;
+-(void)playCard:(JPWPlayingCard *)card from:(JPWPlayer *)player;
+-(BOOL)isCardValid:(JPWPlayingCard *)card;
 
 //testing methods
 - (void)makeDeckForTest;

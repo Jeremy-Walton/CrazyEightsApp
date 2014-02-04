@@ -149,24 +149,53 @@ describe(@"Game", ^{
     });
     
     it(@"can play a single round.", ^{
+        //pre game setup
         NSLog(@"Jeremy");
         JPWPlayer *p = [JPWPlayer newWithName:@"Jeremy"];
+        JPWPlayer *p2 = [JPWPlayer newWithName:@"Bob"];
         [game addPlayer:p];
+        [game addPlayer:p2];
         [game setup];
-        NSString *playerTurn = [game whosTurn];
-        NSUInteger number = [game.turnOrder indexOfObject:playerTurn];
-        JPWPlayer   *player = [game.players objectAtIndex:number];
-        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"8" suit:@"Spades"];
-        NSString *result = [game playRound:card from:player];
-        if ([result isEqual:@"Able to play"]) {
-            [[[player numberOfCards] should] equal:@4];
-            NSLog(@"Did it");
-        } else if ([result isEqual:@"Able to play, suit change"]) {
-            [[[player numberOfCards] should] equal:@4];
-            NSLog(@"Did it 2");
+         NSString *result = @"Nothig Yet";
+        //player clicked card.
+        JPWPlayingCard *card = [p.hand.cards objectAtIndex:0];
+        if ([[game whosTurn] isEqual:p.name]) {
+            if ([game isCardValid:card]) {
+                if ([card.rank isEqual:@"8"]) {
+                    //Would display suit change buttons.
+                    [game playCard:card from:p];
+                    [game changeTurnOrder];
+                    [[[p numberOfCards] should] equal:@6];
+                    [[[game whosTurn] should] equal:@"Bob"];
+                } else {
+                    [game playCard:card from:p];
+                    [game changeTurnOrder];
+                    [[[p numberOfCards] should] equal:@6];
+                    [[[game whosTurn] should] equal:@"Bob"];
+                }
+            } else {
+                result = @"Not a valid card.";
+            }
         } else {
-            [[[player numberOfCards] should] equal:@5];
+             result = @"Not your turn.";
         }
+        [[[p numberOfCards] should] equal:@7];
+        NSLog(result);
+        
+//        NSString *playerTurn = [game whosTurn];
+//        NSUInteger number = [game.turnOrder indexOfObject:playerTurn];
+//        JPWPlayer   *player = [game.players objectAtIndex:number];
+//        JPWPlayingCard *card = [player.hand.cards objectAtIndex:0];
+//        [game playCard:card from:player];
+//        if ([result isEqual:@"Able to play"]) {
+//            [[[player numberOfCards] should] equal:@4];
+//            NSLog(@"Did it");
+//        } else if ([result isEqual:@"Able to play, suit change"]) {
+//            [[[player numberOfCards] should] equal:@4];
+//            NSLog(@"Did it 2");
+//        } else {
+//            [[[player numberOfCards] should] equal:@5];
+//        }
         
     });
     

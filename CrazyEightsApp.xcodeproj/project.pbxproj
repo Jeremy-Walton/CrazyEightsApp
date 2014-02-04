@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		35B194BA75C34D7F8CE8A481 /* libPods-CrazyEightsAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */; };
+		3F01A76318A14D01009DD97A /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76218A14D01009DD97A /* MultiViewController.m */; };
 		3F505A651896AE4500B985DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A641896AE4500B985DE /* Foundation.framework */; };
 		3F505A671896AE4500B985DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A661896AE4500B985DE /* CoreGraphics.framework */; };
 		3F505A691896AE4500B985DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A681896AE4500B985DE /* UIKit.framework */; };
@@ -57,6 +58,8 @@
 
 /* Begin PBXFileReference section */
 		3F01A75418A01FED009DD97A /* DiscardDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscardDelegate.h; sourceTree = "<group>"; };
+		3F01A76118A14D01009DD97A /* MultiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiViewController.h; sourceTree = "<group>"; };
+		3F01A76218A14D01009DD97A /* MultiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiViewController.m; sourceTree = "<group>"; };
 		3F505A611896AE4500B985DE /* CrazyEightsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrazyEightsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F505A641896AE4500B985DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F505A661896AE4500B985DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -213,6 +216,8 @@
 				3FD461D1189C48750005D11E /* CoverFlowLayout.h */,
 				3FD461D2189C48750005D11E /* CoverFlowLayout.m */,
 				3F505A6B1896AE4500B985DE /* Supporting Files */,
+				3F01A76118A14D01009DD97A /* MultiViewController.h */,
+				3F01A76218A14D01009DD97A /* MultiViewController.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				3F505A751896AE4600B985DE /* AppDelegate.m in Sources */,
 				3F505A711896AE4600B985DE /* main.m in Sources */,
 				3F541CC91897F53600039DA6 /* JPWHand.m in Sources */,
+				3F01A76318A14D01009DD97A /* MultiViewController.m in Sources */,
 				3FD46174189AA6F30005D11E /* CollectionViewLayout.m in Sources */,
 				3F541CD018980FF300039DA6 /* CollectionViewController.m in Sources */,
 				3F505AA61896AEF200B985DE /* CrazyEightsModel.m in Sources */,

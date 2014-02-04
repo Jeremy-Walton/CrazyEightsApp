@@ -21,6 +21,6 @@
 - (void)addCardToHand:(JPWPlayingCard *)card;
 - (NSNumber *)numberOfCards;
 - (JPWPlayingCard *)chooseCard;
-- (JPWPlayingCard *)giveCard:(JPWPlayingCard *)card;
+- (JPWPlayingCard *)takeCardFromPlayer:(JPWPlayingCard *)card;
 
 @end

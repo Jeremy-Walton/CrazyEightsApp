@@ -33,7 +33,7 @@
     return self;
 }
 
--(JPWPlayingCard *)giveCard:(JPWPlayingCard *)card {
+-(JPWPlayingCard *)takeCardFromPlayer:(JPWPlayingCard *)card {
     return [self.hand removeCard:card];
 }
 
