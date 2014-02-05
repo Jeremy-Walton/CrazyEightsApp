@@ -18,7 +18,7 @@
 @end
 
 @implementation MultiViewController {
-@private NSMutableArray *labelList;
+@private NSMutableArray *cardList;
 @private JPWPlayer *player1;
 @private JPWGame *game;
 }
@@ -36,17 +36,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:[CoverFlowLayout new]];
-//    collectionView.dataSource = self;
-//    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-//    
-//    [self.view addSubview:collectionView];
     
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc]
                                                  initWithTarget:self action:@selector(handlePinchGesture:)];
-    
-    // Specify that the gesture must be a single tap
-    //    pinchRecognizer.numberOfTouches = 2;
     
     // Add the tap gesture recognizer to the view
     [self.collectionView addGestureRecognizer:pinchRecognizer];
@@ -55,18 +47,12 @@
     self.collectionView.layer.needsDisplayOnBoundsChange = YES; 
 //    [self.collectionView registerClass:[CardCell class] forCellWithReuseIdentifier:@"cell"];
     
-    labelList = [NSMutableArray new];
+    cardList = [NSMutableArray new];
     game = [JPWGame new];
     player1 = [JPWPlayer newWithName:@"Jeremy"];
     [game addPlayer:player1];
     [game setup];
-    self.DiscardImage.image = [UIImage imageNamed:[[game.discardPile showTopCard] description]];
-    NSArray *playerCards = player1.hand.cards;
-    for (JPWPlayingCard *card in playerCards) {
-        [labelList addObject:[card description]];
-    }
-//    self.view.backgroundColor = [UIColor blackColor];
-//    self.collectionView.backgroundColor = [UIColor colorWithRed:0.1 green:1 blue:0 alpha:0.5];
+    [self updatePlayerInfo];
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
@@ -108,13 +94,13 @@
 
 - (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return [labelList count];
+    return [cardList count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CardCell *newCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-    newCell.imageView.image = [UIImage imageNamed:[labelList objectAtIndex:indexPath.row]];
+    newCell.imageView.image = [UIImage imageNamed:[cardList[indexPath.row] description]];
     return newCell;
 }
 
@@ -124,7 +110,7 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     CardCell *cell = (CardCell *)[collectionView cellForItemAtIndexPath:indexPath];
-    [self.handDelegate didSelectCard:[labelList objectAtIndex:indexPath.row]];
+    [self.handDelegate didSelectCard:cardList[indexPath.row]];
     
 //    UICollectionViewCell  *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
@@ -156,35 +142,44 @@
          NSLog(@"animation end");
          
          //player clicked card.
-         NSString *name = [labelList objectAtIndex:indexPath.row];
-         NSLog(name);
+         NSString *name = [cardList[indexPath.row] description];
+          NSLog(name);
          // need card not description
-         JPWPlayingCard *card = [labelList objectAtIndex:indexPath.row];
-         if ([[game whosTurn] isEqual:player1.name]) {
-             if ([game isCardValid:card]) {
-                 if ([card.rank isEqual:@"8"]) {
-                     //Would display suit change buttons.
-                     NSLog(@"Display some new buttons here!");
-                     [game playCard:card from:player1];
-                     [game changeTurnOrder];
-                 } else {
-                     [game playCard:card from:player1];
-                     [game changeTurnOrder];
-                     NSLog(@"Played a card!");
-                 }
-             } else {
-                 NSLog(@"Not a valid card.");
-             }
-         } else {
-             NSLog(@"Not your turn.");
+         JPWPlayingCard *card = cardList[indexPath.row];
+         if([self playRound:card player:player1]) {
+             NSLog(name);
+             [self updatePlayerInfo];
          }
-
-         
-//         NSArray *indexPaths = @[indexPath];
-//         [labelList removeObjectAtIndex:indexPath.row];
-//         [collectionView deleteItemsAtIndexPaths:indexPaths];
      }
      ];
+}
+
+-(void)updatePlayerInfo {
+    cardList = player1.hand.cards;
+    self.DiscardImage.image = [UIImage imageNamed:[[game.discardPile showTopCard] description]];
+    self.collectionView.reloadData;
+}
+
+-(BOOL)playRound:(JPWPlayingCard *)card player:(JPWPlayer *)player {
+    if ([[game whosTurn] isEqual:player.name]) {
+        if ([game isCardValid:card]) {
+            if ([card.rank isEqual:@"8"]) {
+                //Would display suit change buttons.
+                NSLog(@"Display some new buttons here!");
+                [game playCard:card from:player];
+                [game changeTurnOrder];
+                return YES;
+            } else {
+                [game playCard:card from:player];
+                [game changeTurnOrder];
+                return YES;
+            }
+        } else {
+            return NO;
+        }
+    } else {
+        return NO;
+    }
 }
 
 @end
