@@ -4,41 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--Collection View Controller-->
-        <scene sceneID="p6i-IL-5yL">
-            <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="Rep-AL-ozd" customClass="CollectionViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="444" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="EGL-Cf-6w2">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.71193529211956519" blue="0.094909665300680277" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewLayout key="collectionViewLayout" id="20K-jL-a32" customClass="CollectionViewLayout"/>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="fxT-i3-bqy" customClass="CardCell">
-                                <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="71" height="96"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <size key="customSize" width="71" height="96"/>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="Rep-AL-ozd" id="lAu-A8-EH8"/>
-                            <outlet property="delegate" destination="Rep-AL-ozd" id="tei-8f-oMY"/>
-                        </connections>
-                    </collectionView>
-                    <navigationItem key="navigationItem" id="EuK-HG-15p"/>
-                    <connections>
-                        <outlet property="collectionView" destination="EGL-Cf-6w2" id="Z6M-eY-Th7"/>
-                    </connections>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1qt-rl-4FW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2942" y="-961"/>
-        </scene>
         <!--Multi View Controller-->
         <scene sceneID="gmS-ml-GPO">
             <objects>
@@ -168,7 +133,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrH-is-T0d">
-                                <rect key="frame" x="359" y="673" width="49" height="49"/>
+                                <rect key="frame" x="359" y="680" width="49" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Play">
@@ -178,13 +143,27 @@
                                     <segue destination="ejm-pQ-t4N" kind="push" id="XkM-Rf-cnU"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKS-6Z-fy2">
+                                <rect key="frame" x="298" y="730" width="173" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Directions/Rules">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="xU4-wM-C09" kind="push" id="acl-8U-dGn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LPI-J9-307" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" id="0mT-xx-fM2"/>
                             <constraint firstAttribute="trailing" secondItem="nox-aH-xj1" secondAttribute="trailing" constant="234" id="6FW-eS-JF3"/>
                             <constraint firstItem="ezP-4J-wsf" firstAttribute="top" secondItem="wQa-xD-0tm" secondAttribute="bottom" constant="134" id="70a-Qh-IBl"/>
+                            <constraint firstItem="xKS-6Z-fy2" firstAttribute="centerX" secondItem="ezP-4J-wsf" secondAttribute="centerX" id="8Jx-Sx-cPL"/>
+                            <constraint firstItem="xKS-6Z-fy2" firstAttribute="top" secondItem="LrH-is-T0d" secondAttribute="bottom" constant="8" id="Duu-Xo-8RS"/>
                             <constraint firstAttribute="trailing" secondItem="LrH-is-T0d" secondAttribute="trailing" constant="360" id="EwX-li-HM0"/>
+                            <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="xKS-6Z-fy2" secondAttribute="bottom" constant="265" id="T7U-vt-yl8"/>
                             <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="LPI-J9-307" secondAttribute="bottom" id="gNt-T0-Ytv"/>
                             <constraint firstItem="nox-aH-xj1" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="235" id="ggb-zM-t8E"/>
                             <constraint firstAttribute="trailing" secondItem="LPI-J9-307" secondAttribute="trailing" id="goO-vW-Bkk"/>
@@ -193,7 +172,6 @@
                             <constraint firstItem="ezP-4J-wsf" firstAttribute="centerX" secondItem="nox-aH-xj1" secondAttribute="centerX" id="lMZ-Xh-1f8"/>
                             <constraint firstItem="nox-aH-xj1" firstAttribute="centerY" secondItem="LPI-J9-307" secondAttribute="centerY" id="snG-Ja-IHW"/>
                             <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="LrH-is-T0d" secondAttribute="bottom" constant="302" id="tFr-RV-dFi"/>
-                            <constraint firstItem="LrH-is-T0d" firstAttribute="top" secondItem="ynv-bP-S7X" secondAttribute="top" constant="673" id="zuR-NS-Znr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OPd-kL-RkF"/>
@@ -205,6 +183,151 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MRo-Ix-Zqc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1757" y="-785"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="itA-vn-ysj">
+            <objects>
+                <viewController id="xU4-wM-C09" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rH4-PS-nQu"/>
+                        <viewControllerLayoutGuide type="bottom" id="YA7-aQ-zRo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v6j-j8-zlv">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="IlT-Sw-8fu">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crazy Eights Rules" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="149" translatesAutoresizingMaskIntoConstraints="NO" id="3mY-ta-cFj">
+                                <rect key="frame" x="310" y="79" width="149" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4xV-kS-n2V"/>
+                                    <constraint firstAttribute="width" constant="149" id="7bt-4v-EpZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvJ-yU-e2O">
+                                <rect key="frame" x="346" y="351" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="uPn-74-J0v"/>
+                                    <constraint firstAttribute="width" constant="77" id="yEd-Nn-oFb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="532" translatesAutoresizingMaskIntoConstraints="NO" id="Zlq-eb-RF4">
+                                <rect key="frame" x="118" y="108" width="532" height="107"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="532" id="HGz-q7-Def"/>
+                                    <constraint firstAttribute="height" constant="107" id="KPi-CF-bty"/>
+                                </constraints>
+                                <string key="text">1. If the top card of the discard pile is not an eight, you may play any card which matches the rank or suit of the previous card (for example if the top card was the king of hearts you could play any king or any heart).</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. An eight may be played on any card, and the player of the eight must nominate a suit." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="532" translatesAutoresizingMaskIntoConstraints="NO" id="fRH-5v-Ewm">
+                                <rect key="frame" x="118" y="223" width="532" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="532" id="f9O-4v-thu"/>
+                                    <constraint firstAttribute="height" constant="46" id="t3g-ca-lXt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="532" translatesAutoresizingMaskIntoConstraints="NO" id="cWT-4f-179">
+                                <rect key="frame" x="118" y="277" width="532" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="532" id="1Bf-Lq-UOM"/>
+                                    <constraint firstAttribute="height" constant="66" id="pOO-xi-6Hc"/>
+                                </constraints>
+                                <string key="text">3. If an eight is on top of the pile, you must play either another eight or any card of the suit nominated by the person who played the eight. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Pinch out in your card area to arrange them in a grid instead of a fan." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="532" translatesAutoresizingMaskIntoConstraints="NO" id="pgG-z4-uQg">
+                                <rect key="frame" x="118" y="380" width="532" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="532" id="rwR-rs-Xk2"/>
+                                    <constraint firstAttribute="height" constant="53" id="tIe-IT-9lS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Tap a card to play it. If it is an 8, you will be prompted to choose a new suit." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="532" translatesAutoresizingMaskIntoConstraints="NO" id="5HH-XM-INX">
+                                <rect key="frame" x="118" y="441" width="532" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="A6h-PK-H8N"/>
+                                    <constraint firstAttribute="width" constant="532" id="uf2-8Q-gwf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. If you have no cards that can be played, tap the deck to draw a card." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="532" translatesAutoresizingMaskIntoConstraints="NO" id="NtE-MA-kh6">
+                                <rect key="frame" x="118" y="491" width="532" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="1Fj-hl-yOb"/>
+                                    <constraint firstAttribute="width" constant="532" id="yk5-su-Hc7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="pgG-z4-uQg" firstAttribute="top" secondItem="FvJ-yU-e2O" secondAttribute="bottom" constant="8" id="4D8-lJ-gQn"/>
+                            <constraint firstAttribute="trailing" secondItem="pgG-z4-uQg" secondAttribute="trailing" constant="118" id="6IY-zm-UJo"/>
+                            <constraint firstAttribute="trailing" secondItem="5HH-XM-INX" secondAttribute="trailing" constant="118" id="7qg-wZ-HoZ"/>
+                            <constraint firstItem="fRH-5v-Ewm" firstAttribute="top" secondItem="Zlq-eb-RF4" secondAttribute="bottom" constant="8" id="BS1-km-YUj"/>
+                            <constraint firstItem="3mY-ta-cFj" firstAttribute="top" secondItem="rH4-PS-nQu" secondAttribute="bottom" constant="15" id="EGR-hD-yNG"/>
+                            <constraint firstAttribute="trailing" secondItem="Zlq-eb-RF4" secondAttribute="trailing" constant="118" id="FEG-H3-Ts1"/>
+                            <constraint firstItem="Zlq-eb-RF4" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="118" id="IHo-os-ykw"/>
+                            <constraint firstItem="IlT-Sw-8fu" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" id="Noj-dh-uRc"/>
+                            <constraint firstAttribute="trailing" secondItem="cWT-4f-179" secondAttribute="trailing" constant="118" id="PCn-5F-Q2B"/>
+                            <constraint firstItem="FvJ-yU-e2O" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="346" id="RVj-qu-E0R"/>
+                            <constraint firstItem="NtE-MA-kh6" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="118" id="SDw-Xc-k54"/>
+                            <constraint firstItem="cWT-4f-179" firstAttribute="top" secondItem="fRH-5v-Ewm" secondAttribute="bottom" constant="8" id="SIV-d5-Sw5"/>
+                            <constraint firstAttribute="trailing" secondItem="IlT-Sw-8fu" secondAttribute="trailing" id="XRb-60-Iq7"/>
+                            <constraint firstItem="5HH-XM-INX" firstAttribute="top" secondItem="pgG-z4-uQg" secondAttribute="bottom" constant="8" id="Xnr-Fh-nBZ"/>
+                            <constraint firstItem="cWT-4f-179" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="118" id="Y4t-fV-DhJ"/>
+                            <constraint firstAttribute="trailing" secondItem="FvJ-yU-e2O" secondAttribute="trailing" constant="345" id="Yqs-IQ-Fem"/>
+                            <constraint firstItem="YA7-aQ-zRo" firstAttribute="top" secondItem="IlT-Sw-8fu" secondAttribute="bottom" id="cpm-il-uGc"/>
+                            <constraint firstItem="Zlq-eb-RF4" firstAttribute="top" secondItem="3mY-ta-cFj" secondAttribute="bottom" constant="8" id="d8V-xX-8c0"/>
+                            <constraint firstItem="FvJ-yU-e2O" firstAttribute="top" secondItem="v6j-j8-zlv" secondAttribute="top" constant="351" id="eak-xt-Bnz"/>
+                            <constraint firstAttribute="trailing" secondItem="fRH-5v-Ewm" secondAttribute="trailing" constant="118" id="gnA-HZ-x5v"/>
+                            <constraint firstItem="fRH-5v-Ewm" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="118" id="hy4-ZP-Ka1"/>
+                            <constraint firstAttribute="trailing" secondItem="NtE-MA-kh6" secondAttribute="trailing" constant="118" id="iqm-Kf-PGS"/>
+                            <constraint firstItem="NtE-MA-kh6" firstAttribute="top" secondItem="5HH-XM-INX" secondAttribute="bottom" constant="8" id="kWQ-z4-Hue"/>
+                            <constraint firstItem="5HH-XM-INX" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="118" id="pKV-fB-Ke9"/>
+                            <constraint firstItem="IlT-Sw-8fu" firstAttribute="top" secondItem="v6j-j8-zlv" secondAttribute="top" id="sda-7h-SOa"/>
+                            <constraint firstItem="3mY-ta-cFj" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="310" id="tnv-vs-17X"/>
+                            <constraint firstItem="pgG-z4-uQg" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="118" id="xJK-v7-0O7"/>
+                            <constraint firstAttribute="trailing" secondItem="3mY-ta-cFj" secondAttribute="trailing" constant="309" id="yAp-jt-Grn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="h1B-Kp-ooS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0eg-21-lkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2866" y="-1134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="g7B-7f-YeZ">
