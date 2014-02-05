@@ -20,7 +20,9 @@
 @implementation MultiViewController {
 @private NSMutableArray *cardList;
 @private JPWPlayer *player1;
+@private JPWPlayer *robot;
 @private JPWGame *game;
+@private NSString *wildSuit;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,6 +41,10 @@
     
     UIPinchGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc]
                                                  initWithTarget:self action:@selector(handlePinchGesture:)];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetected)];
+    singleTap.numberOfTapsRequired = 1;
+    self.deckImage.userInteractionEnabled = YES;
+    [self.deckImage addGestureRecognizer:singleTap];
     
     // Add the tap gesture recognizer to the view
     [self.collectionView addGestureRecognizer:pinchRecognizer];
@@ -50,9 +56,25 @@
     cardList = [NSMutableArray new];
     game = [JPWGame new];
     player1 = [JPWPlayer newWithName:@"Jeremy"];
+    robot = [JPWPlayer newWithName:@"Sam"];
     [game addPlayer:player1];
+    [game addPlayer:robot];
     [game setup];
     [self updatePlayerInfo];
+}
+
+-(void)tapDetected{
+    if ([[game.deck size] integerValue] > 0) {
+        if ([[game whosTurn] isEqual:player1.name]) {
+            [player1 addCardToHand:[game draw]];
+            [self updatePlayerInfo];
+            [game changeTurnOrder];
+        } else {
+            [self showAlert:@"It isn't your turn."];
+        }
+    } else {
+        [self showAlert:@"No more cards, sorry."];
+    }
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
@@ -166,8 +188,8 @@
             if ([card.rank isEqual:@"8"]) {
                 //Would display suit change buttons.
                 NSLog(@"Display some new buttons here!");
-                [game playCard:card from:player];
-                [game changeTurnOrder];
+                [self suitChange:@"Please choose a suit to use."];
+                [player takeCardFromPlayer:card];
                 return YES;
             } else {
                 [game playCard:card from:player];
@@ -175,11 +197,71 @@
                 return YES;
             }
         } else {
+            [self showAlert:@"Please choose a valid card."];
             return NO;
         }
     } else {
+        [self showAlert:@"It isn't your turn."];
         return NO;
     }
+}
+
+- (void) showAlert:(NSString *)message {
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          
+                          initWithTitle:@""
+                          message:message
+                          delegate:nil
+                          cancelButtonTitle:@"Ok"
+                          otherButtonTitles:nil];
+    
+    [alert show];
+}
+
+- (void) suitChange:(NSString *)message {
+    
+    UIActionSheet *popup = [[UIActionSheet alloc] init];
+                            [popup setTitle:message];
+                            [popup setDelegate:self];
+                            [popup addButtonWithTitle:@"Hearts"];
+                            [popup addButtonWithTitle:@"Spades"];
+                            [popup addButtonWithTitle:@"Diamonds"];
+                            [popup addButtonWithTitle:@"Clubs"];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (popup.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                     wildSuit = @"Hearts";
+                    break;
+                case 1:
+                    wildSuit = @"Spades";
+                    break;
+                case 2:
+                    wildSuit = @"Diamonds";
+                    break;
+                case 3:
+                    wildSuit = @"Clubs";
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    
+    JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"8" suit:wildSuit];
+    [game discard:newCard];
+    [game changeTurnOrder];
+    [self updatePlayerInfo];
 }
 
 @end

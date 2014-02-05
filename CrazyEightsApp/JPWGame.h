@@ -16,6 +16,7 @@
 @property (nonatomic, strong, readonly) NSMutableArray *turnOrder;
 @property (nonatomic, strong, readonly) NSMutableArray *players;
 @property (nonatomic, strong, readonly) JPWDiscardPile *discardPile;
+@property (nonatomic, strong, readonly) JPWDeck *deck;
 
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;

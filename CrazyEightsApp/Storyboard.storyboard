@@ -126,6 +126,7 @@
                         <outlet property="DiscardImage" destination="UrK-f9-7j0" id="qi1-QE-wcQ"/>
                         <outlet property="collectionView" destination="nHk-TF-Y9N" id="8Xj-1B-5iE"/>
                         <outlet property="collectionViewLayout" destination="uJH-AX-dbc" id="zCQ-dD-y7T"/>
+                        <outlet property="deckImage" destination="MyR-VW-gyq" id="ru1-SB-FIl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o5b-Qj-808" userLabel="First Responder" sceneMemberID="firstResponder"/>
