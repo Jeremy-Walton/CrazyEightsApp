@@ -8,6 +8,7 @@
 
 #import "JPWGame.h"
 #import "JPWPlayer.h"
+#import "JPWRobot.h"
 #import "JPWDeck.h"
 #import "JPWDiscardPile.h"
 
@@ -35,6 +36,10 @@
 }
 
 - (void)addPlayer:(JPWPlayer *)player {
+    [self.players addObject:player];
+}
+
+- (void)addRobot:(JPWRobot *)player {
     [self.players addObject:player];
 }
 
@@ -103,6 +108,10 @@
 }
 
 -(void)playCard:(JPWPlayingCard *)card from:(JPWPlayer *)player {
+    [self.discardPile addCard:[player takeCardFromPlayer:card]];
+}
+
+-(void)playRobotCard:(JPWPlayingCard *)card from:(JPWRobot *)player {
     [self.discardPile addCard:[player takeCardFromPlayer:card]];
 }
 

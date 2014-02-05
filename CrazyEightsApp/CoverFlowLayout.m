@@ -21,21 +21,21 @@
 }
 
 -(CGSize)collectionViewContentSize {
-    return CGSizeMake(1000, 96);
+    return CGSizeMake(800, 400);
 }
 
 -(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray* array = [super layoutAttributesForElementsInRect:rect];
     CGRect visibleRect;
-    visibleRect.origin = self.collectionView.contentOffset;
-    visibleRect.size = self.collectionView.bounds.size;
+//    visibleRect.origin = self.collectionView.contentOffset;
+//    visibleRect.size = self.collectionView.bounds.size;
     
     for (UICollectionViewLayoutAttributes* attributes in array) {
         if (attributes.representedElementCategory == UICollectionElementCategoryCell)
         {
             if (CGRectIntersectsRect(attributes.frame, rect)) {
-                [self setCellAttributes:attributes forVisibleRect:visibleRect];
+//                [self setCellAttributes:attributes forVisibleRect:visibleRect];
             }
         }
         else if (attributes.representedElementCategory == UICollectionElementCategorySupplementaryView)
@@ -49,11 +49,11 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
-    CGRect visibleRect;
-    visibleRect.origin = self.collectionView.contentOffset;
-    visibleRect.size = self.collectionView.bounds.size;
+//    CGRect visibleRect;
+//    visibleRect.origin = self.collectionView.contentOffset;
+//    visibleRect.size = self.collectionView.bounds.size;
     
-    [self setCellAttributes:attributes forVisibleRect:visibleRect];
+//    [self setCellAttributes:attributes forVisibleRect:visibleRect];
     
     return attributes;
 }
@@ -80,13 +80,13 @@
         CGFloat zoom = 1 + ZOOM_FACTOR*(1 - ABS(normalizedDistance));
         transform = CATransform3DRotate(transform, (isLeft? 1 : -1) * ABS(normalizedDistance) * 45 * M_PI / 180, 0, 1, 0);
         transform = CATransform3DScale(transform, zoom, zoom, 1);
-        attributes.zIndex = 1;//ABS(ACTIVE_DISTANCE - ABS(distance)) + 1;
+//        attributes.zIndex = 1;//ABS(ACTIVE_DISTANCE - ABS(distance)) + 1;
     }
     else
     {
         transform = CATransform3DTranslate(transform, isLeft? -FLOW_OFFSET : FLOW_OFFSET, 0, 0);
         transform = CATransform3DRotate(transform, (isLeft? 1 : -1) * 45 * M_PI / 180, 0, 1, 0);
-        attributes.zIndex = 0;
+//        attributes.zIndex = 0;
     }
     attributes.transform3D = transform;
 }

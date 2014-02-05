@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "JPWPlayer.h"
+#import "JPWRobot.h"
 #import "JPWDeck.h"
 #import "JPWDiscardPile.h"
 
@@ -20,6 +21,7 @@
 
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;
+- (void)addRobot:(JPWRobot *)player;
 - (JPWPlayingCard *)draw;
 - (void)dealCards;
 - (void)setup;
@@ -31,6 +33,7 @@
 
 //logic methods
 -(void)playCard:(JPWPlayingCard *)card from:(JPWPlayer *)player;
+-(void)playRobotCard:(JPWPlayingCard *)card from:(JPWRobot *)player;
 -(BOOL)isCardValid:(JPWPlayingCard *)card;
 
 //testing methods

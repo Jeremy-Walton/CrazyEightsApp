@@ -51,7 +51,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Wood" translatesAutoresizingMaskIntoConstraints="NO" id="cY7-Bn-YdU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Steampunk" translatesAutoresizingMaskIntoConstraints="NO" id="cY7-Bn-YdU">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="824"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -145,19 +145,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezP-4J-wsf">
-                                <rect key="frame" x="313" y="109" width="142" height="192"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Crazy Eights!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nox-aH-xj1">
-                                <rect key="frame" x="285" y="502" width="197" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="LPI-J9-307">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crazy-8" translatesAutoresizingMaskIntoConstraints="NO" id="ezP-4J-wsf">
+                                <rect key="frame" x="314" y="198" width="142" height="142"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="142" id="hAP-pc-4QO"/>
+                                    <constraint firstAttribute="height" constant="142" id="qSu-iA-Qs9"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Crazy Eights!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nox-aH-xj1">
+                                <rect key="frame" x="235" y="496" width="299" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="0Jz-3C-Oef"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrH-is-T0d">
-                                <rect key="frame" x="369" y="646" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrH-is-T0d">
+                                <rect key="frame" x="359" y="673" width="49" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -167,6 +180,21 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LPI-J9-307" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" id="0mT-xx-fM2"/>
+                            <constraint firstAttribute="trailing" secondItem="nox-aH-xj1" secondAttribute="trailing" constant="234" id="6FW-eS-JF3"/>
+                            <constraint firstItem="ezP-4J-wsf" firstAttribute="top" secondItem="wQa-xD-0tm" secondAttribute="bottom" constant="134" id="70a-Qh-IBl"/>
+                            <constraint firstAttribute="trailing" secondItem="LrH-is-T0d" secondAttribute="trailing" constant="360" id="EwX-li-HM0"/>
+                            <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="LPI-J9-307" secondAttribute="bottom" id="gNt-T0-Ytv"/>
+                            <constraint firstItem="nox-aH-xj1" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="235" id="ggb-zM-t8E"/>
+                            <constraint firstAttribute="trailing" secondItem="LPI-J9-307" secondAttribute="trailing" id="goO-vW-Bkk"/>
+                            <constraint firstItem="LrH-is-T0d" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="359" id="hS5-vQ-K5m"/>
+                            <constraint firstItem="LPI-J9-307" firstAttribute="top" secondItem="ynv-bP-S7X" secondAttribute="top" id="jBB-1D-8Jg"/>
+                            <constraint firstItem="ezP-4J-wsf" firstAttribute="centerX" secondItem="nox-aH-xj1" secondAttribute="centerX" id="lMZ-Xh-1f8"/>
+                            <constraint firstItem="nox-aH-xj1" firstAttribute="centerY" secondItem="LPI-J9-307" secondAttribute="centerY" id="snG-Ja-IHW"/>
+                            <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="LrH-is-T0d" secondAttribute="bottom" constant="302" id="tFr-RV-dFi"/>
+                            <constraint firstItem="LrH-is-T0d" firstAttribute="top" secondItem="ynv-bP-S7X" secondAttribute="top" constant="673" id="zuR-NS-Znr"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OPd-kL-RkF"/>
                     <connections>
@@ -200,8 +228,10 @@
     <resources>
         <image name="Ace of Clubs" width="71" height="96"/>
         <image name="Ace of Spades" width="71" height="96"/>
-        <image name="Wood" width="1024" height="768"/>
+        <image name="Steampunk" width="2324" height="1616"/>
         <image name="backs_blue" width="71" height="96"/>
+        <image name="crazy-8" width="500" height="469"/>
+        <image name="map" width="1800" height="1234"/>
         <image name="wood2" width="4862" height="2629"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

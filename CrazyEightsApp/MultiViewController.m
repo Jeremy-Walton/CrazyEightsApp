@@ -9,6 +9,7 @@
 #import "MultiViewController.h"
 #import "JPWGame.h"
 #import "JPWPlayer.h"
+#import "JPWRobot.h"
 #import "CardCell.h"
 #import "CoverFlowLayout.h"
 
@@ -20,7 +21,7 @@
 @implementation MultiViewController {
 @private NSMutableArray *cardList;
 @private JPWPlayer *player1;
-@private JPWPlayer *robot;
+@private JPWRobot *robot;
 @private JPWGame *game;
 @private NSString *wildSuit;
 }
@@ -46,19 +47,21 @@
     self.deckImage.userInteractionEnabled = YES;
     [self.deckImage addGestureRecognizer:singleTap];
     
-    // Add the tap gesture recognizer to the view
     [self.collectionView addGestureRecognizer:pinchRecognizer];
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
     self.collectionView.layer.needsDisplayOnBoundsChange = YES; 
-//    [self.collectionView registerClass:[CardCell class] forCellWithReuseIdentifier:@"cell"];
     
+    [self loadNewGame];
+}
+
+-(void)loadNewGame {
     cardList = [NSMutableArray new];
     game = [JPWGame new];
     player1 = [JPWPlayer newWithName:@"Jeremy"];
-    robot = [JPWPlayer newWithName:@"Sam"];
+    robot = [JPWRobot newWithName:@"Sam"];
     [game addPlayer:player1];
-    [game addPlayer:robot];
+    [game addRobot:robot];
     [game setup];
     [self updatePlayerInfo];
 }
@@ -69,6 +72,8 @@
             [player1 addCardToHand:[game draw]];
             [self updatePlayerInfo];
             [game changeTurnOrder];
+            
+            [self robotTurn];
         } else {
             [self showAlert:@"It isn't your turn."];
         }
@@ -94,7 +99,9 @@
     
     if (distance > 200) {
         
-        CoverFlowLayout *flowLayout = [CoverFlowLayout new];
+//        CoverFlowLayout *flowLayout = [CoverFlowLayout new];
+//        [self.collectionView setCollectionViewLayout:flowLayout];
+        UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         [self.collectionView setCollectionViewLayout:flowLayout];
     } else {
         CollectionViewLayout *fanLayout = [CollectionViewLayout new];
@@ -131,7 +138,6 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    CardCell *cell = (CardCell *)[collectionView cellForItemAtIndexPath:indexPath];
     [self.handDelegate didSelectCard:cardList[indexPath.row]];
     
 //    UICollectionViewCell  *cell = [collectionView cellForItemAtIndexPath:indexPath];
@@ -141,7 +147,7 @@
                         options:(UIViewAnimationOptionAllowUserInteraction)
                      animations:^
      {
-         NSLog(@"starting animation");
+         NSLog(@"start");
 //                 CGRect frame = cell.frame;
 //                 frame.origin.y -= 100;
 //                 cell.frame = frame;
@@ -149,11 +155,6 @@
 //                 [cell.superview bringSubviewToFront:cell];
 //                 cell.transform = CGAffineTransformMakeRotation(180 * M_PI/180);
 //                 cell.transform = CGAffineTransformMakeScale(2, 2);
-//                 [UIView transitionFromView:cell.contentView
-//                                     toView:cell.contentView
-//                                   duration:.5
-//                                    options:UIViewAnimationOptionTransitionFlipFromRight
-//                                 completion:nil];
      }
                      completion:^(BOOL finished)
      {
@@ -161,17 +162,14 @@
 //                     cell.transform = CGAffineTransformMakeScale(1, 1);
 //                     cell.transform = CGAffineTransformMakeRotation(0);
 //                 }];
-         NSLog(@"animation end");
+         NSLog(@"end");
          
          //player clicked card.
-         NSString *name = [cardList[indexPath.row] description];
-          NSLog(name);
-         // need card not description
          JPWPlayingCard *card = cardList[indexPath.row];
          if([self playRound:card player:player1]) {
-             NSLog(name);
              [self updatePlayerInfo];
          }
+         [self robotTurn];
      }
      ];
 }
@@ -182,18 +180,37 @@
     self.collectionView.reloadData;
 }
 
+-(void)robotTurn {
+    JPWPlayingCard *robotCard = [robot chooseCard];
+    
+    if ([self playRobotRound:robotCard player:robot]) {
+        [self updatePlayerInfo];
+        [self showAlert:@"Robot played"];
+    } else {
+        if ([[game whosTurn] isEqual:robot.name]) {
+            if ([[game.deck size] integerValue] > 0) {
+                [robot addCardToHand:[game draw]];
+                [self updatePlayerInfo];
+                [game changeTurnOrder];
+                [self showAlert:@"Robot drew from deck" ];
+            } else {
+                [self showAlert:@"Robot tried to draw from the deck but there are no cards in it." ];
+                [game changeTurnOrder];
+            }
+        }
+    }
+}
+
 -(BOOL)playRound:(JPWPlayingCard *)card player:(JPWPlayer *)player {
     if ([[game whosTurn] isEqual:player.name]) {
         if ([game isCardValid:card]) {
             if ([card.rank isEqual:@"8"]) {
-                //Would display suit change buttons.
-                NSLog(@"Display some new buttons here!");
                 [self suitChange:@"Please choose a suit to use."];
                 [player takeCardFromPlayer:card];
                 return YES;
             } else {
                 [game playCard:card from:player];
-                [game changeTurnOrder];
+                [self endOfTurnCheck];
                 return YES;
             }
         } else {
@@ -203,6 +220,45 @@
     } else {
         [self showAlert:@"It isn't your turn."];
         return NO;
+    }
+}
+
+-(BOOL)playRobotRound:(JPWPlayingCard *)card player:(JPWRobot *)player {
+    if ([[game whosTurn] isEqual:player.name]) {
+        if ([game isCardValid:card]) {
+            if ([card.rank isEqual:@"8"]) {
+                wildSuit = @"Spades";
+                JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"8" suit:wildSuit];
+                [game discard:newCard];
+                [player takeCardFromPlayer:card];
+                [self endOfTurnCheck];
+
+                return YES;
+            } else {
+                [game playRobotCard:card from:player];
+                [self endOfTurnCheck];
+
+                return YES;
+            }
+        } else {
+            return NO;
+        }
+    } else {
+        return NO;
+    }
+}
+
+-(void)endOfTurnCheck {
+    if ([player1.hand.cards count] == 0 || [robot.hand.cards count] == 0) {
+        if ([player1.hand.cards count] == 0) {
+            [self showAlert:@"Game over, You won!"];
+        } else {
+            [self showAlert:@"Game over, The Computer Won."];
+        }
+        [self.navigationController popViewControllerAnimated:YES];
+//        [self loadNewGame];
+    } else {
+        [game changeTurnOrder];
     }
 }
 
@@ -260,8 +316,10 @@
     
     JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"8" suit:wildSuit];
     [game discard:newCard];
-    [game changeTurnOrder];
+    [self endOfTurnCheck];
+
     [self updatePlayerInfo];
+    [self robotTurn];
 }
 
 @end
