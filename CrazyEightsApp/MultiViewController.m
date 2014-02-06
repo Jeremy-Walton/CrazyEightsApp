@@ -131,6 +131,9 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CardCell *newCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     newCell.imageView.image = [UIImage imageNamed:[cardList[indexPath.row] description]];
+    if (![game isCardValid:cardList[indexPath.row]]) {
+        newCell.alpha = 0.3;
+    }
     return newCell;
 }
 
@@ -141,7 +144,7 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     [self.handDelegate didSelectCard:cardList[indexPath.row]];
     
-//    UICollectionViewCell  *cell = [collectionView cellForItemAtIndexPath:indexPath];
+    UICollectionViewCell  *cell = [collectionView cellForItemAtIndexPath:indexPath];
     
     [UIView animateWithDuration:1.0
                           delay:0
@@ -153,9 +156,9 @@
 //                 frame.origin.y -= 100;
 //                 cell.frame = frame;
          //        cell.transform = CGAffineTransformMakeRotation(180 * 3.14/180);
-//                 [cell.superview bringSubviewToFront:cell];
+                 [cell.superview bringSubviewToFront:cell];
 //                 cell.transform = CGAffineTransformMakeRotation(180 * M_PI/180);
-//                 cell.transform = CGAffineTransformMakeScale(2, 2);
+                 cell.transform = CGAffineTransformMakeScale(1.3, 1.3);
      }
                      completion:^(BOOL finished)
      {
@@ -171,13 +174,21 @@
              if ([card.rank isEqual:@"8"]) {
                  [self suitChange:@"Please choose a suit to use."];
              }
+             [self endOfGameCheck];
              [self updatePlayerInfo];
          }
          
          [turnManager robotTurn:robot];
+         [self endOfGameCheck];
          [self updatePlayerInfo];
      }
      ];
+}
+
+-(void)endOfGameCheck {
+    if ([player1.hand.cards count] == 0 || [robot.hand.cards count] == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 -(void)updatePlayerInfo {
@@ -248,6 +259,7 @@
     [turnManager endOfTurnCheck];
 
     [turnManager robotTurn:robot];
+    [self endOfGameCheck];
     [self updatePlayerInfo];
 }
 

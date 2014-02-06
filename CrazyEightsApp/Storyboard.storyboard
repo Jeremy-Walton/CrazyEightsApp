@@ -261,6 +261,13 @@
                                 <color key="textColor" red="0.0" green="0.52832073723322726" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Cards will fade out if you can't play them." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpW-c5-K6N">
+                                <rect key="frame" x="74" y="651" width="594" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="0.0" green="0.52832073719999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -271,11 +278,13 @@
                             <constraint firstItem="3mY-ta-cFj" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="272" id="DBV-YO-y0H"/>
                             <constraint firstItem="5HH-XM-INX" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="77" id="DWG-wy-zUH"/>
                             <constraint firstAttribute="trailing" secondItem="cWT-4f-179" secondAttribute="trailing" constant="100" id="GYC-Qn-Iqz"/>
+                            <constraint firstAttribute="trailing" secondItem="XpW-c5-K6N" secondAttribute="trailing" constant="100" id="LtZ-uE-mB5"/>
                             <constraint firstItem="NtE-MA-kh6" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="74" id="Mvs-ID-WcZ"/>
                             <constraint firstItem="IlT-Sw-8fu" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" id="Noj-dh-uRc"/>
                             <constraint firstItem="fRH-5v-Ewm" firstAttribute="top" secondItem="Zlq-eb-RF4" secondAttribute="bottom" constant="8" symbolic="YES" id="Qp7-5r-fHn"/>
                             <constraint firstItem="3mY-ta-cFj" firstAttribute="top" secondItem="rH4-PS-nQu" secondAttribute="bottom" constant="32" id="Szp-OY-y7p"/>
                             <constraint firstAttribute="trailing" secondItem="NtE-MA-kh6" secondAttribute="trailing" constant="100" id="USW-gI-f2c"/>
+                            <constraint firstItem="XpW-c5-K6N" firstAttribute="top" secondItem="NtE-MA-kh6" secondAttribute="bottom" constant="8" id="WrE-jb-5se"/>
                             <constraint firstAttribute="trailing" secondItem="IlT-Sw-8fu" secondAttribute="trailing" id="XRb-60-Iq7"/>
                             <constraint firstItem="FvJ-yU-e2O" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="272" id="YIT-gd-bH5"/>
                             <constraint firstAttribute="trailing" secondItem="FvJ-yU-e2O" secondAttribute="trailing" constant="272" id="Ypf-vp-NJa"/>
@@ -288,6 +297,7 @@
                             <constraint firstItem="FvJ-yU-e2O" firstAttribute="top" secondItem="cWT-4f-179" secondAttribute="bottom" constant="8" id="jlc-Xx-N70"/>
                             <constraint firstAttribute="trailing" secondItem="Zlq-eb-RF4" secondAttribute="trailing" constant="100" id="jol-dh-4H6"/>
                             <constraint firstItem="5HH-XM-INX" firstAttribute="top" secondItem="pgG-z4-uQg" secondAttribute="bottom" constant="8" id="kTd-CY-sU4"/>
+                            <constraint firstItem="XpW-c5-K6N" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="74" id="lbD-xq-mBG"/>
                             <constraint firstItem="fRH-5v-Ewm" firstAttribute="leading" secondItem="v6j-j8-zlv" secondAttribute="leading" constant="77" id="nxA-Ck-9Xg"/>
                             <constraint firstAttribute="trailing" secondItem="3mY-ta-cFj" secondAttribute="trailing" constant="272" id="pei-Jn-cRa"/>
                             <constraint firstItem="IlT-Sw-8fu" firstAttribute="top" secondItem="v6j-j8-zlv" secondAttribute="top" id="sda-7h-SOa"/>
