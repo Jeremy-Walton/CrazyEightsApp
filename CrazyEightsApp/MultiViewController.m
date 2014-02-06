@@ -12,6 +12,7 @@
 #import "JPWRobot.h"
 #import "CardCell.h"
 #import "CoverFlowLayout.h"
+#import "JPWTurnManager.h"
 
 
 @interface MultiViewController ()
@@ -23,6 +24,7 @@
 @private JPWPlayer *player1;
 @private JPWRobot *robot;
 @private JPWGame *game;
+@private JPWTurnManager *turnManager;
 @private NSString *wildSuit;
 }
 
@@ -64,16 +66,18 @@
     [game addRobot:robot];
     [game setup];
     [self updatePlayerInfo];
+    turnManager = [JPWTurnManager newWithGame:game player:player1 robot:robot wildSuit:wildSuit];
 }
 
 -(void)tapDetected{
     if ([[game.deck size] integerValue] > 0) {
         if ([[game whosTurn] isEqual:player1.name]) {
             [player1 addCardToHand:[game draw]];
-            [self updatePlayerInfo];
             [game changeTurnOrder];
+            [self updatePlayerInfo];
             
-            [self robotTurn];
+            [turnManager robotTurn:robot];
+            [self updatePlayerInfo];
         } else {
             [self showAlert:@"It isn't your turn."];
         }
@@ -98,9 +102,6 @@
     // Update the custom layout parameter and invalidate.
     
     if (distance > 200) {
-        
-//        CoverFlowLayout *flowLayout = [CoverFlowLayout new];
-//        [self.collectionView setCollectionViewLayout:flowLayout];
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
         [self.collectionView setCollectionViewLayout:flowLayout];
     } else {
@@ -166,100 +167,28 @@
          
          //player clicked card.
          JPWPlayingCard *card = cardList[indexPath.row];
-         if([self playRound:card player:player1]) {
+         if ([turnManager playRound:card player:player1]) {
+             if ([card.rank isEqual:@"8"]) {
+                 [self suitChange:@"Please choose a suit to use."];
+             }
              [self updatePlayerInfo];
          }
-         [self robotTurn];
+         
+         [turnManager robotTurn:robot];
+         [self updatePlayerInfo];
      }
      ];
 }
 
 -(void)updatePlayerInfo {
     cardList = player1.hand.cards;
+    NSString *info = [NSString stringWithFormat:@"Cards left in deck: %@. Opponent cards: %lu. Your cards: %lu.", [game.deck size], (unsigned long)[robot.hand.cards count], (unsigned long)[player1.hand.cards count]];
+    self.GameInfoLabel.text = info;
     self.DiscardImage.image = [UIImage imageNamed:[[game.discardPile showTopCard] description]];
+    if ([[game.deck size] integerValue] == 0) {
+        self.deckImage.image = [UIImage imageNamed:@"jb"];
+    }
     self.collectionView.reloadData;
-}
-
--(void)robotTurn {
-    JPWPlayingCard *robotCard = [robot chooseCard];
-    
-    if ([self playRobotRound:robotCard player:robot]) {
-        [self updatePlayerInfo];
-        [self showAlert:@"Robot played"];
-    } else {
-        if ([[game whosTurn] isEqual:robot.name]) {
-            if ([[game.deck size] integerValue] > 0) {
-                [robot addCardToHand:[game draw]];
-                [self updatePlayerInfo];
-                [game changeTurnOrder];
-                [self showAlert:@"Robot drew from deck" ];
-            } else {
-                [self showAlert:@"Robot tried to draw from the deck but there are no cards in it." ];
-                [game changeTurnOrder];
-            }
-        }
-    }
-}
-
--(BOOL)playRound:(JPWPlayingCard *)card player:(JPWPlayer *)player {
-    if ([[game whosTurn] isEqual:player.name]) {
-        if ([game isCardValid:card]) {
-            if ([card.rank isEqual:@"8"]) {
-                [self suitChange:@"Please choose a suit to use."];
-                [player takeCardFromPlayer:card];
-                return YES;
-            } else {
-                [game playCard:card from:player];
-                [self endOfTurnCheck];
-                return YES;
-            }
-        } else {
-            [self showAlert:@"Please choose a valid card."];
-            return NO;
-        }
-    } else {
-        [self showAlert:@"It isn't your turn."];
-        return NO;
-    }
-}
-
--(BOOL)playRobotRound:(JPWPlayingCard *)card player:(JPWRobot *)player {
-    if ([[game whosTurn] isEqual:player.name]) {
-        if ([game isCardValid:card]) {
-            if ([card.rank isEqual:@"8"]) {
-                wildSuit = @"Spades";
-                JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"8" suit:wildSuit];
-                [game discard:newCard];
-                [player takeCardFromPlayer:card];
-                [self endOfTurnCheck];
-
-                return YES;
-            } else {
-                [game playRobotCard:card from:player];
-                [self endOfTurnCheck];
-
-                return YES;
-            }
-        } else {
-            return NO;
-        }
-    } else {
-        return NO;
-    }
-}
-
--(void)endOfTurnCheck {
-    if ([player1.hand.cards count] == 0 || [robot.hand.cards count] == 0) {
-        if ([player1.hand.cards count] == 0) {
-            [self showAlert:@"Game over, You won!"];
-        } else {
-            [self showAlert:@"Game over, The Computer Won."];
-        }
-        [self.navigationController popViewControllerAnimated:YES];
-//        [self loadNewGame];
-    } else {
-        [game changeTurnOrder];
-    }
 }
 
 - (void) showAlert:(NSString *)message {
@@ -316,10 +245,10 @@
     
     JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"8" suit:wildSuit];
     [game discard:newCard];
-    [self endOfTurnCheck];
+    [turnManager endOfTurnCheck];
 
+    [turnManager robotTurn:robot];
     [self updatePlayerInfo];
-    [self robotTurn];
 }
 
 @end

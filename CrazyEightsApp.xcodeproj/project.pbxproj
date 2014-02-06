@@ -10,6 +10,7 @@
 		35B194BA75C34D7F8CE8A481 /* libPods-CrazyEightsAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67D7B076E59646FB9F0A2532 /* libPods-CrazyEightsAppTests.a */; };
 		3F01A76318A14D01009DD97A /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76218A14D01009DD97A /* MultiViewController.m */; };
 		3F01A76818A29FD4009DD97A /* JPWRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76718A29FD4009DD97A /* JPWRobot.m */; };
+		3F01A76B18A3DC80009DD97A /* JPWTurnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76A18A3DC80009DD97A /* JPWTurnManager.m */; };
 		3F505A651896AE4500B985DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A641896AE4500B985DE /* Foundation.framework */; };
 		3F505A671896AE4500B985DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A661896AE4500B985DE /* CoreGraphics.framework */; };
 		3F505A691896AE4500B985DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A681896AE4500B985DE /* UIKit.framework */; };
@@ -63,6 +64,8 @@
 		3F01A76218A14D01009DD97A /* MultiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiViewController.m; sourceTree = "<group>"; };
 		3F01A76618A29FD4009DD97A /* JPWRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWRobot.h; sourceTree = "<group>"; };
 		3F01A76718A29FD4009DD97A /* JPWRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWRobot.m; sourceTree = "<group>"; };
+		3F01A76918A3DC80009DD97A /* JPWTurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWTurnManager.h; sourceTree = "<group>"; };
+		3F01A76A18A3DC80009DD97A /* JPWTurnManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWTurnManager.m; sourceTree = "<group>"; };
 		3F505A611896AE4500B985DE /* CrazyEightsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrazyEightsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F505A641896AE4500B985DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F505A661896AE4500B985DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -223,6 +226,8 @@
 				3F01A76118A14D01009DD97A /* MultiViewController.h */,
 				3F01A76218A14D01009DD97A /* MultiViewController.m */,
 				3F505A6B1896AE4500B985DE /* Supporting Files */,
+				3F01A76918A3DC80009DD97A /* JPWTurnManager.h */,
+				3F01A76A18A3DC80009DD97A /* JPWTurnManager.m */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F01A76B18A3DC80009DD97A /* JPWTurnManager.m in Sources */,
 				3F01A76818A29FD4009DD97A /* JPWRobot.m in Sources */,
 				3F541CD318981B4300039DA6 /* CardCell.m in Sources */,
 				3FD461D3189C48750005D11E /* CoverFlowLayout.m in Sources */,

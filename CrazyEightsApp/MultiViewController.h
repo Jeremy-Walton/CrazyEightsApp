@@ -18,5 +18,6 @@
 @property (weak, nonatomic) id <HandDelegate> handDelegate;
 @property (weak, nonatomic) IBOutlet UIImageView *DiscardImage;
 @property (weak, nonatomic) IBOutlet UIImageView *deckImage;
+@property (weak, nonatomic) IBOutlet UILabel *GameInfoLabel;
 
 @end
