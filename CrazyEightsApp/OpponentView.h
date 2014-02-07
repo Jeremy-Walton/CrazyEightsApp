@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OpponentView : UICollectionView
-@property (weak, nonatomic) IBOutlet UIImageView *CardImage;
+@interface OpponentView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+
+-(void)setCardAmount:(NSInteger)amount;
 
 @end

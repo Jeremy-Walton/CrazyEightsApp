@@ -12,6 +12,7 @@
 
 @property NSString *rank;
 @property NSString *suit;
+@property NSNumber *value;
 
 + (instancetype)newWithRank:(NSString *)rank suit:(NSString *)suit;
 - (instancetype)initWithRank:(NSString *)rank suit:(NSString *)suit;

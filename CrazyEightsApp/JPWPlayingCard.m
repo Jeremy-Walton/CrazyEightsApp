@@ -8,7 +8,9 @@
 
 #import "JPWPlayingCard.h"
 
-@implementation JPWPlayingCard
+@implementation JPWPlayingCard {
+@private NSArray *rankOrder;
+}
 
 + (instancetype)newWithRank:(NSString *)rank suit:(NSString *)suit
 {
@@ -21,6 +23,8 @@
     if (self) {
         _rank = rank;
         _suit = suit;
+        rankOrder = [NSArray arrayWithObjects:@"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"Jack", @"Queen", @"King", @"Ace", nil];
+        _value = @([rankOrder indexOfObject:self.rank]);
     }
     return self;
 }

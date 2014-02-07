@@ -9,49 +9,51 @@
 #import "OpponentView.h"
 #import "CardCell.h"
 
+@interface OpponentView ()
+
+@end
+
 @implementation OpponentView {
-@private NSMutableArray *cardList;
+    @private NSInteger cardAmount;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Initialization code
-        cardList = [NSMutableArray new];
-//        cardList = robot.hand.cards;
+        // Custom initialization
+        cardAmount = 7;
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)viewDidLoad
 {
-    // Drawing code
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
 }
-*/
 
-//-(void)updatePlayerInfo {
-//    cardList = robot.hand.cards;
-//    self.reloadData;
-//}
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
-    // _data is a class member variable that contains one array per section.
+-(void)setCardAmount:(NSInteger)amount {
+    cardAmount = amount;
+}
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
 
-- (NSInteger)collectionView:(UICollectionView*)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return [cardList count];
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return cardAmount;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CardCell *newCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
-//    newCell.imageView.image = [UIImage imageNamed:[cardList[indexPath.row] description]];
     newCell.imageView.image = [UIImage imageNamed:@"jb"];
     return newCell;
 }
@@ -59,5 +61,6 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     return CGSizeMake(71, 96);
 }
+
 
 @end

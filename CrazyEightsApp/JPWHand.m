@@ -20,6 +20,7 @@
 
 - (void)addCard:(JPWPlayingCard *)card {
     [self.cards addObject:card];
+//    [self sortCards];
 }
 
 - (NSNumber *)numberOfCards {
@@ -34,7 +35,20 @@
             [self.cards removeObjectAtIndex:i];
         }
     }
+//    [self sortCards];
     return correctCard;
+}
+
+-(void)sortCards {
+    for (int j = 0; j < [self.cards count]; j++) {
+        for (int i = 0; i < [self.cards count] - 1; i++) {
+            JPWPlayingCard *card1 = self.cards[i];
+            JPWPlayingCard *card2 = self.cards[i+1];
+            if (card1.value > card2.value) {
+                [self.cards exchangeObjectAtIndex:i withObjectAtIndex:i+1];
+            }
+        }
+    }
 }
 
 - (JPWPlayingCard *)cardAt:(NSNumber *)index {

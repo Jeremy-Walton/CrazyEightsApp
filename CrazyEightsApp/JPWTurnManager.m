@@ -103,7 +103,6 @@
         } else {
             [self showAlert:@"Game over, The Computer Won."];
         }
-//        [self.navigationController popViewControllerAnimated:YES];
     } else {
         [self.game changeTurnOrder];
     }

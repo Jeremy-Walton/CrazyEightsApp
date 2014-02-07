@@ -11,11 +11,12 @@
 #import "CollectionViewLayout.h"
 
 @interface MultiViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIActionSheetDelegate>
+@property (weak, nonatomic) IBOutlet UICollectionView *OpponentView;
 
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *flowLayout;
 @property (nonatomic, strong) IBOutlet CollectionViewLayout *collectionViewLayout;
-@property (weak, nonatomic) IBOutlet UICollectionView *opponentView;
+
 @property (weak, nonatomic) id <HandDelegate> handDelegate;
 @property (weak, nonatomic) IBOutlet UIImageView *DiscardImage;
 @property (weak, nonatomic) IBOutlet UIImageView *deckImage;

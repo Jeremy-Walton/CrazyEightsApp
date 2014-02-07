@@ -27,6 +27,7 @@
 @private JPWGame *game;
 @private JPWTurnManager *turnManager;
 @private NSString *wildSuit;
+@private OpponentView *opponentViewController;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -55,9 +56,12 @@
     self.collectionView.delegate = self;
     self.collectionView.layer.needsDisplayOnBoundsChange = YES;
     
-//    self.opponentView.dataSource = self;
-//    self.opponentView.delegate = self;
-//    self.opponentView.layer.needsDisplayOnBoundsChange = YES;
+    opponentViewController = [OpponentView new];
+    [self addChildViewController:opponentViewController];
+
+    [self.OpponentView setTransform:CGAffineTransformMakeRotation(M_PI)];
+    self.OpponentView.dataSource = opponentViewController;
+    self.OpponentView.delegate = self;
     
     [self loadNewGame];
 }
@@ -89,6 +93,7 @@
     } else {
         [self showAlert:@"No more cards, sorry."];
     }
+    [self endOfGameCheck];
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
@@ -177,26 +182,34 @@
          if ([turnManager playRound:card player:player1]) {
              if ([card.rank isEqual:@"8"]) {
                  [self suitChange:@"Please choose a suit to use."];
+             } else {
+                 [self endOfGameCheck];
              }
-             [self endOfGameCheck];
              [self updatePlayerInfo];
          }
          
          [turnManager robotTurn:robot];
-         [self endOfGameCheck];
+         if (![card.rank isEqual:@"8"]) {
+             [self endOfGameCheck];
+         }
          [self updatePlayerInfo];
      }
      ];
 }
 
 -(void)endOfGameCheck {
-    if ([player1.hand.cards count] == 0 || [robot.hand.cards count] == 0) {
+    if ([player1.hand.cards count] == 0 || [robot.hand.cards count] == 0 || [[game.deck size] integerValue] <= 0) {
+        if ([[game.deck size] integerValue] <= 0) {
+            [self showAlert:@"The deck ran out of cards, so you tied."];
+        }
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 -(void)updatePlayerInfo {
+    [player1.hand sortCards];
     cardList = player1.hand.cards;
+    [opponentViewController setCardAmount:[robot.hand.cards count]];
     NSString *info = [NSString stringWithFormat:@"Cards left in deck: %@. Opponent cards: %lu. Your cards: %lu.", [game.deck size], (unsigned long)[robot.hand.cards count], (unsigned long)[player1.hand.cards count]];
     self.GameInfoLabel.text = info;
     self.DiscardImage.image = [UIImage imageNamed:[[game.discardPile showTopCard] description]];
@@ -204,6 +217,7 @@
         self.deckImage.image = [UIImage imageNamed:@"jb"];
     }
     self.collectionView.reloadData;
+    self.OpponentView.reloadData;
 }
 
 - (void) showAlert:(NSString *)message {
