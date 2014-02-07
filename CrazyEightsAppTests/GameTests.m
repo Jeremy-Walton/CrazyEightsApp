@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "Kiwi.h"
 #import "JPWPlayer.h"
+#import "JPWRobot.h"
 #import "JPWGame.h"
 #import "JPWDeck.h"
 
@@ -25,6 +26,13 @@ describe(@"Game", ^{
         [[[game numberOfPlayers] should] equal:@0];
         JPWPlayer *player = [JPWPlayer newWithName:@"Jeremy"];
         [game addPlayer:player];
+        [[[game numberOfPlayers] should] equal:@1];
+    });
+    
+    it(@"can add a robot.", ^{
+        [[[game numberOfPlayers] should] equal:@0];
+        JPWRobot *robot = [JPWRobot newWithName:@"Jeremy"];
+        [game addRobot:robot];
         [[[game numberOfPlayers] should] equal:@1];
     });
     
@@ -74,10 +82,10 @@ describe(@"Game", ^{
     
     it(@"can setup a game.", ^{
         JPWPlayer *player = [JPWPlayer newWithName:@"Jeremy"];
-        JPWPlayer *player2 = [JPWPlayer newWithName:@"Sam"];
+        JPWRobot *player2 = [JPWRobot newWithName:@"Sam"];
         JPWPlayer *player3 = [JPWPlayer newWithName:@"Max"];
         [game addPlayer:player];
-        [game addPlayer:player2];
+        [game addRobot:player2];
         [game addPlayer:player3];
         
         [game setup];
@@ -148,6 +156,30 @@ describe(@"Game", ^{
         
     });
     
+    it(@"Can play a card", ^{
+        JPWPlayer *p = [JPWPlayer newWithName:@"Jeremy"];
+        JPWPlayer *p2 = [JPWPlayer newWithName:@"Bob"];
+        [game addPlayer:p];
+        [game addPlayer:p2];
+        [game setup];
+        //player clicked card.
+        JPWPlayingCard *card = [p.hand.cards objectAtIndex:0];
+        [game playCard:card from:p];
+        [[[game.discardPile size] should] equal:@2];
+    });
+    
+    it(@"Can play a robots card", ^{
+        JPWRobot *p = [JPWRobot newWithName:@"Jeremy"];
+        JPWPlayer *p2 = [JPWPlayer newWithName:@"Bob"];
+        [game addRobot:p];
+        [game addPlayer:p2];
+        [game setup];
+        //player clicked card.
+        JPWPlayingCard *card = [p.hand.cards objectAtIndex:0];
+        [game playRobotCard:card from:p];
+        [[[game.discardPile size] should] equal:@2];
+    });
+    
     it(@"can play a single round.", ^{
         //pre game setup
         NSLog(@"Jeremy");
@@ -175,27 +207,13 @@ describe(@"Game", ^{
                 }
             } else {
                 result = @"Not a valid card.";
+                [[[p numberOfCards] should] equal:@7];
             }
         } else {
              result = @"Not your turn.";
+            [[[p numberOfCards] should] equal:@7];
         }
-        [[[p numberOfCards] should] equal:@7];
         NSLog(result);
-        
-//        NSString *playerTurn = [game whosTurn];
-//        NSUInteger number = [game.turnOrder indexOfObject:playerTurn];
-//        JPWPlayer   *player = [game.players objectAtIndex:number];
-//        JPWPlayingCard *card = [player.hand.cards objectAtIndex:0];
-//        [game playCard:card from:player];
-//        if ([result isEqual:@"Able to play"]) {
-//            [[[player numberOfCards] should] equal:@4];
-//            NSLog(@"Did it");
-//        } else if ([result isEqual:@"Able to play, suit change"]) {
-//            [[[player numberOfCards] should] equal:@4];
-//            NSLog(@"Did it 2");
-//        } else {
-//            [[[player numberOfCards] should] equal:@5];
-//        }
         
     });
     

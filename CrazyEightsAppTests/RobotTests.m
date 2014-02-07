@@ -1,44 +1,44 @@
 //
-//  PlayerTests.m
-//  CrazyEightsModel
+//  RobotTests.m
+//  CrazyEightsApp
 //
-//  Created by Jeremy on 1/24/14.
+//  Created by Jeremy on 2/7/14.
 //  Copyright (c) 2014 Jeremy-Walton. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import "Kiwi.h"
 #import "JPWPlayingCard.h"
-#import "JPWPlayer.h"
+#import "JPWRobot.h"
 #import "JPWHand.h"
 #import "JPWGame.h"
 
-SPEC_BEGIN(PlayerTests)
+SPEC_BEGIN(RobotTests)
 
-describe(@"Player", ^{
-    __block JPWPlayer *player;
+describe(@"Robot", ^{
+    __block JPWRobot *robot;
     
     beforeEach(^{
-        player = [JPWPlayer newWithName:@"Jeremy"];
+        robot = [JPWRobot newWithName:@"Jeremy"];
     });
     
     it(@"has a name.", ^{
-        [[[player name] should] equal:@"Jeremy"];
+        [[[robot name] should] equal:@"Jeremy"];
     });
     
     it(@"has a hand.", ^{
-        [[[[player hand] class] should] equal:[JPWHand class]];
+        [[[[robot hand] class] should] equal:[JPWHand class]];
     });
     
     it(@"have cards added to it.", ^{
         JPWGame *game = [JPWGame new];
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
         [game makeDeckForTest];
-        [game addPlayer:player];
+        [game addRobot:robot];
         [game dealCards];
-        [[[player numberOfCards] should] equal:@5];
-        [player addCardToHand:card];
-        [[[[player hand] numberOfCards] should] equal:@6];
+        [[[robot numberOfCards] should] equal:@5];
+        [robot addCardToHand:card];
+        [[[[robot hand] numberOfCards] should] equal:@6];
     });
     
 });

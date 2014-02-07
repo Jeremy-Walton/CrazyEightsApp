@@ -11,6 +11,9 @@
 		3F01A76318A14D01009DD97A /* MultiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76218A14D01009DD97A /* MultiViewController.m */; };
 		3F01A76818A29FD4009DD97A /* JPWRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76718A29FD4009DD97A /* JPWRobot.m */; };
 		3F01A76B18A3DC80009DD97A /* JPWTurnManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76A18A3DC80009DD97A /* JPWTurnManager.m */; };
+		3F01A76E18A52098009DD97A /* OpponentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76D18A52098009DD97A /* OpponentView.m */; };
+		3F01A77018A528BA009DD97A /* RobotTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A76F18A528BA009DD97A /* RobotTests.m */; };
+		3F01A77218A52E42009DD97A /* turnManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F01A77118A52E42009DD97A /* turnManagerTests.m */; };
 		3F505A651896AE4500B985DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A641896AE4500B985DE /* Foundation.framework */; };
 		3F505A671896AE4500B985DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A661896AE4500B985DE /* CoreGraphics.framework */; };
 		3F505A691896AE4500B985DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F505A681896AE4500B985DE /* UIKit.framework */; };
@@ -66,6 +69,10 @@
 		3F01A76718A29FD4009DD97A /* JPWRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWRobot.m; sourceTree = "<group>"; };
 		3F01A76918A3DC80009DD97A /* JPWTurnManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWTurnManager.h; sourceTree = "<group>"; };
 		3F01A76A18A3DC80009DD97A /* JPWTurnManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPWTurnManager.m; sourceTree = "<group>"; };
+		3F01A76C18A52098009DD97A /* OpponentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpponentView.h; sourceTree = "<group>"; };
+		3F01A76D18A52098009DD97A /* OpponentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpponentView.m; sourceTree = "<group>"; };
+		3F01A76F18A528BA009DD97A /* RobotTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotTests.m; sourceTree = "<group>"; };
+		3F01A77118A52E42009DD97A /* turnManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = turnManagerTests.m; sourceTree = "<group>"; };
 		3F505A611896AE4500B985DE /* CrazyEightsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrazyEightsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F505A641896AE4500B985DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F505A661896AE4500B985DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -225,9 +232,11 @@
 				3FD461D2189C48750005D11E /* CoverFlowLayout.m */,
 				3F01A76118A14D01009DD97A /* MultiViewController.h */,
 				3F01A76218A14D01009DD97A /* MultiViewController.m */,
-				3F505A6B1896AE4500B985DE /* Supporting Files */,
+				3F01A76C18A52098009DD97A /* OpponentView.h */,
+				3F01A76D18A52098009DD97A /* OpponentView.m */,
 				3F01A76918A3DC80009DD97A /* JPWTurnManager.h */,
 				3F01A76A18A3DC80009DD97A /* JPWTurnManager.m */,
+				3F505A6B1896AE4500B985DE /* Supporting Files */,
 			);
 			path = CrazyEightsApp;
 			sourceTree = "<group>";
@@ -255,6 +264,8 @@
 				3F505AB41896B05100B985DE /* PlayingCardTests.m */,
 				3F541CCA1897FDDD00039DA6 /* PlayerTests.m */,
 				3F505A8A1896AE4600B985DE /* Supporting Files */,
+				3F01A76F18A528BA009DD97A /* RobotTests.m */,
+				3F01A77118A52E42009DD97A /* turnManagerTests.m */,
 			);
 			path = CrazyEightsAppTests;
 			sourceTree = "<group>";
@@ -418,6 +429,7 @@
 				3F505AA91896AEF200B985DE /* JPWGame.m in Sources */,
 				3F541CD618983BD600039DA6 /* CardViewController.m in Sources */,
 				3F505AA71896AEF200B985DE /* JPWDeck.m in Sources */,
+				3F01A76E18A52098009DD97A /* OpponentView.m in Sources */,
 				3F505A7B1896AE4600B985DE /* ViewController.m in Sources */,
 				3F505AA81896AEF200B985DE /* JPWDiscardPile.m in Sources */,
 				3F505AAA1896AEF200B985DE /* JPWPlayer.m in Sources */,
@@ -441,7 +453,9 @@
 				3F505ABB1896B05100B985DE /* PlayingCardTests.m in Sources */,
 				3F505ABA1896B05100B985DE /* HandTests.m in Sources */,
 				3F505AB71896B05100B985DE /* DiscardPileTests.m in Sources */,
+				3F01A77218A52E42009DD97A /* turnManagerTests.m in Sources */,
 				3F505AB91896B05100B985DE /* GameTests.m in Sources */,
+				3F01A77018A528BA009DD97A /* RobotTests.m in Sources */,
 				3F505AB61896B05100B985DE /* DeckTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

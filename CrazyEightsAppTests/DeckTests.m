@@ -50,18 +50,18 @@ describe(@"Deck", ^{
         JPWDeck *deck2 = [JPWDeck new];
         
         [deck2 shuffle];
-        
+        NSMutableArray *cards = [NSMutableArray new];
         for (int i = 0; i < [[deck size] integerValue]; i++) {
             JPWPlayingCard *card1 = [deck takeTopCard];
             JPWPlayingCard *card2 = [deck2 takeTopCard];
-            NSMutableArray *rankSuit1 = [NSMutableArray new];
-            [rankSuit1 addObject:card1.rank];
-            [rankSuit1 addObject:card1.suit];
-            NSMutableArray *rankSuit2 = [NSMutableArray new];
-            [rankSuit2 addObject:card2.rank];
-            [rankSuit2 addObject:card2.suit];
-            [[rankSuit1 shouldNot] equal:rankSuit2];
+            if (card1.rank == card2.rank && card1.suit == card2.suit) {
+                [cards addObject:card1];
+            } else {
+            }
+            
         }
+        
+        [[@([cards count]) shouldNot] equal:@52];
     });
     
 });
