@@ -113,6 +113,7 @@
     
     if (distance > 200) {
         UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
+        flowLayout.sectionInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
         [self.collectionView setCollectionViewLayout:flowLayout];
     } else {
         CollectionViewLayout *fanLayout = [CollectionViewLayout new];

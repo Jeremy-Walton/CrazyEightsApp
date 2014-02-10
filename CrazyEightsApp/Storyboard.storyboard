@@ -163,19 +163,21 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Crazy Eights!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nox-aH-xj1">
-                                <rect key="frame" x="235" y="496" width="299" height="32"/>
+                                <rect key="frame" x="186" y="496" width="398" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="0Jz-3C-Oef"/>
+                                    <constraint firstAttribute="height" constant="41" id="0Jz-3C-Oef"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <color key="textColor" red="0.96725911731691905" green="0.98932374740537232" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <size key="shadowOffset" width="1" height="1"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LrH-is-T0d">
-                                <rect key="frame" x="359" y="680" width="49" height="42"/>
+                                <rect key="frame" x="349" y="668" width="70" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="0.97647064924240112" green="0.98431378602981567" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -186,9 +188,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xKS-6Z-fy2">
-                                <rect key="frame" x="298" y="730" width="173" height="29"/>
+                                <rect key="frame" x="259" y="730" width="252" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
                                 <state key="normal" title="Directions/Rules">
                                     <color key="titleColor" red="0.97647064920000004" green="0.98431378599999997" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -202,19 +204,19 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="LPI-J9-307" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" id="0mT-xx-fM2"/>
-                            <constraint firstAttribute="trailing" secondItem="nox-aH-xj1" secondAttribute="trailing" constant="234" id="6FW-eS-JF3"/>
+                            <constraint firstAttribute="trailing" secondItem="nox-aH-xj1" secondAttribute="trailing" constant="184" id="6FW-eS-JF3"/>
                             <constraint firstItem="ezP-4J-wsf" firstAttribute="top" secondItem="wQa-xD-0tm" secondAttribute="bottom" constant="134" id="70a-Qh-IBl"/>
                             <constraint firstItem="xKS-6Z-fy2" firstAttribute="centerX" secondItem="ezP-4J-wsf" secondAttribute="centerX" id="8Jx-Sx-cPL"/>
                             <constraint firstItem="xKS-6Z-fy2" firstAttribute="top" secondItem="LrH-is-T0d" secondAttribute="bottom" constant="8" id="Duu-Xo-8RS"/>
-                            <constraint firstAttribute="trailing" secondItem="LrH-is-T0d" secondAttribute="trailing" constant="360" id="EwX-li-HM0"/>
+                            <constraint firstAttribute="trailing" secondItem="LrH-is-T0d" secondAttribute="trailing" constant="349" id="EwX-li-HM0"/>
                             <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="xKS-6Z-fy2" secondAttribute="bottom" constant="265" id="T7U-vt-yl8"/>
                             <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="LPI-J9-307" secondAttribute="bottom" id="gNt-T0-Ytv"/>
-                            <constraint firstItem="nox-aH-xj1" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="235" id="ggb-zM-t8E"/>
+                            <constraint firstItem="nox-aH-xj1" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="186" id="ggb-zM-t8E"/>
                             <constraint firstAttribute="trailing" secondItem="LPI-J9-307" secondAttribute="trailing" id="goO-vW-Bkk"/>
-                            <constraint firstItem="LrH-is-T0d" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="359" id="hS5-vQ-K5m"/>
+                            <constraint firstItem="LrH-is-T0d" firstAttribute="leading" secondItem="ynv-bP-S7X" secondAttribute="leading" constant="349" id="hS5-vQ-K5m"/>
                             <constraint firstItem="LPI-J9-307" firstAttribute="top" secondItem="ynv-bP-S7X" secondAttribute="top" id="jBB-1D-8Jg"/>
                             <constraint firstItem="ezP-4J-wsf" firstAttribute="centerX" secondItem="nox-aH-xj1" secondAttribute="centerX" id="lMZ-Xh-1f8"/>
-                            <constraint firstItem="nox-aH-xj1" firstAttribute="centerY" secondItem="LPI-J9-307" secondAttribute="centerY" id="snG-Ja-IHW"/>
+                            <constraint firstItem="nox-aH-xj1" firstAttribute="centerY" secondItem="LPI-J9-307" secondAttribute="centerY" constant="4.5" id="snG-Ja-IHW"/>
                             <constraint firstItem="Ss5-aa-I8E" firstAttribute="top" secondItem="LrH-is-T0d" secondAttribute="bottom" constant="302" id="tFr-RV-dFi"/>
                         </constraints>
                     </view>
@@ -247,7 +249,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crazy Eights Rules" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="3mY-ta-cFj">
                                 <rect key="frame" x="272" y="96" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,7 +258,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvJ-yU-e2O">
                                 <rect key="frame" x="272" y="420" width="224" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -266,7 +268,7 @@
                                 <rect key="frame" x="77" y="134" width="591" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">1. If the top card of the discard pile is not an eight, you may play any card which matches the rank or suit of the previous card (for example if the top card was the king of hearts you could play any king or any heart).</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -275,7 +277,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. An eight may be played on any card, and the player of the eight must nominate a suit." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="591" translatesAutoresizingMaskIntoConstraints="NO" id="fRH-5v-Ewm">
                                 <rect key="frame" x="77" y="258" width="591" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -285,7 +287,7 @@
                                 <rect key="frame" x="74" y="325" width="594" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text">3. If an eight is on top of the pile, you must play either another eight or any card of the suit nominated by the person who played the eight. </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -294,7 +296,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Pinch out in your card area to arrange them in a grid instead of a fan." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="591" translatesAutoresizingMaskIntoConstraints="NO" id="pgG-z4-uQg">
                                 <rect key="frame" x="77" y="458" width="591" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -303,7 +305,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Tap a card to play it. If it is an 8, you will be prompted to choose a new suit." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="591" translatesAutoresizingMaskIntoConstraints="NO" id="5HH-XM-INX">
                                 <rect key="frame" x="77" y="525" width="591" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -312,7 +314,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3. If you have no cards that can be played, tap the deck to draw a card." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="594" translatesAutoresizingMaskIntoConstraints="NO" id="NtE-MA-kh6">
                                 <rect key="frame" x="74" y="592" width="594" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
@@ -321,7 +323,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4. Cards will fade out if you can't play them." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XpW-c5-K6N">
                                 <rect key="frame" x="74" y="659" width="594" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" red="0.93418372659849047" green="1" blue="0.99358821017182875" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.32806883350478727" green="0.34105947066326525" blue="0.33323577789416342" alpha="1" colorSpace="calibratedRGB"/>
