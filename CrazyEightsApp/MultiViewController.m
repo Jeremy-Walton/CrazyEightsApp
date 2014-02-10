@@ -14,6 +14,7 @@
 #import "CoverFlowLayout.h"
 #import "JPWTurnManager.h"
 #import "OpponentView.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface MultiViewController ()
@@ -57,11 +58,11 @@
     self.collectionView.layer.needsDisplayOnBoundsChange = YES;
     
     opponentViewController = [OpponentView new];
-    [self addChildViewController:opponentViewController];
 
     [self.OpponentView setTransform:CGAffineTransformMakeRotation(M_PI)];
     self.OpponentView.dataSource = opponentViewController;
     self.OpponentView.delegate = self;
+    [self addChildViewController:opponentViewController];
     
     [self loadNewGame];
 }
