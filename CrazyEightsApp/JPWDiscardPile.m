@@ -36,4 +36,17 @@
     return [self.cards lastObject];
 }
 
+- (NSMutableDictionary *)toNSDictionary
+{
+    
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    NSMutableArray *array =  [NSMutableArray new];
+    for (int i = 0; i < [self.cards count]; i++) {
+        [array addObject:[[self.cards objectAtIndex:i] toNSDictionary]];
+    }
+    [dictionary setValue:array forKey:@"cards"];
+    
+    return dictionary;
+}
+
 @end

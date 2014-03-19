@@ -51,4 +51,14 @@
     return [self.hand.cards objectAtIndex:0];
 }
 
+- (NSMutableDictionary *)toNSDictionary
+{
+    
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
+    [dictionary setValue:self.name forKey:@"name"];
+    [dictionary setValue:[self.hand toNSDictionary] forKey:@"hand"];
+    
+    return dictionary;
+}
+
 @end

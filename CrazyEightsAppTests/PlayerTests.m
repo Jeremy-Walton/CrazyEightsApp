@@ -41,6 +41,18 @@ describe(@"Player", ^{
         [[[[player hand] numberOfCards] should] equal:@6];
     });
     
+    it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
+        JPWGame *game = [JPWGame new];
+        [game makeDeckForTest];
+        [game addPlayer:player];
+        [game dealCards];
+        JPWHand *hand = player.hand;
+        NSMutableDictionary *dictionary = [player toNSDictionary];
+        [[[dictionary objectForKey:@"name"] should] equal:@"Jeremy"];
+        [[[[[[dictionary objectForKey:@"hand"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] should] equal:[[hand.cards objectAtIndex:0] rank]];
+        [[[[[[dictionary objectForKey:@"hand"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"suit"] should] equal:[[hand.cards objectAtIndex:0] suit]];
+    });
+    
 });
 
 SPEC_END

@@ -16,13 +16,22 @@ describe(@"Playing Card", ^{
     __block JPWPlayingCard *ace;
     
     beforeEach(^{
-        ace = [JPWPlayingCard newWithRank:@"A" suit:@"S"];
+        ace = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
     });
     
-    it(@"should have a rank and suit", ^{
-        [[ace.rank should] equal:@"A"];
-        [[ace.suit should] equal:@"S"];
+    it(@"should have a rank and suit and value", ^{
+        [[ace.rank should] equal:@"Ace"];
+        [[ace.suit should] equal:@"Spades"];
+        [[ace.value should] equal:@(12)];
     });
+    
+    it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
+        NSMutableDictionary *dictionary = [ace toNSDictionary];
+        [[[dictionary objectForKey:@"rank"] should] equal:@"Ace"];
+        [[[dictionary objectForKey:@"suit"] should] equal:@"Spades"];
+        [[[dictionary objectForKey:@"value"] should] equal:@(12)];
+    });
+    
 });
 
 SPEC_END

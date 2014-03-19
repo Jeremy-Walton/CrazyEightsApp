@@ -12,6 +12,7 @@
 @interface JPWDeck : NSObject
 
 - (NSNumber *)size;
+- (NSMutableDictionary *)toNSDictionary;
 - (JPWPlayingCard *)takeTopCard;
 - (void)shuffle;
 

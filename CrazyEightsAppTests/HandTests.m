@@ -42,6 +42,15 @@ describe(@"Hand", ^{
         [[card2.rank should] equal:card.rank];
         [[card2.suit should] equal:card.suit];
     });
+    
+    it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        [hand addCard:card];
+        NSMutableDictionary *dictionary = [hand toNSDictionary];
+        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] should] equal:@"Ace"];
+        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"suit"] should] equal:@"Spades"];
+        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"value"] should] equal:@12];
+    });
 
 });
 

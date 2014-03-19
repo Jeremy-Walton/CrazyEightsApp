@@ -36,6 +36,15 @@ describe(@"Discard Pile", ^{
         [[showedCard.suit should] equal:card.suit];
     });
     
+    it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        [discardPile addCard:card];
+        NSMutableDictionary *dictionary = [discardPile toNSDictionary];
+        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] should] equal:@"Ace"];
+        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"suit"] should] equal:@"Spades"];
+        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"value"] should] equal:@12];
+    });
+    
 });
 
 SPEC_END

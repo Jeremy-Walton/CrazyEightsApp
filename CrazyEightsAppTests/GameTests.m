@@ -217,6 +217,21 @@ describe(@"Game", ^{
         
     });
     
+    it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
+        JPWPlayer *p = [JPWPlayer newWithName:@"Jeremy"];
+        JPWPlayer *p2 = [JPWPlayer newWithName:@"Bob"];
+        [game addPlayer:p];
+        [game addPlayer:p2];
+        [game setup];
+        JPWHand *hand = [[game.players objectAtIndex:0] hand];
+        NSMutableDictionary *dictionary = [game toNSDictionary];
+        [[[[[dictionary objectForKey:@"players"] objectAtIndex:0] objectForKey:@"name"] should] equal:@"Jeremy"];
+        [[[[[[dictionary objectForKey:@"deck"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] shouldNot] equal:[[hand.cards objectAtIndex:0] rank]];
+        [game discard:[game.deck takeTopCard]];
+        [[[[[[dictionary objectForKey:@"discardPile"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] shouldNot] equal:[[hand.cards objectAtIndex:0] rank]];
+        [[[[dictionary objectForKey:@"turnOrder"] objectAtIndex:0] should] equal:@"Jeremy"];
+    });
+    
 });
 
 SPEC_END

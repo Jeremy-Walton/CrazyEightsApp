@@ -95,6 +95,15 @@
         [self showAlert:@"No more cards, sorry."];
     }
     [self endOfGameCheck];
+    [self convertToJson];
+}
+
+-(void)convertToJson {
+    NSMutableDictionary *dictionary = [game toNSDictionary];
+    NSError *writeError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSLog(@"JSON Output: %@", jsonString);
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
