@@ -48,5 +48,9 @@
     //need to get user input, not first card.
     return [self.hand.cards lastObject];
 }
+- (NSDictionary *)toNSDictionary
+{
+    return @{@"name": self.name, @"hand": [self.hand toNSDictionary]};
+}
 
 @end

@@ -51,4 +51,9 @@
     return [self.hand.cards objectAtIndex:0];
 }
 
+- (NSDictionary *)toNSDictionary
+{
+    return @{@"name": self.name, @"hand": [self.hand toNSDictionary]};
+}
+
 @end

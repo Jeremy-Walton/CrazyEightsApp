@@ -19,6 +19,8 @@
 @property (nonatomic, strong, readonly) JPWDiscardPile *discardPile;
 @property (nonatomic, strong, readonly) JPWDeck *deck;
 
+- (NSDictionary *)toNSDictionary;
+
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;
 - (void)addRobot:(JPWRobot *)player;

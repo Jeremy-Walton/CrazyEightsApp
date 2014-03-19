@@ -34,4 +34,9 @@
     return [NSString stringWithFormat:@"%@ of %@", self.rank, self.suit];
 }
 
+- (NSDictionary *)toNSDictionary
+{
+    return @{@"rank": self.rank, @"suit": self.suit, @"value": self.value};
+}
+
 @end

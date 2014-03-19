@@ -64,6 +64,13 @@ describe(@"Deck", ^{
         [[@([cards count]) shouldNot] equal:@52];
     });
     
+    it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
+        NSMutableDictionary *dictionary = [deck toNSDictionary];
+        [[dictionary[@"cards"][0][@"rank"] should] equal:@"2"];
+        [[dictionary[@"cards"][0][@"suit"] should] equal:@"Hearts"];
+        [[dictionary[@"cards"][0][@"value"] should] equal:@0];
+    });
+    
 });
 
 SPEC_END

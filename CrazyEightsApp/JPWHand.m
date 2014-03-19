@@ -55,4 +55,13 @@
     return [self.cards objectAtIndex:[index integerValue]];
 }
 
+- (NSDictionary *)toNSDictionary
+{
+    NSMutableArray *array =  [NSMutableArray arrayWithCapacity: [self.cards count]];
+    for (int i = 0; i < [self.cards count]; i++) {
+        [array addObject:[[self.cards objectAtIndex:i] toNSDictionary]];
+    }
+    return @{@"cards": array};
+}
+
 @end
