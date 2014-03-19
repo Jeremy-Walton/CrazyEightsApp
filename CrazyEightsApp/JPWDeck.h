@@ -15,5 +15,6 @@
 - (NSDictionary *)toNSDictionary;
 - (JPWPlayingCard *)takeTopCard;
 - (void)shuffle;
+- (void)fromNSDictionary:(NSDictionary *)dictionary;
 
 @end

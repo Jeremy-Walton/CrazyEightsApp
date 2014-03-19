@@ -146,4 +146,15 @@
     return @{@"players": array, @"deck": [self.deck toNSDictionary], @"discardPile": [self.discardPile toNSDictionary], @"turnOrder": self.turnOrder};
 }
 
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    for (int i = 0; i < [self.players count]; i++) {
+        [[self.players objectAtIndex:i] fromNSDictionary:dictionary[@"players"][i]];
+    }
+    [self.deck fromNSDictionary:dictionary[@"deck"]];
+    [self.discardPile fromNSDictionary:dictionary[@"discardPile"]];
+    for (int i = 0; i < [self.players count]; i++) {
+        self.turnOrder[i] = dictionary[@"turnOrder"][i];
+    }
+}
+
 @end

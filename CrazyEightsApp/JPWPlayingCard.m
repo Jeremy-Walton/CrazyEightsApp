@@ -39,4 +39,10 @@
     return @{@"rank": self.rank, @"suit": self.suit, @"value": self.value};
 }
 
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    self.rank = dictionary[@"rank"];
+    self.suit = dictionary[@"suit"];
+    self.value = dictionary[@"value"];
+}
+
 @end

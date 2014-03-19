@@ -20,6 +20,7 @@
 @property (nonatomic, strong, readonly) JPWDeck *deck;
 
 - (NSDictionary *)toNSDictionary;
+- (void)fromNSDictionary:(NSDictionary *)dictionary;
 
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;

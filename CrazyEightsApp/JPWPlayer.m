@@ -56,4 +56,9 @@
     return @{@"name": self.name, @"hand": [self.hand toNSDictionary]};
 }
 
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    self.name = dictionary[@"name"];
+    [self.hand fromNSDictionary:dictionary[@"hand"]];
+}
+
 @end

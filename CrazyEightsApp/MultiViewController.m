@@ -95,15 +95,42 @@
         [self showAlert:@"No more cards, sorry."];
     }
     [self endOfGameCheck];
-    [self convertToJson];
+    [self convertFromJson:[self convertToJson]];
+//    [self sendToServer];
 }
 
--(void)convertToJson {
-    NSMutableDictionary *dictionary = [game toNSDictionary];
+-(NSString *)convertToJson {
+    NSDictionary *dictionary = [game toNSDictionary];
     NSError *writeError = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    NSLog(@"JSON Output: %@", jsonString);
+    return jsonString;
+}
+
+-(void)convertFromJson:(NSString *)jsonGame {
+    NSError *error = nil;
+    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    [game fromNSDictionary:json];
+}
+
+-(void)sendToServer {
+    NSString *jsonGame = [self convertToJson];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setHTTPMethod:@"POST"];
+    [request setURL:[NSURL URLWithString:@"http://localhost:3000/crazy_eights"]];
+    [request setHTTPBody:[[NSString stringWithFormat:@"game=%@", jsonGame] dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSError *error = [[NSError alloc] init];
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
+    } else {
+        NSLog(@"%@", oResponseData);
+    }
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {

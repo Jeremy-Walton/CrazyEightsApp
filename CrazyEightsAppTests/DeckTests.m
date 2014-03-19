@@ -65,10 +65,20 @@ describe(@"Deck", ^{
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
-        NSMutableDictionary *dictionary = [deck toNSDictionary];
+        NSDictionary *dictionary = [deck toNSDictionary];
         [[dictionary[@"cards"][0][@"rank"] should] equal:@"2"];
         [[dictionary[@"cards"][0][@"suit"] should] equal:@"Hearts"];
         [[dictionary[@"cards"][0][@"value"] should] equal:@0];
+    });
+    
+    it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
+        JPWDeck *newDeck = [JPWDeck new];
+        NSDictionary *dictionary = [deck toNSDictionary];
+        [newDeck fromNSDictionary:dictionary];
+        JPWPlayingCard *card1 = [deck takeTopCard];
+        JPWPlayingCard *card2 = [newDeck takeTopCard];
+        [[card1.rank should] equal:card2.rank];
+        [[card1.suit should] equal:card2.suit];
     });
     
 });

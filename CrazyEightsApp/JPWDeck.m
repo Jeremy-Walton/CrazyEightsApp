@@ -71,4 +71,10 @@
     return @{@"cards": array};
 }
 
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    for (int i = 0; i < [self.cards count]; i++) {
+        [[self.cards objectAtIndex:i] fromNSDictionary:dictionary[@"cards"][i]];
+    }
+}
+
 @end

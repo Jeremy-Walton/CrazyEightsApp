@@ -20,5 +20,6 @@
 -(void)sortCards;
 
 - (NSDictionary *)toNSDictionary;
+- (void)fromNSDictionary:(NSDictionary *)dictionary;
 
 @end

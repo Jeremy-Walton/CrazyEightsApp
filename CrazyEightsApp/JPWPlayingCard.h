@@ -18,5 +18,6 @@
 - (instancetype)initWithRank:(NSString *)rank suit:(NSString *)suit;
 
 - (NSDictionary *)toNSDictionary;
+- (void)fromNSDictionary:(NSDictionary *)dictionary;
 
 @end

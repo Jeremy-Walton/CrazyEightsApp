@@ -13,6 +13,7 @@
 
 - (void)addCard:(JPWPlayingCard *)card;
 - (NSDictionary *)toNSDictionary;
+- (void)fromNSDictionary:(NSDictionary *)dictionary;
 - (NSNumber *)size;
 - (JPWPlayingCard *)showTopCard;
 
