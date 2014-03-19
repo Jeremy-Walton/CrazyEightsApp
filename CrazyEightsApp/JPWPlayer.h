@@ -18,7 +18,7 @@
 + (instancetype)newWithName:(NSString *)name;
 - (instancetype)initWithName:(NSString *)name;
 
-- (NSMutableDictionary *)toNSDictionary;
+- (NSDictionary *)toNSDictionary;
 
 - (void)addCardToHand:(JPWPlayingCard *)card;
 - (NSNumber *)numberOfCards;

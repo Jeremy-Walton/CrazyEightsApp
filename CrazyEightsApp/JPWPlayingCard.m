@@ -34,15 +34,9 @@
     return [NSString stringWithFormat:@"%@ of %@", self.rank, self.suit];
 }
 
-- (NSMutableDictionary *)toNSDictionary
+- (NSDictionary *)toNSDictionary
 {
-    
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setValue:self.rank forKey:@"rank"];
-    [dictionary setValue:self.suit forKey:@"suit"];
-    [dictionary setValue:self.value forKey:@"value"];
-    
-    return dictionary;
+    return @{@"rank": self.rank, @"suit": self.suit, @"value": self.value};
 }
 
 @end

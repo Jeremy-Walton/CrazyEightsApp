@@ -137,20 +137,13 @@
     [self.deck shuffle];
 }
 
-- (NSMutableDictionary *)toNSDictionary
+- (NSDictionary *)toNSDictionary
 {
-    
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
     NSMutableArray *array =  [NSMutableArray arrayWithCapacity: [self.players count]];
     for (int i = 0; i < [self.players count]; i++) {
         [array addObject:[[self.players objectAtIndex:i] toNSDictionary]];
     }
-    [dictionary setValue:array forKey:@"players"];
-    [dictionary setValue:[self.deck toNSDictionary] forKey:@"deck"];
-    [dictionary setValue:[self.discardPile toNSDictionary] forKey:@"discardPile"];
-    [dictionary setValue:self.turnOrder forKey:@"turnOrder"];
-    
-    return dictionary;
+    return @{@"players": array, @"deck": [self.deck toNSDictionary], @"discardPile": [self.discardPile toNSDictionary], @"turnOrder": self.turnOrder};
 }
 
 @end

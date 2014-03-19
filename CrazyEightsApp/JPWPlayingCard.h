@@ -17,6 +17,6 @@
 + (instancetype)newWithRank:(NSString *)rank suit:(NSString *)suit;
 - (instancetype)initWithRank:(NSString *)rank suit:(NSString *)suit;
 
-- (NSMutableDictionary *)toNSDictionary;
+- (NSDictionary *)toNSDictionary;
 
 @end

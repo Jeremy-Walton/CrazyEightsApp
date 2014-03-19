@@ -48,14 +48,9 @@
     //need to get user input, not first card.
     return [self.hand.cards lastObject];
 }
-- (NSMutableDictionary *)toNSDictionary
+- (NSDictionary *)toNSDictionary
 {
-    
-    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    [dictionary setValue:self.name forKey:@"name"];
-    [dictionary setValue:[self.hand toNSDictionary] forKey:@"hand"];
-    
-    return dictionary;
+    return @{@"name": self.name, @"hand": [self.hand toNSDictionary]};
 }
 
 @end

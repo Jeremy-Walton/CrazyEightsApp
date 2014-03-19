@@ -19,6 +19,6 @@
 - (JPWPlayingCard *)cardAt:(NSNumber *)index;
 -(void)sortCards;
 
-- (NSMutableDictionary *)toNSDictionary;
+- (NSDictionary *)toNSDictionary;
 
 @end

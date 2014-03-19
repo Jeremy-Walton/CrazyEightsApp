@@ -12,7 +12,7 @@
 @interface JPWDiscardPile : NSObject
 
 - (void)addCard:(JPWPlayingCard *)card;
-- (NSMutableDictionary *)toNSDictionary;
+- (NSDictionary *)toNSDictionary;
 - (NSNumber *)size;
 - (JPWPlayingCard *)showTopCard;
 
