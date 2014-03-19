@@ -141,7 +141,7 @@
 {
     
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] init];
-    NSMutableArray *array =  [NSMutableArray new];
+    NSMutableArray *array =  [NSMutableArray arrayWithCapacity: [self.players count]];
     for (int i = 0; i < [self.players count]; i++) {
         [array addObject:[[self.players objectAtIndex:i] toNSDictionary]];
     }

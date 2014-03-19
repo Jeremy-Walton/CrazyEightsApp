@@ -225,11 +225,11 @@ describe(@"Game", ^{
         [game setup];
         JPWHand *hand = [[game.players objectAtIndex:0] hand];
         NSMutableDictionary *dictionary = [game toNSDictionary];
-        [[[[[dictionary objectForKey:@"players"] objectAtIndex:0] objectForKey:@"name"] should] equal:@"Jeremy"];
-        [[[[[[dictionary objectForKey:@"deck"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] shouldNot] equal:[[hand.cards objectAtIndex:0] rank]];
+        [[dictionary[@"players"][0][@"name"] should] equal:@"Jeremy"];
+        [[dictionary[@"deck"][@"cards"][0][@"rank"] shouldNot] equal:[hand.cards[0] rank]];
         [game discard:[game.deck takeTopCard]];
-        [[[[[[dictionary objectForKey:@"discardPile"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] shouldNot] equal:[[hand.cards objectAtIndex:0] rank]];
-        [[[[dictionary objectForKey:@"turnOrder"] objectAtIndex:0] should] equal:@"Jeremy"];
+        [[dictionary[@"discardPile"][@"cards"][0][@"rank"] shouldNot] equal:[hand.cards[0] rank]];
+        [[dictionary[@"turnOrder"][0] should] equal:@"Jeremy"];
     });
     
 });

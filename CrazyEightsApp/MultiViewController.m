@@ -106,6 +106,7 @@
     NSLog(@"JSON Output: %@", jsonString);
 }
 
+
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
     if ([sender numberOfTouches] != 2)
         return;

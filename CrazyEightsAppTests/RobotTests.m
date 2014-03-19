@@ -49,8 +49,8 @@ describe(@"Robot", ^{
         JPWHand *hand = robot.hand;
         NSMutableDictionary *dictionary = [robot toNSDictionary];
         [[[dictionary objectForKey:@"name"] should] equal:@"Jeremy"];
-        [[[[[[dictionary objectForKey:@"hand"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] should] equal:[[hand.cards objectAtIndex:0] rank]];
-        [[[[[[dictionary objectForKey:@"hand"] objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"suit"] should] equal:[[hand.cards objectAtIndex:0] suit]];
+        [[dictionary[@"hand"][@"cards"][0][@"rank"] should] equal:[hand.cards[0] rank]];
+        [[dictionary[@"hand"][@"cards"][0][@"suit"] should] equal:[hand.cards[0] suit]];
     });
     
 });

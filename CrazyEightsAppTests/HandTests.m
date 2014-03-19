@@ -47,9 +47,9 @@ describe(@"Hand", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
         [hand addCard:card];
         NSMutableDictionary *dictionary = [hand toNSDictionary];
-        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] should] equal:@"Ace"];
-        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"suit"] should] equal:@"Spades"];
-        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"value"] should] equal:@12];
+        [[dictionary[@"cards"][0][@"rank"] should] equal:@"Ace"];
+        [[dictionary[@"cards"][0][@"suit"] should] equal:@"Spades"];
+        [[dictionary[@"cards"][0][@"value"] should] equal:@12];
     });
 
 });

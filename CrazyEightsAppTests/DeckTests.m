@@ -66,9 +66,9 @@ describe(@"Deck", ^{
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
         NSMutableDictionary *dictionary = [deck toNSDictionary];
-        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"rank"] should] equal:@"2"];
-        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"suit"] should] equal:@"Hearts"];
-        [[[[[dictionary objectForKey:@"cards"] objectAtIndex:0] objectForKey:@"value"] should] equal:@0];
+        [[dictionary[@"cards"][0][@"rank"] should] equal:@"2"];
+        [[dictionary[@"cards"][0][@"suit"] should] equal:@"Hearts"];
+        [[dictionary[@"cards"][0][@"value"] should] equal:@0];
     });
     
 });
