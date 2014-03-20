@@ -46,9 +46,14 @@
 }
 
 - (void)fromNSDictionary:(NSDictionary *)dictionary {
-    for (int i = 0; i < [self.cards count]; i++) {
-        [[self.cards objectAtIndex:i] fromNSDictionary:dictionary[@"cards"][i]];
+    NSArray *cardsDictionaries = dictionary[@"cards"];
+    NSMutableArray *newCards = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [cardsDictionaries count]; i++) {
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:cardsDictionaries[i][@"rank"] suit:cardsDictionaries[i][@"suit"]];
+//        [card fromNSDictionary:cardsDictionaries[i]];
+        [newCards addObject:card];
     }
+    self.cards = newCards;
 }
 
 @end

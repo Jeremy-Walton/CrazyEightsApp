@@ -213,7 +213,6 @@ describe(@"Game", ^{
              result = @"Not your turn.";
             [[[p numberOfCards] should] equal:@7];
         }
-//        NSLog(result);
         
     });
     
@@ -236,15 +235,18 @@ describe(@"Game", ^{
         JPWGame *game2 = [JPWGame new];
         JPWPlayer *p = [JPWPlayer newWithName:@"Jeremy"];
         JPWPlayer *p2 = [JPWPlayer newWithName:@"Bob"];
+        JPWPlayer *p3 = [JPWPlayer newWithName:@"Bib"];
         [game addPlayer:p];
         [game addPlayer:p2];
         [game2 addPlayer:p];
         [game2 addPlayer:p2];
+        [game2 addPlayer:p3];
         [game setup];
         [game2 setup];
+        [[[game2 numberOfPlayers] shouldNot] equal:[game numberOfPlayers]];
         NSDictionary *dictionary = [game toNSDictionary];
         [game2 fromNSDictionary:dictionary];
-        
+        [[[game2 numberOfPlayers] should] equal:[game numberOfPlayers]];
         [[[game2.players[0] name] should] equal:[game.players[0] name]];
         [[[[game2.players[0] hand].cards[0] rank] should] equal:[[game.players[0] hand].cards[0] rank]];
         [[[[game2.players[0] hand].cards[0] suit] should] equal:[[game.players[0] hand].cards[0] suit]];

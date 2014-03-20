@@ -95,8 +95,8 @@
         [self showAlert:@"No more cards, sorry."];
     }
     [self endOfGameCheck];
-    [self convertFromJson:[self convertToJson]];
-//    [self sendToServer];
+//    [self convertFromJson:[self convertToJson]];
+    [self sendToServer];
 }
 
 -(NSString *)convertToJson {

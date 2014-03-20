@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
+#import "JPWJsonConversionProtocall.h"
 
-@interface JPWHand : NSObject
+@interface JPWHand : NSObject <JPWJsonConversionProtocall>
 
 @property (nonatomic, strong) NSMutableArray *cards;
 
@@ -18,8 +19,5 @@
 - (NSNumber *)numberOfCards;
 - (JPWPlayingCard *)cardAt:(NSNumber *)index;
 -(void)sortCards;
-
-- (NSDictionary *)toNSDictionary;
-- (void)fromNSDictionary:(NSDictionary *)dictionary;
 
 @end

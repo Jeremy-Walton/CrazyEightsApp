@@ -8,6 +8,10 @@
 
 #import "JPWPlayingCard.h"
 
+@interface JPWPlayingCard (private)
+    @property (nonatomic, strong, readwrite) NSNumber *value;
+@end
+
 @implementation JPWPlayingCard {
 @private NSArray *rankOrder;
 }
@@ -36,13 +40,7 @@
 
 - (NSDictionary *)toNSDictionary
 {
-    return @{@"rank": self.rank, @"suit": self.suit, @"value": self.value};
-}
-
-- (void)fromNSDictionary:(NSDictionary *)dictionary {
-    self.rank = dictionary[@"rank"];
-    self.suit = dictionary[@"suit"];
-    self.value = dictionary[@"value"];
+    return @{@"rank": self.rank, @"suit": self.suit};
 }
 
 @end

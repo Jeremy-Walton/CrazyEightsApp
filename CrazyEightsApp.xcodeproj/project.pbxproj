@@ -73,6 +73,7 @@
 		3F01A77118A52E42009DD97A /* turnManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = turnManagerTests.m; sourceTree = "<group>"; };
 		3F01A77318A55FA1009DD97A /* OpponentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpponentView.h; sourceTree = "<group>"; };
 		3F01A77418A55FA1009DD97A /* OpponentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpponentView.m; sourceTree = "<group>"; };
+		3F039B3F18DB3F730091AC4E /* JPWJsonConversionProtocall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPWJsonConversionProtocall.h; sourceTree = "<group>"; };
 		3F505A611896AE4500B985DE /* CrazyEightsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrazyEightsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F505A641896AE4500B985DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F505A661896AE4500B985DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -194,6 +195,7 @@
 			children = (
 				3F505A991896AEF200B985DE /* CrazyEightsModel-Prefix.pch */,
 				3F505A9A1896AEF200B985DE /* CrazyEightsModel.h */,
+				3F039B3F18DB3F730091AC4E /* JPWJsonConversionProtocall.h */,
 				3F505A9B1896AEF200B985DE /* CrazyEightsModel.m */,
 				3F505A9C1896AEF200B985DE /* JPWDeck.h */,
 				3F505A9D1896AEF200B985DE /* JPWDeck.m */,

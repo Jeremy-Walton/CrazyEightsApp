@@ -42,29 +42,26 @@ describe(@"Player", ^{
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
-        JPWGame *game = [JPWGame new];
-        [game makeDeckForTest];
-        [game addPlayer:player];
-        [game dealCards];
         JPWHand *hand = player.hand;
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        [hand addCard:card];
         NSDictionary *dictionary = [player toNSDictionary];
-        [[[dictionary objectForKey:@"name"] should] equal:@"Jeremy"];
-        [[dictionary[@"hand"][@"cards"][0][@"rank"] should] equal:[hand.cards[0] rank]];
-        [[dictionary[@"hand"][@"cards"][0][@"suit"] should] equal:[hand.cards[0] suit]];
+        JPWPlayingCard *firstCard = hand.cards[0];
+        NSDictionary *expected = @{@"name": @"Jeremy",@"hand": @{@"cards": @[@{@"rank": firstCard.rank, @"suit": firstCard.suit}]}};
+        [[dictionary should] equal: expected];
     });
     
     it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
         JPWPlayer *player2 = [JPWPlayer newWithName:@"Bob"];
-        JPWGame *game = [JPWGame new];
-        [game makeDeckForTest];
-        [game addPlayer:player];
-        [game addPlayer:player2];
-        [game dealCards];
-        NSDictionary *dictionary = [game.players[0] toNSDictionary];
-        [game.players[1] fromNSDictionary:dictionary];
-        [[[game.players[1] name] should] equal:[game.players[0] name]];
-        [[[[game.players[1] hand].cards[0] rank] should] equal:[[game.players[0] hand].cards[0] rank]];
-        [[[[game.players[1] hand].cards[0] suit] should] equal:[[game.players[0] hand].cards[0] suit]];
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        JPWPlayingCard *card2 = [JPWPlayingCard newWithRank:@"King" suit:@"Clubs"];
+        [player addCardToHand:card];
+        [player2 addCardToHand:card2];
+        NSDictionary *dictionary = [player toNSDictionary];
+        [player2 fromNSDictionary:dictionary];
+        [[[player2 name] should] equal:[player name]];
+        [[[[player2 hand].cards[0] rank] should] equal:[[player hand].cards[0] rank]];
+        [[[[player2 hand].cards[0] suit] should] equal:[[player hand].cards[0] suit]];
     });
     
 });

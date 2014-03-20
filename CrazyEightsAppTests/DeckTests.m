@@ -68,10 +68,10 @@ describe(@"Deck", ^{
         NSDictionary *dictionary = [deck toNSDictionary];
         [[dictionary[@"cards"][0][@"rank"] should] equal:@"2"];
         [[dictionary[@"cards"][0][@"suit"] should] equal:@"Hearts"];
-        [[dictionary[@"cards"][0][@"value"] should] equal:@0];
     });
     
     it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
+        [deck shuffle];
         JPWDeck *newDeck = [JPWDeck new];
         NSDictionary *dictionary = [deck toNSDictionary];
         [newDeck fromNSDictionary:dictionary];

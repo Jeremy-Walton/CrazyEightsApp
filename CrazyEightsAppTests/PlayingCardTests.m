@@ -29,18 +29,8 @@ describe(@"Playing Card", ^{
         NSDictionary *dictionary = [ace toNSDictionary];
         [[dictionary[@"rank"] should] equal:@"Ace"];
         [[dictionary[@"suit"] should] equal:@"Spades"];
-        [[dictionary[@"value"] should] equal:@(12)];
     });
-    
-    it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
-        NSDictionary *dictionary = [ace toNSDictionary];
-        JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"King" suit:@"Clubs"];
-        [newCard fromNSDictionary:dictionary];
-        [[newCard.rank should] equal:ace.rank];
-        [[newCard.suit should] equal:ace.suit];
-        [[newCard.value should] equal:ace.value];
-    });
-    
+        
 });
 
 SPEC_END
