@@ -21,6 +21,11 @@
     return [[self alloc] initWithRank:rank suit:suit];
 }
 
++ (instancetype)newWithDictionary:(NSMutableDictionary *)dictionary
+{
+    return [[self alloc] initWithDictionary:dictionary];
+}
+
 - (instancetype)initWithRank:(NSString *)rank suit:(NSString *)suit
 {
     self = [super init];
@@ -33,9 +38,23 @@
     return self;
 }
 
+- (instancetype)initWithDictionary:(NSMutableDictionary *)dictionary
+{
+    return [self initWithRank:dictionary[@"rank"] suit:dictionary[@"suit"]];
+}
+
 - (NSString *)description {
 
     return [NSString stringWithFormat:@"%@ of %@", self.rank, self.suit];
+}
+
+- (BOOL)isEqual:(JPWPlayingCard *)card
+{
+    if ((self.rank == card.rank) && (self.suit == card.suit)) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (NSDictionary *)toNSDictionary

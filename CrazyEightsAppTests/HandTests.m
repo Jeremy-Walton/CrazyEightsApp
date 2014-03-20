@@ -39,16 +39,15 @@ describe(@"Hand", ^{
         [[[hand numberOfCards] should] equal:@1];
         JPWPlayingCard *card2 = [hand removeCard:card];
         [[[hand numberOfCards] should] equal:@0];
-        [[card2.rank should] equal:card.rank];
-        [[card2.suit should] equal:card.suit];
+        [[@([card isEqual:card2]) should] beTrue];
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
         [hand addCard:card];
         NSDictionary *dictionary = [hand toNSDictionary];
-        [[dictionary[@"cards"][0][@"rank"] should] equal:@"Ace"];
-        [[dictionary[@"cards"][0][@"suit"] should] equal:@"Spades"];
+        NSDictionary *expected = @{@"cards": @[[card toNSDictionary]]};
+        [[dictionary should] equal: expected];
     });
     
     it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
@@ -62,8 +61,9 @@ describe(@"Hand", ^{
         [[[newHand numberOfCards] shouldNot] equal:[hand numberOfCards]];
         [newHand fromNSDictionary:dictionary];
         [[[newHand numberOfCards] should] equal:[hand numberOfCards]];
-        [[[newHand.cards[0] rank] should] equal:card.rank];
-        [[[newHand.cards[0] suit] should] equal:card.suit];
+        
+        [[newHand.cards[0] should] equal:card];
+        [[@([newHand.cards[0] isEqual:card]) should] beTrue];
     });
 
 });

@@ -29,6 +29,8 @@ describe(@"Playing Card", ^{
         NSDictionary *dictionary = [ace toNSDictionary];
         [[dictionary[@"rank"] should] equal:@"Ace"];
         [[dictionary[@"suit"] should] equal:@"Spades"];
+        NSDictionary *expected = @{@"rank": @"Ace", @"suit": @"Spades"};
+        [[dictionary should] equal: expected];
     });
         
 });

@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
 #import "JPWHand.h"
-#import "JPWJsonConversionProtocall.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWPlayer : NSObject <JPWJsonConversionProtocall>
+@interface JPWPlayer : NSObject <JPWJsonConversionProtocol>
 
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong) JPWHand *hand;

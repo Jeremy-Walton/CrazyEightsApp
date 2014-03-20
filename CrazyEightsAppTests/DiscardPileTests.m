@@ -32,16 +32,15 @@ describe(@"Discard Pile", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"A" suit:@"S"];
         [discardPile addCard:card];
         JPWPlayingCard *showedCard = [discardPile showTopCard];
-        [[showedCard.rank should] equal:card.rank];
-        [[showedCard.suit should] equal:card.suit];
+        [[@([showedCard isEqual:card]) should] beTrue];
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
         [discardPile addCard:card];
         NSDictionary *dictionary = [discardPile toNSDictionary];
-        [[dictionary[@"cards"][0][@"rank"] should] equal:@"Ace"];
-        [[dictionary[@"cards"][0][@"suit"] should] equal:@"Spades"];
+        NSDictionary *expected = @{@"cards": @[[card toNSDictionary]]};;
+        [[dictionary should] equal: expected];
     });
     
     it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
@@ -55,10 +54,9 @@ describe(@"Discard Pile", ^{
         NSDictionary *dictionary = [discardPile toNSDictionary];
         [newDiscardPile fromNSDictionary:dictionary];
         [[[newDiscardPile size] should] equal:[discardPile size]];
-        JPWPlayingCard *TopCardOfDiscardPile = [discardPile showTopCard];
-        JPWPlayingCard *TopCardOfNewDicardPile = [newDiscardPile showTopCard];
-        [[TopCardOfDiscardPile.rank should] equal:TopCardOfNewDicardPile.rank];
-        [[TopCardOfDiscardPile.suit should] equal:TopCardOfNewDicardPile.suit];
+        JPWPlayingCard *topCardOfDiscardPile = [discardPile showTopCard];
+        JPWPlayingCard *topCardOfNewDicardPile = [newDiscardPile showTopCard];
+        [[topCardOfDiscardPile  should] equal:topCardOfNewDicardPile];
     });
     
 });

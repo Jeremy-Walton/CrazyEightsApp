@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
-#import "JPWJsonConversionProtocall.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWDiscardPile : NSObject <JPWJsonConversionProtocall>
+@interface JPWDiscardPile : NSObject <JPWJsonConversionProtocol>
 
 - (void)addCard:(JPWPlayingCard *)card;
 - (NSNumber *)size;

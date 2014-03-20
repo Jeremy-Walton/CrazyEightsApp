@@ -11,9 +11,9 @@
 #import "JPWRobot.h"
 #import "JPWDeck.h"
 #import "JPWDiscardPile.h"
-#import "JPWJsonConversionProtocall.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWGame : NSObject <JPWJsonConversionProtocall>
+@interface JPWGame : NSObject <JPWJsonConversionProtocol>
 
 @property (nonatomic, strong, readonly) NSMutableArray *turnOrder;
 @property (nonatomic, strong, readonly) NSMutableArray *players;

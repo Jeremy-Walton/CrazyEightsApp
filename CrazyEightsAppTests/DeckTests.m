@@ -54,7 +54,7 @@ describe(@"Deck", ^{
         for (int i = 0; i < [[deck size] integerValue]; i++) {
             JPWPlayingCard *card1 = [deck takeTopCard];
             JPWPlayingCard *card2 = [deck2 takeTopCard];
-            if (card1.rank == card2.rank && card1.suit == card2.suit) {
+            if ([card1 isEqual:card2]) {
                 [cards addObject:card1];
             } else {
             }
@@ -75,10 +75,12 @@ describe(@"Deck", ^{
         JPWDeck *newDeck = [JPWDeck new];
         NSDictionary *dictionary = [deck toNSDictionary];
         [newDeck fromNSDictionary:dictionary];
-        JPWPlayingCard *card1 = [deck takeTopCard];
-        JPWPlayingCard *card2 = [newDeck takeTopCard];
-        [[card1.rank should] equal:card2.rank];
-        [[card1.suit should] equal:card2.suit];
+        
+        for(int i = 0; i < [[deck size] integerValue]; i++) {
+            JPWPlayingCard *card1 = [deck takeTopCard];
+            JPWPlayingCard *card2 = [newDeck takeTopCard];
+            [[card1 should] equal:card2];
+        }
     });
     
 });

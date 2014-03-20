@@ -68,9 +68,7 @@
     NSArray *cardsDictionaries = dictionary[@"cards"];
     NSMutableArray *newCards =  [[NSMutableArray alloc] init];
     for (int i = 0; i < [cardsDictionaries count]; i++) {
-        JPWPlayingCard *card = [JPWPlayingCard newWithRank:cardsDictionaries[i][@"rank"] suit:cardsDictionaries[i][@"suit"]];
-//        [card fromNSDictionary:cardsDictionaries[i]];
-        [newCards addObject:card];
+        [newCards addObject: [JPWPlayingCard newWithDictionary: cardsDictionaries[i]]];
     }
     self.cards = newCards;
 }

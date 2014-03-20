@@ -46,8 +46,7 @@ describe(@"Player", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
         [hand addCard:card];
         NSDictionary *dictionary = [player toNSDictionary];
-        JPWPlayingCard *firstCard = hand.cards[0];
-        NSDictionary *expected = @{@"name": @"Jeremy",@"hand": @{@"cards": @[@{@"rank": firstCard.rank, @"suit": firstCard.suit}]}};
+        NSDictionary *expected = @{@"name": @"Jeremy",@"hand": @{@"cards": @[[card toNSDictionary]]}};
         [[dictionary should] equal: expected];
     });
     
@@ -60,8 +59,7 @@ describe(@"Player", ^{
         NSDictionary *dictionary = [player toNSDictionary];
         [player2 fromNSDictionary:dictionary];
         [[[player2 name] should] equal:[player name]];
-        [[[[player2 hand].cards[0] rank] should] equal:[[player hand].cards[0] rank]];
-        [[[[player2 hand].cards[0] suit] should] equal:[[player hand].cards[0] suit]];
+        [[[player2 hand].cards should] equal:[player hand].cards];
     });
     
 });

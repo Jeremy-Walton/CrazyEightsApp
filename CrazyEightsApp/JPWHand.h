@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
-#import "JPWJsonConversionProtocall.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWHand : NSObject <JPWJsonConversionProtocall>
+@interface JPWHand : NSObject <JPWJsonConversionProtocol>
 
 @property (nonatomic, strong) NSMutableArray *cards;
 

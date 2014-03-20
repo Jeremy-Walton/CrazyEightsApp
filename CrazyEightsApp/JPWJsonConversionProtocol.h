@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol JPWJsonConversionProtocall <NSObject>
+@protocol JPWJsonConversionProtocol <NSObject>
 
 - (NSDictionary *)toNSDictionary;
 - (void)fromNSDictionary:(NSDictionary *)dictionary;

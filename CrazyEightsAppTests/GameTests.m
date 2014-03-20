@@ -222,13 +222,9 @@ describe(@"Game", ^{
         [game addPlayer:p];
         [game addPlayer:p2];
         [game setup];
-        JPWHand *hand = [[game.players objectAtIndex:0] hand];
         NSDictionary *dictionary = [game toNSDictionary];
-        [[dictionary[@"players"][0][@"name"] should] equal:@"Jeremy"];
-        [[dictionary[@"deck"][@"cards"][0][@"rank"] shouldNot] equal:[hand.cards[0] rank]];
-        [game discard:[game.deck takeTopCard]];
-        [[dictionary[@"discardPile"][@"cards"][0][@"rank"] shouldNot] equal:[hand.cards[0] rank]];
-        [[dictionary[@"turnOrder"][0] should] equal:@"Jeremy"];
+        NSDictionary *expected = @{@"deck": [game.deck toNSDictionary], @"discardPile": [game.discardPile toNSDictionary], @"players": @[[game.players[0] toNSDictionary], [game.players[1] toNSDictionary]], @"turnOrder": [game turnOrder]};
+        [[dictionary should] equal: expected];
     });
     
     it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
@@ -248,8 +244,7 @@ describe(@"Game", ^{
         [game2 fromNSDictionary:dictionary];
         [[[game2 numberOfPlayers] should] equal:[game numberOfPlayers]];
         [[[game2.players[0] name] should] equal:[game.players[0] name]];
-        [[[[game2.players[0] hand].cards[0] rank] should] equal:[[game.players[0] hand].cards[0] rank]];
-        [[[[game2.players[0] hand].cards[0] suit] should] equal:[[game.players[0] hand].cards[0] suit]];
+        [[[game2.players[0] hand].cards should] equal:[game.players[0] hand].cards];
     });
     
 });
