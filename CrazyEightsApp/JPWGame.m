@@ -146,4 +146,22 @@
     return @{@"players": array, @"deck": [self.deck toNSDictionary], @"discardPile": [self.discardPile toNSDictionary], @"turnOrder": self.turnOrder};
 }
 
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    NSArray *playersDictionary = dictionary[@"players"];
+    NSMutableArray *newPlayers = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [playersDictionary count]; i++) {
+        JPWPlayer *player = [JPWPlayer newWithName:playersDictionary[i][@"name"]];
+        [player fromNSDictionary:playersDictionary[i]];
+        [newPlayers addObject:player];
+    }
+    self.players = newPlayers;
+    [self.deck fromNSDictionary:dictionary[@"deck"]];
+    [self.discardPile fromNSDictionary:dictionary[@"discardPile"]];
+    NSMutableArray *playerNames =  [NSMutableArray arrayWithCapacity: [self.players count]];
+    for (int i = 0; i < [self.players count]; i++) {
+        [playerNames addObject:[self.players[i] name]];
+    }
+    self.turnOrder = playerNames;
+}
+
 @end

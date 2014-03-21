@@ -42,15 +42,25 @@ describe(@"Robot", ^{
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
-        JPWGame *game = [JPWGame new];
-        [game makeDeckForTest];
-        [game addRobot:robot];
-        [game dealCards];
         JPWHand *hand = robot.hand;
-        NSMutableDictionary *dictionary = [robot toNSDictionary];
-        [[[dictionary objectForKey:@"name"] should] equal:@"Jeremy"];
-        [[dictionary[@"hand"][@"cards"][0][@"rank"] should] equal:[hand.cards[0] rank]];
-        [[dictionary[@"hand"][@"cards"][0][@"suit"] should] equal:[hand.cards[0] suit]];
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        [hand addCard:card];
+        NSDictionary *dictionary = [robot toNSDictionary];
+        NSDictionary *expected = @{@"name": @"Jeremy",@"hand": @{@"cards": @[[card toNSDictionary]]}};
+       [[dictionary should] equal: expected];
+    });
+    
+    it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
+        JPWRobot *player2 = [JPWRobot newWithName:@"Bob"];
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        JPWPlayingCard *card2 = [JPWPlayingCard newWithRank:@"King" suit:@"Clubs"];
+        [robot addCardToHand:card];
+        [player2 addCardToHand:card2];
+        NSDictionary *dictionary = [robot toNSDictionary];
+        [player2 fromNSDictionary:dictionary];
+        [[[player2 name] should] equal:[robot name]];
+        [[[player2 hand].cards should] equal:[robot hand].cards];
+        
     });
     
 });

@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWDeck : NSObject
+@interface JPWDeck : NSObject <JPWJsonConversionProtocol>
+
+@property (nonatomic, strong) NSMutableArray *cards;
 
 - (NSNumber *)size;
-- (NSDictionary *)toNSDictionary;
 - (JPWPlayingCard *)takeTopCard;
 - (void)shuffle;
 

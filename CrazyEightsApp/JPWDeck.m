@@ -9,10 +9,6 @@
 #import "JPWDeck.h"
 #import "JPWPlayingCard.h"
 
-@interface JPWDeck()
-@property (nonatomic, strong) NSMutableArray *cards;
-@end
-
 @implementation JPWDeck
 
 - (id)init {
@@ -69,6 +65,10 @@
         [array addObject:[[self.cards objectAtIndex:i] toNSDictionary]];
     }
     return @{@"cards": array};
+}
+
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    self.cards = [JPWPlayingCard arrayFromJSONDictionaries:dictionary[@"cards"]];
 }
 
 @end

@@ -45,4 +45,8 @@
     return @{@"cards": array};
 }
 
+- (void)fromNSDictionary:(NSDictionary *)dictionary {
+    self.cards = [JPWPlayingCard arrayFromJSONDictionaries:dictionary[@"cards"]];
+}
+
 @end

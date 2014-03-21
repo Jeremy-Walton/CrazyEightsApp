@@ -7,16 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWPlayingCard : NSObject
+@interface JPWPlayingCard : NSObject <JPWJsonConversionProtocol>
 
 @property NSString *rank;
 @property NSString *suit;
-@property NSNumber *value;
+@property (nonatomic, strong, readonly) NSNumber *value;
 
 + (instancetype)newWithRank:(NSString *)rank suit:(NSString *)suit;
 - (instancetype)initWithRank:(NSString *)rank suit:(NSString *)suit;
 
-- (NSDictionary *)toNSDictionary;
++ (instancetype)newWithDictionary:(NSMutableDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSMutableDictionary *)dictionary;
+
+- (BOOL)isEqual:(JPWPlayingCard *)card;
+
++ (NSMutableArray *)arrayFromJSONDictionaries:(NSMutableArray *)dictionaries;
 
 @end

@@ -22,4 +22,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *deckImage;
 @property (weak, nonatomic) IBOutlet UILabel *GameInfoLabel;
 
+
 @end

@@ -32,17 +32,31 @@ describe(@"Discard Pile", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"A" suit:@"S"];
         [discardPile addCard:card];
         JPWPlayingCard *showedCard = [discardPile showTopCard];
-        [[showedCard.rank should] equal:card.rank];
-        [[showedCard.suit should] equal:card.suit];
+        [[@([showedCard isEqual:card]) should] beTrue];
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
         JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
         [discardPile addCard:card];
-        NSMutableDictionary *dictionary = [discardPile toNSDictionary];
-        [[dictionary[@"cards"][0][@"rank"] should] equal:@"Ace"];
-        [[dictionary[@"cards"][0][@"suit"] should] equal:@"Spades"];
-        [[dictionary[@"cards"][0][@"value"] should] equal:@12];
+        NSDictionary *dictionary = [discardPile toNSDictionary];
+        NSDictionary *expected = @{@"cards": @[[card toNSDictionary]]};;
+        [[dictionary should] equal: expected];
+    });
+    
+    it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
+        JPWDiscardPile *newDiscardPile = [JPWDiscardPile new];
+        JPWPlayingCard *card = [JPWPlayingCard newWithRank:@"Ace" suit:@"Spades"];
+        JPWPlayingCard *card2 = [JPWPlayingCard newWithRank:@"King" suit:@"Clubs"];
+        [discardPile addCard:card];
+        [newDiscardPile addCard:card2];
+        [newDiscardPile addCard:card];
+        [[[newDiscardPile size] shouldNot] equal:[discardPile size]];
+        NSDictionary *dictionary = [discardPile toNSDictionary];
+        [newDiscardPile fromNSDictionary:dictionary];
+        [[[newDiscardPile size] should] equal:[discardPile size]];
+        JPWPlayingCard *topCardOfDiscardPile = [discardPile showTopCard];
+        JPWPlayingCard *topCardOfNewDiscardPile = [newDiscardPile showTopCard];
+        [[topCardOfDiscardPile  should] equal:topCardOfNewDiscardPile];
     });
     
 });

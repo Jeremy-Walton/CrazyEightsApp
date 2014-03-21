@@ -9,16 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "JPWPlayingCard.h"
 #import "JPWHand.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWRobot : NSObject
+@interface JPWRobot : NSObject <JPWJsonConversionProtocol>
 
 @property (nonatomic, strong, readonly) NSString *name;
 @property (nonatomic, strong) JPWHand *hand;
 
 + (instancetype)newWithName:(NSString *)name;
 - (instancetype)initWithName:(NSString *)name;
-
-- (NSDictionary *)toNSDictionary;
 
 - (void)addCardToHand:(JPWPlayingCard *)card;
 - (NSNumber *)numberOfCards;

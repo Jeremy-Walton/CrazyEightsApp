@@ -11,15 +11,14 @@
 #import "JPWRobot.h"
 #import "JPWDeck.h"
 #import "JPWDiscardPile.h"
+#import "JPWJsonConversionProtocol.h"
 
-@interface JPWGame : NSObject
+@interface JPWGame : NSObject <JPWJsonConversionProtocol>
 
 @property (nonatomic, strong, readonly) NSMutableArray *turnOrder;
 @property (nonatomic, strong, readonly) NSMutableArray *players;
 @property (nonatomic, strong, readonly) JPWDiscardPile *discardPile;
 @property (nonatomic, strong, readonly) JPWDeck *deck;
-
-- (NSDictionary *)toNSDictionary;
 
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;

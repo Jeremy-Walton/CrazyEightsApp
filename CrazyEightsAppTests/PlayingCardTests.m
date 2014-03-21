@@ -26,12 +26,13 @@ describe(@"Playing Card", ^{
     });
     
     it(@"should have a method toNSDictionary that converts the object to a dictionary.", ^{
-        NSMutableDictionary *dictionary = [ace toNSDictionary];
+        NSDictionary *dictionary = [ace toNSDictionary];
         [[dictionary[@"rank"] should] equal:@"Ace"];
         [[dictionary[@"suit"] should] equal:@"Spades"];
-        [[dictionary[@"value"] should] equal:@(12)];
+        NSDictionary *expected = @{@"rank": @"Ace", @"suit": @"Spades"};
+        [[dictionary should] equal: expected];
     });
-    
+        
 });
 
 SPEC_END
