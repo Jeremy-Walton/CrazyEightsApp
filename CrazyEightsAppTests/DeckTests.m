@@ -75,12 +75,7 @@ describe(@"Deck", ^{
         JPWDeck *newDeck = [JPWDeck new];
         NSDictionary *dictionary = [deck toNSDictionary];
         [newDeck fromNSDictionary:dictionary];
-        
-        for(int i = 0; i < [[deck size] integerValue]; i++) {
-            JPWPlayingCard *card1 = [deck takeTopCard];
-            JPWPlayingCard *card2 = [newDeck takeTopCard];
-            [[card1 should] equal:card2];
-        }
+        [[[deck cards] should] equal:[newDeck cards]];
     });
     
 });

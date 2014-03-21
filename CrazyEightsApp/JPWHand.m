@@ -65,12 +65,7 @@
 }
 
 - (void)fromNSDictionary:(NSDictionary *)dictionary {
-    NSArray *cardsDictionaries = dictionary[@"cards"];
-    NSMutableArray *newCards =  [[NSMutableArray alloc] init];
-    for (int i = 0; i < [cardsDictionaries count]; i++) {
-        [newCards addObject: [JPWPlayingCard newWithDictionary: cardsDictionaries[i]]];
-    }
-    self.cards = newCards;
+    self.cards = [JPWPlayingCard arrayFromJSONDictionaries:dictionary[@"cards"]];
 }
 
 @end

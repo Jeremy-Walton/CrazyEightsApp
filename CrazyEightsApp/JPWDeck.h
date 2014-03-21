@@ -12,6 +12,8 @@
 
 @interface JPWDeck : NSObject <JPWJsonConversionProtocol>
 
+@property (nonatomic, strong) NSMutableArray *cards;
+
 - (NSNumber *)size;
 - (JPWPlayingCard *)takeTopCard;
 - (void)shuffle;

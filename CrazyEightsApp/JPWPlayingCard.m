@@ -62,4 +62,13 @@
     return @{@"rank": self.rank, @"suit": self.suit};
 }
 
++ (NSMutableArray *)arrayFromJSONDictionaries:(NSMutableArray *)dictionaries
+{
+    NSMutableArray *newCards =  [[NSMutableArray alloc] init];
+    for (int i = 0; i < [dictionaries count]; i++) {
+        [newCards addObject: [JPWPlayingCard newWithDictionary: dictionaries[i]]];
+    }
+    return newCards;
+}
+
 @end

@@ -19,8 +19,10 @@
 - (instancetype)initWithRank:(NSString *)rank suit:(NSString *)suit;
 
 + (instancetype)newWithDictionary:(NSMutableDictionary *)dictionary;
-- (instancetype)newWithDictionary:(NSMutableDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSMutableDictionary *)dictionary;
 
 - (BOOL)isEqual:(JPWPlayingCard *)card;
+
++ (NSMutableArray *)arrayFromJSONDictionaries:(NSMutableArray *)dictionaries;
 
 @end

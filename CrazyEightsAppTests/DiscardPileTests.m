@@ -55,8 +55,8 @@ describe(@"Discard Pile", ^{
         [newDiscardPile fromNSDictionary:dictionary];
         [[[newDiscardPile size] should] equal:[discardPile size]];
         JPWPlayingCard *topCardOfDiscardPile = [discardPile showTopCard];
-        JPWPlayingCard *topCardOfNewDicardPile = [newDiscardPile showTopCard];
-        [[topCardOfDiscardPile  should] equal:topCardOfNewDicardPile];
+        JPWPlayingCard *topCardOfNewDiscardPile = [newDiscardPile showTopCard];
+        [[topCardOfDiscardPile  should] equal:topCardOfNewDiscardPile];
     });
     
 });
