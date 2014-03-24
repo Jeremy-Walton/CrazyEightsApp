@@ -22,5 +22,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *deckImage;
 @property (weak, nonatomic) IBOutlet UILabel *GameInfoLabel;
 
-
+@property(nonatomic) BOOL create;
+@property(nonatomic) NSString* name;
+@property(nonatomic) NSNumber* number_of_players;
+@property(nonatomic) NSNumber* number_of_robots;
+@property(nonatomic) NSNumber* game_id;
 @end

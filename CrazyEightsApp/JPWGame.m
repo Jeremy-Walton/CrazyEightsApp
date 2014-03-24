@@ -27,6 +27,8 @@
     if(self) {
         _turnOrder = [NSMutableArray new];
         _players = [NSMutableArray new];
+        _deck = [JPWDeck new];
+        _discardPile = [JPWDiscardPile new];
     }
     return self;
 }
@@ -66,8 +68,6 @@
 }
 
 - (void)setup {
-    _deck = [JPWDeck new];
-    _discardPile = [JPWDiscardPile new];
     [self.deck shuffle];
     [self dealCards];
     [self setTurnOrder];
