@@ -43,6 +43,9 @@
         GameCreatorViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"gameCreator"];
         controller.name = self.usernameField.text;
         [self.navigationController pushViewController:controller animated:YES];
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome" message:@"You logged in succesfully" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+        
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Failure" message:@"Invalid username or password" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];

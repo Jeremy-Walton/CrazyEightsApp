@@ -14,6 +14,7 @@
 #import "CoverFlowLayout.h"
 #import "JPWTurnManager.h"
 #import "OpponentViewController.h"
+#import "JPWWebClient.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -66,78 +67,17 @@
     [self loadNewGame];
 }
 
--(void)initializeServer {
-    NSNumber *number_of_players = self.number_of_players;
-    NSNumber *number_of_robots = self.number_of_robots;
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"POST"];
-    [request setURL:[NSURL URLWithString:@"http://localhost:3000/crazy_eights"]];
-    [request setHTTPBody:[[NSString stringWithFormat:@"number_of_players=%@&number_of_robots=%@&game=%@", number_of_players, number_of_robots, @""] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-    
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
-    } else {
-        NSLog(@"%@", oResponseData);
-    }
-}
-
--(void)joinServer {
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"GET"];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:3000/crazy_eights/%@", self.game_id]]];
-//    [request setHTTPBody:[[NSString stringWithFormat:@"number_of_players=%@ number_of_robots=%@", number_of_players, number_of_robots] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-    
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
-    } else {
-        NSError *error = nil;
-//        NSData *jsonData = [oResponseData dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary* json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];;
-        if ([json[@"game"][@"data"]  isEqual: @""]) {
-//            if([json[@"users"] length] + 1 == (int)json[@"game"][@"number_of_players"]) {
-                cardList = [NSMutableArray new];
-                game = [JPWGame new];
-                user = [JPWPlayer newWithName:self.name];
-                [game addPlayer:user];
-//                for (int i = 0; i < [json[@"users"] length]; i++) {
-//                    JPWPlayer *player = [JPWPlayer newWithName:json[@"users"][i]];
-//                    [game addPlayer:player];
-//                }
-//            for (int i = 0; i < (int)json[@"game"][@"number_of_players"]; i++) {
-                JPWPlayer *player = [JPWPlayer newWithName:@"Jeremy"];
-                [game addPlayer:player];
-//            }
-                [game setup];
-                [self updatePlayerInfo];
-//                need to upload to server
-//            } else {
-////                need to make call to update and provide name
-//            }
-        } else {
-//            [self convertFromJson:json[@"game"][@"data"]];
-        }
-//        NSLog(@"data: %@", json[@"game"][@"data"]);
-    }
-}
-
 -(void)loadNewGame {
-    [self updatePlayerInfo];
     if (self.create == YES) {
         //create
-        [self initializeServer];
+        game = [[JPWWebClient sharedClient] initializeServerWithNumberOfPlayers:self.number_of_players andNumberOfRobots:self.number_of_robots];
     }else {
         //join
-        [self joinServer];
+        game = [[JPWWebClient sharedClient] joinGame:self.game_id];
+        if ([game isReady]) {
+            NSString *jsonGame = [self convertToJson];
+            //send to server.
+        }
     }
     user = game.players[0];
     robot = game.players[1];

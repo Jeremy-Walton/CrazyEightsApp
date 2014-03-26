@@ -20,6 +20,13 @@
 @property (nonatomic, strong, readonly) JPWDiscardPile *discardPile;
 @property (nonatomic, strong, readonly) JPWDeck *deck;
 
+@property (nonatomic, getter=isReady, readonly) BOOL ready;
+@property (nonatomic, strong, readonly) NSNumber *gameID;
+
++(instancetype)newWithID:(NSNumber *)gameID;
+- (void)startupGame;
+-(void)setPlayersWithNames:(NSMutableArray *)names;
+
 - (NSNumber *)numberOfPlayers;
 - (void)addPlayer:(JPWPlayer *)player;
 - (void)addRobot:(JPWRobot *)player;

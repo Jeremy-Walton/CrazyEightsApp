@@ -16,26 +16,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeu-jX-lAm">
-                                <rect key="frame" x="320" y="466" width="43" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wood2" translatesAutoresizingMaskIntoConstraints="NO" id="orD-8F-dIg">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qeu-jX-lAm">
+                                <rect key="frame" x="343" y="533" width="83" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Log in">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.corner">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButton:" destination="Arc-QZ-WPT" eventType="touchUpInside" id="NbQ-Kl-Pkb"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TFN-fw-vBC">
-                                <rect key="frame" x="279" y="373" width="125" height="30"/>
+                                <rect key="frame" x="312" y="403" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgA-wj-lBO">
-                                <rect key="frame" x="280" y="411" width="123" height="30"/>
+                                <rect key="frame" x="312" y="475" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
@@ -63,22 +76,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wood2" translatesAutoresizingMaskIntoConstraints="NO" id="jpS-ZH-7mm">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of players" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vu2-c7-KY8">
-                                <rect key="frame" x="212" y="300" width="153" height="30"/>
+                                <rect key="frame" x="221" y="300" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of robots" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ie7-yx-0sE">
-                                <rect key="frame" x="411" y="300" width="153" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number of robots" minimumFontSize="17" background="10 of Clubs" translatesAutoresizingMaskIntoConstraints="NO" id="Ie7-yx-0sE">
+                                <rect key="frame" x="404" y="300" width="153" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pt3-xj-r3N">
-                                <rect key="frame" x="345" y="347" width="88" height="30"/>
+                                <rect key="frame" x="313" y="352" width="142" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Create game">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -87,9 +107,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRK-ej-AI5">
-                                <rect key="frame" x="348" y="481" width="72" height="30"/>
+                                <rect key="frame" x="329" y="468" width="111" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Join game">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -98,7 +121,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter game id" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otk-hZ-SKL">
-                                <rect key="frame" x="336" y="416" width="97" height="30"/>
+                                <rect key="frame" x="329" y="415" width="111" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -252,7 +275,7 @@
             </objects>
             <point key="canvasLocation" x="4754" y="72"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Home-->
         <scene sceneID="KYp-Xx-TfI">
             <objects>
                 <viewController id="LM7-TE-AF6" customClass="ViewController" sceneMemberID="viewController">
@@ -351,7 +374,7 @@
                             <constraint firstItem="nox-aH-xj1" firstAttribute="top" secondItem="ezP-4J-wsf" secondAttribute="bottom" constant="8" id="utW-An-FuN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OPd-kL-RkF"/>
+                    <navigationItem key="navigationItem" title="Home" id="OPd-kL-RkF"/>
                     <connections>
                         <outlet property="imageView" destination="ezP-4J-wsf" id="VkS-kJ-WPy"/>
                         <outlet property="lastEventLabel" destination="nox-aH-xj1" id="byD-uG-Kxo"/>
@@ -361,7 +384,7 @@
             </objects>
             <point key="canvasLocation" x="1757" y="-785"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller - Rules-->
         <scene sceneID="itA-vn-ysj">
             <objects>
                 <viewController id="xU4-wM-C09" sceneMemberID="viewController">
@@ -496,7 +519,7 @@
                             <constraint firstItem="NtE-MA-kh6" firstAttribute="top" secondItem="5HH-XM-INX" secondAttribute="bottom" constant="8" id="uMy-rN-aeB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="h1B-Kp-ooS"/>
+                    <navigationItem key="navigationItem" title="Rules" id="h1B-Kp-ooS"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0eg-21-lkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -522,6 +545,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="10 of Clubs" width="71" height="96"/>
         <image name="Ace of Clubs" width="71" height="96"/>
         <image name="Ace of Spades" width="71" height="96"/>
         <image name="Wood" width="1024" height="768"/>

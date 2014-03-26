@@ -9,25 +9,52 @@
 #import <XCTest/XCTest.h>
 #import "Kiwi.h"
 #import "JPWWebClient.h"
+#import "JPWGame.h"
 
 SPEC_BEGIN(JPWWebClientTests)
 
 describe(@"Web Client", ^{
+    __block JPWWebClient *webClient;
+    beforeEach(^{
+        // change from singleton. take out of test.
+        webClient = [JPWWebClient sharedClient];
+        [webClient loginWithEmail:@"jthelegoman@gmail.com" andPassword:@"password"];
+    });
+    
     it(@"should login successfully", ^{
-        JPWWebClient *webClient = [JPWWebClient sharedClient];
-
-        [[webClient.token should] beNil];
         [[[webClient loginWithEmail:@"jthelegoman@gmail.com" andPassword:@"password"] should] beYes];
         [[webClient.token shouldNot] beNil];
+        [[webClient.userID shouldNot] beNil];
     });
     
     it(@"should fail logging in with invalid credentials", ^{
-        JPWWebClient *webClient = [JPWWebClient sharedClient];
-        
         [[[webClient loginWithEmail:@"my-happy-account@me.com" andPassword:@"not-a-password"] should] beNo];
         [[webClient.token should] beNil];
+        [[webClient.userID should] beNil];
     });
     
+    it(@"should create a database entry.", ^{
+        JPWGame *game = [webClient initializeServerWithNumberOfPlayers:@2 andNumberOfRobots:@0];
+        [[game.gameID should] beGreaterThan:@0];
+    });
+    
+    it(@"should join a game", ^{
+        NSNumber *gameID = [webClient initializeServerWithNumberOfPlayers:@2 andNumberOfRobots:@0].gameID;
+        JPWGame *game = [webClient joinGame:gameID];
+        [[game shouldNot] beNil];
+        [[game.players shouldNot] beEmpty];
+        [[@([game isReady]) should] beNo];
+    });
+    
+//    it(@"should send the json to the server", ^{
+//        JPWGame *game = [webClient initializeServerWithNumberOfPlayers:@2 andNumberOfRobots:@0];
+//        NSDictionary *dictionary = [game toNSDictionary];
+//        NSError *writeError = nil;
+//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
+//        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+//        [[[webClient sendGameToServer:jsonString] should] beYes];
+//    });
+
 });
 
 SPEC_END
