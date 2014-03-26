@@ -77,6 +77,7 @@
         if ([game isReady]) {
             NSString *jsonGame = [self convertToJson];
             //send to server.
+            [[JPWWebClient sharedClient] sendGameToServer:jsonGame withID:self.game_id];
         }
     }
     user = game.players[0];
@@ -113,12 +114,12 @@
     return jsonString;
 }
 
--(void)convertFromJson:(NSString *)jsonGame {
-    NSError *error = nil;
-    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-    [game fromNSDictionary:json];
-}
+//-(void)convertFromJson:(NSString *)jsonGame {
+//    NSError *error = nil;
+//    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+//    [game fromNSDictionary:json];
+//}
 
 -(void)sendToServer {
     NSString *jsonGame = [self convertToJson];

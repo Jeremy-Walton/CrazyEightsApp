@@ -46,14 +46,25 @@ describe(@"Web Client", ^{
         [[@([game isReady]) should] beNo];
     });
     
-//    it(@"should send the json to the server", ^{
-//        JPWGame *game = [webClient initializeServerWithNumberOfPlayers:@2 andNumberOfRobots:@0];
-//        NSDictionary *dictionary = [game toNSDictionary];
-//        NSError *writeError = nil;
-//        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
-//        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//        [[[webClient sendGameToServer:jsonString] should] beYes];
-//    });
+    it(@"should send the json to the server", ^{
+        JPWGame *game = [webClient initializeServerWithNumberOfPlayers:@2 andNumberOfRobots:@0];
+        NSDictionary *dictionary = [game toNSDictionary];
+        NSError *writeError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [[[webClient sendGameToServer:jsonString withID:game.gameID] should] equal:game.gameID];
+    });
+    
+    it(@"should retrieve the json from the server", ^{
+        JPWGame *game = [webClient initializeServerWithNumberOfPlayers:@2 andNumberOfRobots:@0];
+        NSDictionary *dictionary = [game toNSDictionary];
+        NSError *writeError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [[[webClient sendGameToServer:jsonString withID:game.gameID] should] equal:game.gameID];
+        JPWGame *gameFromJSON = [webClient retrieveGameFromServer:game.gameID];
+        [[game.gameID should] equal:gameFromJSON.gameID];
+    });
 
 });
 

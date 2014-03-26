@@ -20,5 +20,7 @@
 -(NSNumber *)loginWithEmail:(NSString *)email andPassword:(NSString *)password;
 -(JPWGame *)initializeServerWithNumberOfPlayers:(NSNumber *)numberOfPlayers andNumberOfRobots:(NSNumber *)numberOfRobots;
 -(JPWGame *)joinGame:(NSNumber *)gameID;
+-(NSNumber *)sendGameToServer:(NSString *)game withID:(NSNumber *)gameID;
+-(JPWGame *)retrieveGameFromServer:(NSNumber *)gameID;
 
 @end

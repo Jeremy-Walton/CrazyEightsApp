@@ -90,7 +90,7 @@ JPWWebClient *_sharedClient;
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.HTTPMethod = @"PUT";
     request.URL = [NSURL URLWithString:[NSString stringWithFormat:@"crazy_eights/%@", gameID] relativeToURL:self.baseURL];
-//    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:@{@"game_id": gameID} options:0 error:NULL]; // ask christian why this doesn't work
+    
     [self setUsernameAuthorization:[self.userID description] password:self.token onRequest:request];
     
     NSError *error;
@@ -99,13 +99,6 @@ JPWWebClient *_sharedClient;
     NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
     
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
-    
-//    NSLog(@"users: %@", json[@"users"]);
-//    NSLog(@"number of players: %@", json[@"game"][@"number_of_players"]);
-//    NSLog(@"number of users: %lu", (unsigned long)[json[@"users"] count]);
-//    if([@([json[@"users"] count] + 1)  isEqual: players]) {
-//        NSLog(@"max players");
-//    }
     
     JPWGame *game = [JPWGame newWithID:gameID];
     NSMutableArray *arrayOfUserNames = [[NSMutableArray alloc] init];
@@ -123,6 +116,66 @@ JPWWebClient *_sharedClient;
     } else {
         NSLog(@"%@", oResponseData);
     }
+    return game;
+}
+
+-(NSNumber *)sendGameToServer:(NSString *)game withID:(NSNumber *)gameID {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    request.HTTPMethod = @"POST";
+    request.URL = [NSURL URLWithString:[NSString stringWithFormat:@"crazy_eights/%@/turn", gameID] relativeToURL:self.baseURL];
+    request.HTTPBody = [[NSString stringWithFormat:@"game=%@", game] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [self setUsernameAuthorization:[self.userID description] password:self.token onRequest:request];
+    
+    NSError *error;
+    NSHTTPURLResponse *responseCode;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+    
+   
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
+    } else {
+        NSLog(@"%@", oResponseData);
+    }
+    return json[@"game"][@"id"];
+}
+
+-(JPWGame *)retrieveGameFromServer:(NSNumber *)gameID {
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    request.HTTPMethod = @"GET";
+    request.URL = [NSURL URLWithString:[NSString stringWithFormat:@"crazy_eights/%@", gameID] relativeToURL:self.baseURL];
+//    request.HTTPBody = [[NSString stringWithFormat:@"game=%@", game] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    [self setUsernameAuthorization:[self.userID description] password:self.token onRequest:request];
+    
+    NSError *error;
+    NSHTTPURLResponse *responseCode;
+    
+    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+    
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
+    
+//    NSLog(@"%@", json[@"game"][@"data"]);
+    JPWGame *game = [self convertFromJson:json[@"game"][@"data"] withID:gameID];
+    
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
+    } else {
+        NSLog(@"%@", oResponseData);
+    }
+    return game;
+}
+
+-(JPWGame *)convertFromJson:(NSString *)jsonGame withID:gameID {
+    NSError *error = nil;
+    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+    JPWGame *game = [JPWGame newWithID:gameID];
+    [game fromNSDictionary:json];
     return game;
 }
 
