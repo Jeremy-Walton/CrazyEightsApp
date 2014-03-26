@@ -13,7 +13,8 @@
 #import "CardCell.h"
 #import "CoverFlowLayout.h"
 #import "JPWTurnManager.h"
-#import "OpponentView.h"
+#import "OpponentViewController.h"
+#import "JPWWebClient.h"
 #import <QuartzCore/QuartzCore.h>
 
 
@@ -23,12 +24,12 @@
 
 @implementation MultiViewController {
 @private NSMutableArray *cardList;
-@private JPWPlayer *player1;
+@private JPWPlayer *user;
 @private JPWRobot *robot;
 @private JPWGame *game;
 @private JPWTurnManager *turnManager;
 @private NSString *wildSuit;
-@private OpponentView *opponentViewController;
+@private OpponentViewController *opponentViewController;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,32 +58,38 @@
     self.collectionView.delegate = self;
     self.collectionView.layer.needsDisplayOnBoundsChange = YES;
     
-    opponentViewController = [OpponentView new];
+    opponentViewController = [OpponentViewController new];
 
     [self.OpponentView setTransform:CGAffineTransformMakeRotation(M_PI)];
     self.OpponentView.dataSource = opponentViewController;
     self.OpponentView.delegate = self;
     [self addChildViewController:opponentViewController];
-    
     [self loadNewGame];
 }
 
 -(void)loadNewGame {
-    cardList = [NSMutableArray new];
-    game = [JPWGame new];
-    player1 = [JPWPlayer newWithName:@"Jeremy"];
-    robot = [JPWRobot newWithName:@"Sam"];
-    [game addPlayer:player1];
-    [game addRobot:robot];
-    [game setup];
+    if (self.create == YES) {
+        //create
+        game = [[JPWWebClient sharedClient] initializeServerWithNumberOfPlayers:self.number_of_players andNumberOfRobots:self.number_of_robots];
+    }else {
+        //join
+        game = [[JPWWebClient sharedClient] joinGame:self.game_id];
+        if ([game isReady]) {
+            NSString *jsonGame = [self convertToJson];
+            //send to server.
+            [[JPWWebClient sharedClient] sendGameToServer:jsonGame withID:self.game_id];
+        }
+    }
+    user = game.players[0];
+    robot = game.players[1];
+    turnManager = [JPWTurnManager newWithGame:game player:user robot:robot wildSuit:wildSuit];
     [self updatePlayerInfo];
-    turnManager = [JPWTurnManager newWithGame:game player:player1 robot:robot wildSuit:wildSuit];
 }
 
 -(void)tapDetected{
     if ([[game.deck size] integerValue] > 0) {
-        if ([[game whosTurn] isEqual:player1.name]) {
-            [player1 addCardToHand:[game draw]];
+        if ([[game whosTurn] isEqual:user.name]) {
+            [user addCardToHand:[game draw]];
             [game changeTurnOrder];
             [self updatePlayerInfo];
             
@@ -96,7 +103,7 @@
     }
     [self endOfGameCheck];
 //    [self convertFromJson:[self convertToJson]];
-    [self sendToServer];
+//    [self sendToServer];
 }
 
 -(NSString *)convertToJson {
@@ -107,12 +114,12 @@
     return jsonString;
 }
 
--(void)convertFromJson:(NSString *)jsonGame {
-    NSError *error = nil;
-    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-    [game fromNSDictionary:json];
-}
+//-(void)convertFromJson:(NSString *)jsonGame {
+//    NSError *error = nil;
+//    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
+//    [game fromNSDictionary:json];
+//}
 
 -(void)sendToServer {
     NSString *jsonGame = [self convertToJson];
@@ -200,24 +207,16 @@
                      animations:^
      {
          NSLog(@"start");
-//                 CGRect frame = cell.frame;
-//                 frame.origin.y -= 100;
-//                 cell.frame = frame;
-         //        cell.transform = CGAffineTransformMakeRotation(180 * 3.14/180);
                  [cell.superview bringSubviewToFront:cell];
                  cell.transform = CGAffineTransformMakeScale(1.3, 1.3);
      }
                      completion:^(BOOL finished)
      {
-//                 [UIView animateWithDuration:1.0 animations:^{
-//                     cell.transform = CGAffineTransformMakeScale(1, 1);
-//                     cell.transform = CGAffineTransformMakeRotation(0);
-//                 }];
          NSLog(@"end");
          
          //player clicked card.
          JPWPlayingCard *card = cardList[indexPath.row];
-         if ([turnManager playRound:card player:player1]) {
+         if ([turnManager playRound:card player:user]) {
              if ([card.rank isEqual:@"8"]) {
                  [self suitChange:@"Please choose a suit to use."];
              } else {
@@ -236,7 +235,7 @@
 }
 
 -(void)endOfGameCheck {
-    if ([player1.hand.cards count] == 0 || [robot.hand.cards count] == 0 || [[game.deck size] integerValue] <= 0) {
+    if ([user.hand.cards count] == 0 || [robot.hand.cards count] == 0 || [[game.deck size] integerValue] <= 0) {
         if ([[game.deck size] integerValue] <= 0) {
             [self showAlert:@"The deck ran out of cards, so you tied."];
         }
@@ -245,10 +244,10 @@
 }
 
 -(void)updatePlayerInfo {
-    [player1.hand sortCards];
-    cardList = player1.hand.cards;
+    [user.hand sortCards];
+    cardList = user.hand.cards;
     [opponentViewController setCardAmount:[robot.hand.cards count]];
-    NSString *info = [NSString stringWithFormat:@"Cards left in deck: %@. Opponent cards: %lu. Your cards: %lu.", [game.deck size], (unsigned long)[robot.hand.cards count], (unsigned long)[player1.hand.cards count]];
+    NSString *info = [NSString stringWithFormat:@"Cards left in deck: %@. Opponent cards: %lu. Your cards: %lu.", [game.deck size], (unsigned long)[robot.hand.cards count], (unsigned long)[user.hand.cards count]];
     self.GameInfoLabel.text = info;
     self.DiscardImage.image = [UIImage imageNamed:[[game.discardPile showTopCard] description]];
     if ([[game.deck size] integerValue] == 0) {

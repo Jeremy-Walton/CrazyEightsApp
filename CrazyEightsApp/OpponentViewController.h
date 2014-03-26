@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OpponentView : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface OpponentViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate>
 
 -(void)setCardAmount:(NSInteger)amount;
 

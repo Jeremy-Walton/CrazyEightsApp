@@ -36,12 +36,11 @@
         if ([self.game isCardValid:card]) {
             if ([card.rank isEqual:@"8"]) {
                 [player takeCardFromPlayer:card];
-                return YES;
             } else {
                 [self.game playCard:card from:player];
                 [self endOfTurnCheck];
-                return YES;
             }
+            return YES;
         } else {
             [self showAlert:@"Please choose a valid card."];
             return NO;

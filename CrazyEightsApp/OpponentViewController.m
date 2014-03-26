@@ -6,14 +6,14 @@
 //  Copyright (c) 2014 Jeremy-Walton. All rights reserved.
 //
 
-#import "OpponentView.h"
+#import "OpponentViewController.h"
 #import "CardCell.h"
 
-@interface OpponentView ()
+@interface OpponentViewController ()
 
 @end
 
-@implementation OpponentView {
+@implementation OpponentViewController {
     @private NSInteger cardAmount;
 }
 
@@ -62,5 +62,8 @@
     return CGSizeMake(71, 96);
 }
 
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+      
+}
 
 @end

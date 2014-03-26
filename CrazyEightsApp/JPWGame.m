@@ -17,9 +17,29 @@
 @property (nonatomic, strong) JPWDeck *deck;
 @property (nonatomic, strong) JPWDiscardPile *discardPile;
 @property (nonatomic, strong) NSMutableArray *turnOrder;
+@property (nonatomic, strong) NSNumber *gameID;
+@property (nonatomic, getter=isReady) BOOL ready;
 @end
 
 @implementation JPWGame
+
++(instancetype)newWithID:(NSNumber *)gameID {
+    JPWGame *game = [self new];
+    game.gameID = gameID;
+    return game;
+}
+
+-(void)setPlayersWithNames:(NSMutableArray *)names {
+    for (NSString *name in names) {
+        JPWPlayer *player = [JPWPlayer newWithName:name];
+        [self addPlayer:player];
+    }
+}
+
+- (void)startupGame {
+    self.ready = YES;
+    [self setup];
+}
 
 - (id)init {
     
@@ -27,6 +47,8 @@
     if(self) {
         _turnOrder = [NSMutableArray new];
         _players = [NSMutableArray new];
+        _deck = [JPWDeck new];
+        _discardPile = [JPWDiscardPile new];
     }
     return self;
 }
@@ -66,8 +88,6 @@
 }
 
 - (void)setup {
-    _deck = [JPWDeck new];
-    _discardPile = [JPWDiscardPile new];
     [self.deck shuffle];
     [self dealCards];
     [self setTurnOrder];
