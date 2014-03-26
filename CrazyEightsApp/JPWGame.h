@@ -38,6 +38,7 @@
 - (void)changeTurnOrder;
 - (void)discard:(JPWPlayingCard *)card;
 - (void)discardTopCard;
+- (NSString *)convertToJSON;
 
 //logic methods
 -(void)playCard:(JPWPlayingCard *)card from:(JPWPlayer *)player;

@@ -14,15 +14,15 @@
 @interface JPWTurnManager : NSObject
 
 @property JPWGame *game;
-@property JPWRobot *robot;
-@property JPWPlayer *player1;
+//@property JPWRobot *robot;
+@property JPWPlayer *user;
 @property NSString *wildSuit;
 
-+ (instancetype)newWithGame:(JPWGame *)game player:(JPWPlayer *)player1 robot:(JPWRobot *)robot wildSuit:(NSString *)wildSuit;
-- (instancetype)initWithGame:(JPWGame *)game player:(JPWPlayer *)player1 robot:(JPWRobot *)robot wildSuit:(NSString *)wildSuit;
++ (instancetype)newWithGame:(JPWGame *)game player:(JPWPlayer *)user wildSuit:(NSString *)wildSuit;
+- (instancetype)initWithGame:(JPWGame *)game player:(JPWPlayer *)user wildSuit:(NSString *)wildSuit;
 
-- (void)robotTurn:(JPWRobot *)robot;
--(BOOL)playRound:(JPWPlayingCard *)card player:(JPWPlayer *)player;
+//- (void)robotTurn:(JPWRobot *)robot;
+-(BOOL)playRound:(JPWPlayingCard *)card player:(JPWPlayer *)user;
 -(void)endOfTurnCheck;
 
 @end

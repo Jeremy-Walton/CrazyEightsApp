@@ -227,6 +227,14 @@ describe(@"Game", ^{
         [[dictionary should] equal: expected];
     });
     
+    it(@"should convert to a JSON string", ^{
+        //TODO pull this up to Object
+        NSDictionary *dictionary = [game toNSDictionary];
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:nil];
+        NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        [[[game convertToJSON] should] equal: jsonString];
+    });
+    
     it(@"should have a method fromNSDictionary that converts to object from a dictionary.", ^{
         JPWGame *game2 = [JPWGame new];
         JPWPlayer *p = [JPWPlayer newWithName:@"Jeremy"];

@@ -49,6 +49,7 @@
         _players = [NSMutableArray new];
         _deck = [JPWDeck new];
         _discardPile = [JPWDiscardPile new];
+        self.ready = NO;
     }
     return self;
 }
@@ -107,6 +108,15 @@
     	[self.turnOrder removeLastObject];
     }
 }
+
+-(NSString *)convertToJSON {
+    NSDictionary *dictionary = [self toNSDictionary];
+    NSError *writeError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
+    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    return jsonString;
+}
+
 
 - (NSString *)whosTurn {
     return [self.turnOrder objectAtIndex:0];

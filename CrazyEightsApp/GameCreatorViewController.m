@@ -39,6 +39,7 @@
         }
         controller.name = self.name;
     }
+//    create game in here instead of multiviewcontroller. simplifies code.
 }
 
 - (void)viewDidLoad

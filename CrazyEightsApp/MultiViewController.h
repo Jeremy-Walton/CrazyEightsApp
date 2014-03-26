@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *DiscardImage;
 @property (weak, nonatomic) IBOutlet UIImageView *deckImage;
 @property (weak, nonatomic) IBOutlet UILabel *GameInfoLabel;
+- (IBAction)updateClient:(id)sender;
 
 @property(nonatomic) BOOL create;
 @property(nonatomic) NSString* name;

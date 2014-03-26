@@ -19,14 +19,14 @@
 
 
 @interface MultiViewController ()
+@property JPWGame *game;
 
 @end
 
 @implementation MultiViewController {
 @private NSMutableArray *cardList;
 @private JPWPlayer *user;
-@private JPWRobot *robot;
-@private JPWGame *game;
+@private JPWPlayer *opponent;
 @private JPWTurnManager *turnManager;
 @private NSString *wildSuit;
 @private OpponentViewController *opponentViewController;
@@ -64,36 +64,40 @@
     self.OpponentView.dataSource = opponentViewController;
     self.OpponentView.delegate = self;
     [self addChildViewController:opponentViewController];
-    [self loadNewGame];
+    [self loadNewGame]; // this gets replaced by observer
 }
 
 -(void)loadNewGame {
+//    move to game creator controller.
     if (self.create == YES) {
         //create
-        game = [[JPWWebClient sharedClient] initializeServerWithNumberOfPlayers:self.number_of_players andNumberOfRobots:self.number_of_robots];
+        self.game = [[JPWWebClient sharedClient] initializeServerWithNumberOfPlayers:self.number_of_players andNumberOfRobots:self.number_of_robots];
+        self.game_id = self.game.gameID;
     }else {
         //join
-        game = [[JPWWebClient sharedClient] joinGame:self.game_id];
-        if ([game isReady]) {
-            NSString *jsonGame = [self convertToJson];
-            //send to server.
-            [[JPWWebClient sharedClient] sendGameToServer:jsonGame withID:self.game_id];
-        }
+        self.game = [[JPWWebClient sharedClient] joinGame:self.game_id];
     }
-    user = game.players[0];
-    robot = game.players[1];
-    turnManager = [JPWTurnManager newWithGame:game player:user robot:robot wildSuit:wildSuit];
-    [self updatePlayerInfo];
+}
+
+-(void)setGame:(JPWGame *)game {
+    _game = game;
+    if ([_game isReady]) {
+        //    need to get correct user.
+        user = _game.players[0];
+        opponent = _game.players[1];
+        turnManager = [JPWTurnManager newWithGame:_game player:user wildSuit:wildSuit];
+        //    make observer on game in viewDidLoad that calls this.
+        [self updatePlayerInfo];
+    }
+
 }
 
 -(void)tapDetected{
-    if ([[game.deck size] integerValue] > 0) {
-        if ([[game whosTurn] isEqual:user.name]) {
-            [user addCardToHand:[game draw]];
-            [game changeTurnOrder];
-            [self updatePlayerInfo];
-            
-            [turnManager robotTurn:robot];
+//    move to turn manager ui shows alert based on true/false
+    if ([[self.game.deck size] integerValue] > 0) {
+        if ([[self.game whosTurn] isEqual:user.name]) {
+            [user addCardToHand:[self.game draw]];
+            [self.game changeTurnOrder];
             [self updatePlayerInfo];
         } else {
             [self showAlert:@"It isn't your turn."];
@@ -102,42 +106,8 @@
         [self showAlert:@"No more cards, sorry."];
     }
     [self endOfGameCheck];
-//    [self convertFromJson:[self convertToJson]];
-//    [self sendToServer];
-}
-
--(NSString *)convertToJson {
-    NSDictionary *dictionary = [game toNSDictionary];
-    NSError *writeError = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&writeError];
-    NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    return jsonString;
-}
-
-//-(void)convertFromJson:(NSString *)jsonGame {
-//    NSError *error = nil;
-//    NSData *jsonData = [jsonGame dataUsingEncoding:NSUTF8StringEncoding];
-//    NSDictionary* json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&error];
-//    [game fromNSDictionary:json];
-//}
-
--(void)sendToServer {
-    NSString *jsonGame = [self convertToJson];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setHTTPMethod:@"POST"];
-    [request setURL:[NSURL URLWithString:@"http://localhost:3000/crazy_eights"]];
-    [request setHTTPBody:[[NSString stringWithFormat:@"game=%@", jsonGame] dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    NSError *error = [[NSError alloc] init];
-    NSHTTPURLResponse *responseCode = nil;
-    
-    NSData *oResponseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
-    
-    if([responseCode statusCode] != 200){
-        NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
-    } else {
-        NSLog(@"%@", oResponseData);
-    }
+//    send to server.
+    [[JPWWebClient sharedClient] sendGameToServer:[self.game convertToJSON] withID:self.game_id];
 }
 
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)sender {
@@ -186,7 +156,7 @@
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CardCell *newCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     newCell.imageView.image = [UIImage imageNamed:[cardList[indexPath.row] description]];
-    if (![game isCardValid:cardList[indexPath.row]]) {
+    if (![self.game isCardValid:cardList[indexPath.row]]) {
         newCell.alpha = 0.3;
     }
     return newCell;
@@ -223,22 +193,21 @@
                  [self endOfGameCheck];
              }
              [self updatePlayerInfo];
+//             send to server.
+             [[JPWWebClient sharedClient] sendGameToServer:[self.game convertToJSON] withID:self.game_id];
          }
-         
-         [turnManager robotTurn:robot];
-         if (![card.rank isEqual:@"8"]) {
-             [self endOfGameCheck];
-         }
-         [self updatePlayerInfo];
      }
      ];
 }
 
 -(void)endOfGameCheck {
-    if ([user.hand.cards count] == 0 || [robot.hand.cards count] == 0 || [[game.deck size] integerValue] <= 0) {
-        if ([[game.deck size] integerValue] <= 0) {
-            [self showAlert:@"The deck ran out of cards, so you tied."];
+    for (JPWPlayer *player in self.game.players) {
+        if ([player.hand.cards count] == 0) {
+            [self.navigationController popViewControllerAnimated:YES];
         }
+    }
+    if ([[self.game.deck size] integerValue] <= 0) {
+        [self showAlert:@"The deck ran out of cards, so you tied."];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
@@ -246,11 +215,11 @@
 -(void)updatePlayerInfo {
     [user.hand sortCards];
     cardList = user.hand.cards;
-    [opponentViewController setCardAmount:[robot.hand.cards count]];
-    NSString *info = [NSString stringWithFormat:@"Cards left in deck: %@. Opponent cards: %lu. Your cards: %lu.", [game.deck size], (unsigned long)[robot.hand.cards count], (unsigned long)[user.hand.cards count]];
+    [opponentViewController setCardAmount:[opponent.hand.cards count]];
+    NSString *info = [NSString stringWithFormat:@"Cards left in deck: %@. Opponent cards: %lu. Your cards: %lu.", [self.game.deck size], (unsigned long)[opponent.hand.cards count], (unsigned long)[user.hand.cards count]];
     self.GameInfoLabel.text = info;
-    self.DiscardImage.image = [UIImage imageNamed:[[game.discardPile showTopCard] description]];
-    if ([[game.deck size] integerValue] == 0) {
+    self.DiscardImage.image = [UIImage imageNamed:[[self.game.discardPile showTopCard] description]];
+    if ([[self.game.deck size] integerValue] == 0) {
         self.deckImage.image = [UIImage imageNamed:@"jb"];
     }
     self.collectionView.reloadData;
@@ -284,25 +253,9 @@
 }
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
-    
     switch (popup.tag) {
         case 1: {
-            switch (buttonIndex) {
-                case 0:
-                     wildSuit = @"Hearts";
-                    break;
-                case 1:
-                    wildSuit = @"Spades";
-                    break;
-                case 2:
-                    wildSuit = @"Diamonds";
-                    break;
-                case 3:
-                    wildSuit = @"Clubs";
-                    break;
-                default:
-                    break;
-            }
+            wildSuit = @[@"Hearts", @"Spades", @"Diamonds", @"Clubs"][buttonIndex];
             break;
         }
         default:
@@ -310,12 +263,18 @@
     }
     
     JPWPlayingCard *newCard = [JPWPlayingCard newWithRank:@"8" suit:wildSuit];
-    [game discard:newCard];
+    [self.game discard:newCard];
     [turnManager endOfTurnCheck];
-
-    [turnManager robotTurn:robot];
     [self endOfGameCheck];
     [self updatePlayerInfo];
 }
 
+- (IBAction)updateClient:(id)sender {
+//    retrieve from server.
+    JPWGame *newGame = [[JPWWebClient sharedClient] retrieveGameFromServer:self.game_id];
+    if ([newGame isReady]) {
+        self.game = newGame;
+    }
+    [self updatePlayerInfo];
+}
 @end

@@ -24,7 +24,7 @@ JPWWebClient *_sharedClient;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [self new];
-        _sharedClient.baseURL = [NSURL URLWithString:@"http://localhost:3000"];
+        _sharedClient.baseURL = [NSURL URLWithString:@"http://10.0.3.122:3000"];
     });
     return _sharedClient;
 }
@@ -59,7 +59,7 @@ JPWWebClient *_sharedClient;
 
 - (void)setUsernameAuthorization:(NSString *)username password:(NSString *)password onRequest:(NSMutableURLRequest *)request {
     NSData *authData = [[NSString stringWithFormat:@"%@:%@", username, password] dataUsingEncoding:NSASCIIStringEncoding];
-    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64EncodedStringWithOptions:NSDataBase64Encoding76CharacterLineLength]];
+    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64Encoding]];
     [request setValue:authValue forHTTPHeaderField:@"Authorization"];
 }
 
@@ -109,6 +109,7 @@ JPWWebClient *_sharedClient;
     
     if ([json[@"game"][@"start_game"] boolValue]) {
         [game startupGame];
+        [self sendGameToServer:[game convertToJSON] withID:gameID];
     }
     
     if([responseCode statusCode] != 200){
@@ -145,10 +146,10 @@ JPWWebClient *_sharedClient;
 }
 
 -(JPWGame *)retrieveGameFromServer:(NSNumber *)gameID {
+    NSLog(@"Game id: %@", gameID);
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     request.HTTPMethod = @"GET";
     request.URL = [NSURL URLWithString:[NSString stringWithFormat:@"crazy_eights/%@", gameID] relativeToURL:self.baseURL];
-//    request.HTTPBody = [[NSString stringWithFormat:@"game=%@", game] dataUsingEncoding:NSUTF8StringEncoding];
     
     [self setUsernameAuthorization:[self.userID description] password:self.token onRequest:request];
     
@@ -159,8 +160,12 @@ JPWWebClient *_sharedClient;
     
     NSDictionary* json = [NSJSONSerialization JSONObjectWithData:oResponseData options:kNilOptions error:&error];
     
-//    NSLog(@"%@", json[@"game"][@"data"]);
-    JPWGame *game = [self convertFromJson:json[@"game"][@"data"] withID:gameID];
+    JPWGame *game;
+    if ([json[@"game"][@"data"]  isEqual: @""]) {
+        game = [JPWGame new];
+    } else {
+        game = [self convertFromJson:json[@"game"][@"data"] withID:gameID];
+    }
     
     if([responseCode statusCode] != 200){
         NSLog(@"Error getting %@, HTTP status code %li", @"localhost:3000/crazy_eights", (long)[responseCode statusCode]);
